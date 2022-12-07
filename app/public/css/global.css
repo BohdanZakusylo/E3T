@@ -1,0 +1,50 @@
+/*Contains the css part for the footer and header*/
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+header{
+    height: 15vh;
+    display:flex;
+    justify-content: space-around;
+    font-family:  Roboto;
+}
+header img{
+    height: 18vh;
+    width: 14vw;
+}
+header ul{
+    font-weight: bold;
+    list-style-type: none;
+    display:flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+header ul li{
+    display:inline-block;
+    padding: 5px;
+    font-size: 1vw;
+}
+a{
+    text-decoration: none;
+    color:#2A2B68;
+}
+.underline:hover{
+    text-decoration: underline;
+}
+#a-color{
+    color:white;
+}
+#login{
+    color:white;
+    background-color: #ED9275;
+    height: 1.5vw;
+    width: 4vw;
+    text-align:center;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+
+}
