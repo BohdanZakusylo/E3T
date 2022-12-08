@@ -11,14 +11,14 @@ include ("components/header.php");
         </p>
     </div>
     <form id="talent_form">
-        <h1>For talents</h1>
-        <label for="full_name">Full name:</label><br>
+        <h1 class="for_talent">For talents</h1>
+        <label class="label_1" for="full_name">Full name:</label><br>
         <input type="text" name="full_name" id="full_name" placeholder="Enter your full name here"><br>
-        <label for="email_address">Email Address:</label><br>
+        <label class="label_1" for="email_address">Email Address:</label><br>
         <input type="email" name="email_address" id="email_address" placeholder="Enter your email address here"><br>
-        <label for="talent">Talent</label><br>
+        <label class="label_1" for="talent">Talent</label><br>
         <input type="text" name="talent" id="talent" placeholder="Enter your talent here"><br>
-        <label for="description">Give a description of what you do</label><br>
+        <label class="label_1" for="description">Give a description of what you do</label><br>
         <textarea name="description" id="description" placeholder="Description..."></textarea><br>
         <p>
             <input type="submit" name="submit" value="Submit">
@@ -27,7 +27,7 @@ include ("components/header.php");
 
     <form id="client_form">
         <div class="vertical_line">
-            <h1 class="label_2">For clients</h1>
+            <h1 class="for_client">For clients</h1>
             <label class="label_2" for="full_name_2">Full name:</label><br>
             <input type="text" class="form_2" name="full_name_2" id="full_name_2" placeholder="Enter your full name here"><br>
             <label class="label_2" for="email_address_2">Email Address:</label><br>
