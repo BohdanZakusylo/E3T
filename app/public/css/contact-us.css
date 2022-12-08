@@ -4,7 +4,7 @@
 	box-sizing: border-box;
 }
 
-body{
+#body{
 	display: grid;
     grid-template-columns: repeat(12, 1fr);
     font-family: Roboto, sans-serif;
