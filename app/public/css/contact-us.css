@@ -4,7 +4,7 @@
 	box-sizing: border-box;
 }
 
-body{
+main{
 	display: grid;
     grid-template-columns: repeat(12, 1fr);
     font-family: Roboto, sans-serif;
@@ -16,7 +16,7 @@ body{
 	color: white;
 	background-color: #2E307A;
 	height: 244px;
-	padding-top: 2%;
+	padding-top: 5%;
 	padding-left: 9%;
 }
 .header_2_text{
@@ -27,9 +27,7 @@ body{
 	width: 55%;
 }
 
-.line{
 
-}
 #talent_form{
 	grid-column: 1/7;
 	display: flex;
@@ -38,6 +36,7 @@ body{
 	margin-left: 17%;
 	margin-right: 17%;
 	line-height: 2;
+	margin-top: 2%;
 }
 input[type=text], input[type=email]{
 	width: 100%;
@@ -53,7 +52,9 @@ input[type=text], input[type=email]{
 	margin-left: 8%;
 }
 .label_2{
+	font-size: 22px;
 	margin-left: 8%;
+	color: #2E307A;
 }
 input[type=submit]{
 	width: 91px;
@@ -62,7 +63,14 @@ input[type=submit]{
 	border: 0;
 	font-size: 20px;
 	background-color: #ED9275;
-}
+	margin-top: 2%;
+}.for_talent{
+	font-size: 30px;
+ }
+ .for_client{
+	 font-size: 30px;
+	 margin-left: 8%;
+ }
 .textarea_1{
 	width: 100%;
 	height: 284px;
@@ -80,12 +88,13 @@ textarea{
 	color: #2E307A;
 	border-color: #2E307A;
 }
-label{
+.label_1{
 	color: #2E307A;
+	font-size: 22px;
 }
 #client_form{
 	grid-column: 7/13;
-/*	display: flex;*/
+	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
 	margin-right: 34.5%;
@@ -96,25 +105,72 @@ label{
 	border-left: 7px solid #2E307A;
 	height: 650px;
 	margin-left: -3%;
+	margin-top: 3%;
 }
+
+
+
+
 @media screen and (max-width: 393px) {
 	#header_2{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 		padding-left: 0;
+		height: 135px;
 		text-align: center;
 	}
-	p.header_2_text{
-		text-align: justify;
+	.header_text{
+		padding-top: 3px;
+		font-size: 10px;
+		width: 80%;
+
 	}
+	.header_2_text{
+		font-size: 25px;
+
+	}
+
+
 	#talent_form{
 		grid-column: 1/13;
+		margin-left: 4.5%;
+		margin-right: 29.5%;
 	}
 	#client_form{
 		grid-column: 1/13;
-		margin-left: 17%;
-		border-left: none;
+		line-height: normal;
 	}
 	.vertical_line{
 		border-left: none;
 	}
-
+	.label_2{
+		font-size: 12px;
+	}
+	.label_1{
+		font-size: 12px;
+	}
+	input[type=text], input[type=email]{
+		height: 21px;
+	}
+	textarea{
+		height: 154px;
+	}
+	.textarea_1{
+		height: 154px;
+	}
+	.for_talent{
+		font-size: 15px;
+	}
+	.for_client{
+		font-size: 15px;
+	}
+	input[type=submit]{
+		height: 23px;
+		font-size: 15px;
+	}
+	.submit_2{
+		height: 23px;
+		font-size: 15px;
+	}
 }
