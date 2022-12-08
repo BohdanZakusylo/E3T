@@ -61,3 +61,65 @@ input[type=text],input[type=password]{
     font-style: italic;
     font-size: 1.25em;
 }
+
+
+@media screen and (max-width: 393px) {
+    #normal_login {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30vh;
+    }
+
+    form {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        background-color: #2E307A;
+        height: 14.57625em;
+        width: 20.130625em;
+        border-radius: 0.625em;
+        border: none;
+    }
+
+    .login {
+        color: white;
+        margin-left: 15%;
+        font-size: 1.25em;
+        line-height: 3;
+    }
+    label{
+        color: white;
+        margin-left: 15%;
+        font-size: 0.9375em;
+        line-height: 2;
+    }
+    input[type=text],input[type=password] {
+        width: 16.995em;
+        height: 1.33625em;
+        margin-left: 15%;
+
+    }
+    input[type=submit]{
+        background-color: #ED9275;
+        color: white;
+        width: 37px;
+        height: 18px;
+        font-size: 0.625em;
+        border-radius: 0.3125em;
+        border: none;
+        margin-left: 15%;
+        margin-top: 5%;
+    }
+    .power{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5%;
+    }
+    .powered{
+        font-family: "Roboto Light", sans-serif;
+        font-style: italic;
+        font-size: 0.75em;
+    }
+}
