@@ -3,7 +3,6 @@ $cssFile = "talents";
 $pageTitle = "talents";
 include ("components/header.php");
 ?>
-<body>
 <main>
 
 <section>
@@ -34,15 +33,20 @@ include ("components/header.php");
 		</form>
 
 		<div>
+            <?php
+                for ($i=0; $i<=4; $i++){
+                    include ("components/portfolio.php");
+                }
+            ?>
 		</div>
 
 		<div>
 			<a href="#"><center>Next ></center></a>
 		</div>
-</subsection>
+    </sub-section>
 </main>
 
-</body>
+
 
 <?php
 include "components/footer.php";
