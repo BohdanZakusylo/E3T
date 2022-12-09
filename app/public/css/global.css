@@ -9,10 +9,11 @@ header{
     display:flex;
     justify-content: space-around;
     font-family:  Roboto;
+    align-items: center;
 }
 header img{
-    height: 18vh;
-    width: 14vw;
+    height: 4em;
+    width: 7em;
 }
 header ul{
     font-weight: bold;
