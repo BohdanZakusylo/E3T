@@ -1,7 +1,7 @@
 <?php
 
-require('../src/phpCalendar/Calendar.php');
-
+// require('../src/phpCalendar/Calendar.php');
+require('calendar/src/phpCalendar/Calendar.php');
 
 use benhall14\phpCalendar\Calendar;
 
@@ -45,9 +45,9 @@ $calendar->addEvents($events);
 
         <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700" rel="stylesheet"> 
 
-        <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+        <link rel="stylesheet" type="text/css" href="calendar/html/css/stylesheet.css">
 
-        <link rel="stylesheet" type="text/css" href="css/calendar.css">
+        <link rel="stylesheet" type="text/css" href="calendar/html/css/calendar.css">
 
     </head>
 
