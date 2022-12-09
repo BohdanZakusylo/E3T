@@ -1,3 +1,7 @@
+<head>
+    <link rel="stylesheet" href="../css/global.css">
+</head>
+
 <footer>
     <h2>Want to reach the team?</h2>
     <div id="contact_us"><a href="#">Contact us</a></div>
