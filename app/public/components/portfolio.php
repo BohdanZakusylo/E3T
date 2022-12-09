@@ -6,11 +6,12 @@ function generate_portfolio(){
         <div class="main_container">
             <img src="../img/logo.png">
             <h2>Mike Philips</h2>
-            <h4>Description</h4>
-            <h6>.</h6>
-            <h6>.</h6>
-            <h6>.</h6>
-            <hr>
+            <div id="description">    
+                <h4>Description</h4>
+                <h6>.</h6>
+                <h6>.</h6>
+                <h6>.</h6>
+            </div>
             <br><br>
             <h4>Rating:</h4>
         </div>';
