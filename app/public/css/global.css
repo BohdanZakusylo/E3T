@@ -62,22 +62,29 @@ footer{
 
 #contact_us{
     background-color:#ED9275;
-    width: 7vw;
-    height: 4vh;
+    width: 216px;
+    height: 44px;
     display:flex;
     align-items: center;
     justify-content: center;
     border-radius: 5%;
-    font-size: 2vh;
+    font-size: 2em;
+}
+
+#contact_us a{
+    color: white;
+    font-size: 25px;
 }
 
 footer h2{
-    font-weight: 500;
+    font-weight: 300;
+    font-style: normal;
 }
 
 footer h4{
     font-style: italic;
-    font-weight: 400;
+    font-weight: 300;
+    font-size: 15px;
 }
 
 #rows{
