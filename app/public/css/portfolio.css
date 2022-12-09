@@ -17,3 +17,8 @@
 h6{
     margin: 0;
 }
+
+#rows{
+    display: flex;
+    flex-direction: row;
+}

@@ -2,6 +2,7 @@
 $cssFile = "talents";
 $pageTitle = "talents";
 include ("components/header.php");
+require "components/portfolio.php";
 ?>
 <main>
 
@@ -34,9 +35,11 @@ include ("components/header.php");
 
 		<div>
             <?php
+                echo "<div id='rows'>";
                 for ($i=0; $i<=4; $i++){
-                    include ("components/portfolio.php");
+                    generate_portfolio();
                 }
+                echo "</div>";
             ?>
 		</div>
 

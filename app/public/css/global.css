@@ -76,3 +76,10 @@ footer h4{
     font-style: italic;
     font-weight: 400;
 }
+
+#rows{
+    display: flex;
+    flex-direction: row;
+    gap: 5em;
+    margin: 2em;
+}
