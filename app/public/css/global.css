@@ -9,10 +9,11 @@ header{
     display:flex;
     justify-content: space-around;
     font-family:  Roboto;
+    align-items: center;
 }
 header img{
-    height: 18vh;
-    width: 14vw;
+    height: 4em;
+    width: 7em;
 }
 header ul{
     font-weight: bold;
@@ -77,4 +78,11 @@ footer h2{
 footer h4{
     font-style: italic;
     font-weight: 400;
+}
+
+#rows{
+    display: flex;
+    flex-direction: row;
+    gap: 5em;
+    margin: 2em;
 }
