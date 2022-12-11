@@ -30,8 +30,12 @@ header ul li{
 }
 a{
     text-decoration: none;
-    color:#2A2B68;
 }
+.underline{
+    color:#2A2B68;
+    font-size: 25px;
+}
+
 .underline:hover{
     text-decoration: underline;
 }
@@ -41,12 +45,13 @@ a{
 #login{
     color:white;
     background-color: #ED9275;
-    height: 1.5vw;
-    width: 4vw;
+    height: 38px;
+    width: 114px;
     text-align:center;
     display:flex;
     align-items: center;
     justify-content: center;
+    font-size: 25px;
 }
 
 footer{
@@ -57,29 +62,32 @@ footer{
     align-items: center;
     justify-content: space-evenly;
     font-family: Roboto;
-    height: 20vh;
+    height: 158px;
 }
 
-#contact_us{
+.link_box{
     background-color:#ED9275;
     width: 216px;
     height: 44px;
     display:flex;
     align-items: center;
     justify-content: center;
-    border-radius: 5%;
-    font-size: 2em;
-}
-
-#contact_us a{
+    border-radius: 5px;
+    font-size: 25px;
     color: white;
     font-size: 25px;
 }
 
-footer h2{
-    font-weight: 300;
+#underline{
+    color:#2A2B68;
+}
+
+footer p{
+    font-family: Roboto;
     font-style: normal;
+    font-weight: 300;
     font-size: 25px;
+
 }
 
 footer h4{

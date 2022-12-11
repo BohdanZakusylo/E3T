@@ -12,7 +12,7 @@
     <ul>
         <li><a href='#' class='underline'>Talents</a></li>
         <li><a href='#' class='underline'>Events</a></b></li>
-        <li><div id='login'><a href='#' id='a-color'>Login</a></div></li>
+        <li><div id='login'><a href='#' class='link_box'>Login</a></div></li>
     </ul>
 </header>
 
