@@ -5,7 +5,7 @@
     border-radius: 5%;
     display: flex;
     flex-direction: column;
-    width: 345px;
+    width: 19vw;
     height: 499px;
     justify-content: center;
     align-items: center;
@@ -42,7 +42,6 @@ h6{
 }
 
 h2{
-    font-size: 25px;
     color: #2e307a
 }
 
