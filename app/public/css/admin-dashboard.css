@@ -3,6 +3,9 @@
     justify-content: space-around;
     margin-bottom: 60px;
 }
+label{
+    font-size: large;
+}
 .info{
     display:flex;
     justify-content: center;
@@ -81,7 +84,7 @@ input{
  
 .radiob{
     font-family: Roboto;
-    font-size: 12px;
+    font-size: 15px;
 }
 .form_register{
     font-family: Roboto;
