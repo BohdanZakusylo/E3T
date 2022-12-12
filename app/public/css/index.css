@@ -1,0 +1,145 @@
+/*colors: 
+#ED9275 - salmon
+#2E307A - blue
+#F8D4B0 - sand
+&#xf104; - <
+ 	&#xf105; - >
+*/
+body {
+    margin:0;
+    padding:0;
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+
+}
+.banner {
+    color: white;
+    position:relative;
+    grid-column: 1/12;
+    
+}
+
+.textBanner {
+   margin-top:-500px;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   text-align: center;
+   grid-column: 1/12;
+
+}
+main{
+    grid-column: 1/12   ;
+}
+section {
+    grid-column: 5/8;
+}
+.banner h1 {
+font-size: 60px ;
+
+}
+
+.banner #subTitle p {
+    font-size:30px;
+    font-weight: lighter;
+    grid-column: 1/12;
+
+}
+
+.banner #button a {
+    font-size: 30px;
+    background-color: #ED9275;
+    border-radius: 10px;
+    padding: 15px 15px 15px 15px;
+    color:white;
+    text-decoration: none;
+    text-align: center;
+    grid-column: 4/6;
+
+
+}
+
+.banner img {
+    height: 604px;
+    width: 100%;
+    object-fit: cover;
+    grid-column: 1/12;
+
+}
+#events {
+    color: #2E307A;
+    font-size:50px;
+    text-align: center;
+    margin-top:200px;
+    grid-column: 4/6;
+}
+
+.box {
+    background-color: #2E307A;
+    border: 1px solid #2E307A;
+    height: 230px;
+    width: 267px;
+    border-radius: 10px;
+    grid-column: 4/6;
+
+}
+
+.boxTitle {
+    background-color: #F8D4B0;
+    height: 50px;
+    width: 263px;
+    text-align: center;
+    margin:0;
+    padding:0;
+    grid-column: 4/6;
+
+}
+
+.boxDescription {
+    height: 85px;
+    width: 263px;
+    background-color: white;
+    text-align: center;
+    box-shadow:0px 24px 48px 0 rgba(0,0,0,0.16);
+    grid-column: 4/6;
+
+}
+
+
+.upcoming {
+    display:flex;
+    justify-content: space-evenly;
+    grid-column: 4/6;
+
+
+}
+
+.fullBox p,b, h3 {
+    margin:0;
+    padding:0;
+    margin-top: 5px;
+    grid-column: 4/6;
+
+
+}
+
+
+#button {
+    height: 64px;
+    width: 328px;
+    border-radius: 10px;
+    grid-column: 4/6;
+
+}
+
+.arrow {
+    height: 48px;
+    width: 25px;
+    font-size: 100px;
+    margin-top: 100px;
+    color:#2E307A;
+    grid-column: 4/6;
+
+}
+

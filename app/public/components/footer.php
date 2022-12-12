@@ -1,6 +1,10 @@
+<head>
+    <link rel="stylesheet" href="../css/global.css">
+</head>
+
 <footer>
-    <h2>Want to reach the team?</h2>
-    <div id="contact_us">Contact us</div>
+    <p>Want to reach the team?</p>
+    <a href="#" class="link_box">Contact us</a>
     <h4>Powered by E3T Technology. All rights reserved</h4>
 </footer>
 </body>

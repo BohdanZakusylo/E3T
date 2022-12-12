@@ -9,10 +9,11 @@ header{
     display:flex;
     justify-content: space-around;
     font-family:  Roboto;
+    align-items: center;
 }
 header img{
-    height: 18vh;
-    width: 14vw;
+    height: 4em;
+    width: 7em;
 }
 header ul{
     font-weight: bold;
@@ -29,8 +30,12 @@ header ul li{
 }
 a{
     text-decoration: none;
-    color:#2A2B68;
 }
+.underline{
+    color:#2A2B68;
+    font-size: 25px;
+}
+
 .underline:hover{
     text-decoration: underline;
 }
@@ -40,12 +45,13 @@ a{
 #login{
     color:white;
     background-color: #ED9275;
-    height: 1.5vw;
-    width: 4vw;
+    height: 38px;
+    width: 114px;
     text-align:center;
     display:flex;
     align-items: center;
     justify-content: center;
+    font-size: 25px;
 }
 
 footer{
@@ -54,25 +60,45 @@ footer{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
     font-family: Roboto;
+    height: 158px;
 }
 
-#contact_us{
+.link_box{
     background-color:#ED9275;
-    width: 7vw;
-    height: 4vh;
+    width: 216px;
+    height: 44px;
     display:flex;
     align-items: center;
     justify-content: center;
-    border-radius: 5%;
-    font-size: 2vh;
+    border-radius: 5px;
+    font-size: 25px;
+    color: white;
+    font-size: 25px;
 }
 
-footer h2{
-    font-weight: 500;
+#underline{
+    color:#2A2B68;
+}
+
+footer p{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 25px;
+
 }
 
 footer h4{
     font-style: italic;
-    font-weight: 400;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+#rows{
+    display: flex;
+    flex-direction: row;
+    gap: 5em;
+    margin: 2em;
 }

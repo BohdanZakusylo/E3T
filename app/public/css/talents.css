@@ -39,9 +39,11 @@ sub-section {
 }
 
 #mainbody {
+	max-width: 100%;
+	padding: 50px;
 	display: flex;
 	flex-direction: column;
-	padding: 50px;
+	flex-wrap: wrap;
 }
 
 h2 {
