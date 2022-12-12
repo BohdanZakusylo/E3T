@@ -3,9 +3,9 @@
     $pageTitle = "Events";
     include "./components/header.php";
 ?>
-
-    <!--HTML code-->
-
+<?php
+    include "calendar/html/calend.php";
+?>
 <?php
     include "./components/footer.php";
 ?>
