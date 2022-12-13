@@ -22,10 +22,11 @@ form{
 
 }
 .admin_login{
+    font-family: "Roboto Light", sans-serif;
     color: white;
-    margin-left: 15%;
+    margin-right: 35%;
     font-size: 1.5625em;
-    line-height: 3;
+    line-height: 2;
 }
 label{
     color: white;
@@ -82,20 +83,20 @@ input[type=text],input[type=password]{
 
     .admin_login {
         color: white;
-        margin-left: 15%;
+        margin-left: 5%;
         font-size: 1.25em;
-        line-height: 3;
+        line-height: 1;
     }
     label{
         color: white;
-        margin-left: 15%;
+        margin-left: 14%;
         font-size: 0.9375em;
         line-height: 2;
     }
     input[type=text],input[type=password] {
         width: 16.995em;
         height: 1.33625em;
-        margin-left: 15%;
+        margin-left: 14%;
 
     }
     input[type=submit]{
@@ -106,7 +107,7 @@ input[type=text],input[type=password]{
         font-size: 0.625em;
         border-radius: 0.3125em;
         border: none;
-        margin-left: 15%;
+        margin-left: 14%;
         margin-top: 5%;
     }
     .power{
