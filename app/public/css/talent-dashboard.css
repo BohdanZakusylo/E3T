@@ -1,5 +1,6 @@
-/*General styling for the whole page*/
-* {
+ General styling for the whole page
+
+ * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
@@ -8,7 +9,7 @@
 
 p {
     font-size: 15px;
-}
+} 
 
 h2 {
     font-size: 25px;
@@ -48,6 +49,30 @@ Sub-section {
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2)
 }
 
+.profile-align {
+    display: flex;
+    flex-direction: row;
+    align-items:flex-end;
+}
+
+.button {
+    background-color: #2E307A;
+    width: 100px;
+    padding: 3px;
+    border-radius: 2px;
+    border: none;
+}
+
+button a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #ED9275;
+}
+
 .profile_name {
     margin: 10px 0;
     text-align: center;
@@ -60,7 +85,7 @@ Sub-section {
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
     padding: 10px;
     margin: 30px auto;
-}
+} 
 
 .media-container {
     display: flex;
@@ -79,20 +104,31 @@ Sub-section {
 
 #form_pic {
     width: 30%;
-}
+} 
 
 .form-container {
-    margin: 20px auto;
-    width: 80%;
+    margin: 10px auto 30px;
+    width: 70%;
     background-color: #2E307A;
     color: white;
-    padding: 20px;
+    padding: 10px 10px 30px;
 }
 
 #form {
-    margin: 10px auto;
+    margin: 0px auto;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
 }
+
+#form-img {
+ font-size: 15px;
+} 
+
+.form-button {
+   font-size: 15px; 
+   padding: 5px 8px;
+   color:#2E307A;
+   font-weight: 600;
+}
+
 

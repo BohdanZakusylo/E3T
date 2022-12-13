@@ -14,11 +14,18 @@ include "components/header.php";
 </section>
 
 <sub-section>
+   
     <div class="profile">
+        <div class="profile-align">
         <div class="profile_pic">
             <!-- php code to get the profile picture -->
             <img src="components/avatar.jpg"/>
         </div>
+
+        <div>
+            <button class="button"><a href="edit-profile.php">Edit Profile</a></button>
+        </div>
+</div>
 
         <div class="profile_name">
          <!--  php code to get (Name of talent) from the database   -->    
@@ -58,25 +65,11 @@ include "components/header.php";
 
 <h2><center>Uploads<center></h2>
 <form method="POST" action="" enctype="multipart/form-data" id="form">
-     <div>
-    <label for="profile_pic"><p>Profile Picture:</p></label>
-    <input type="file" name="profile_pic" id="form-img"><br>
-
-    <input type="submit" name="submit" value="upload">
-    </div>
-
-    <div >
-    <label for="cover_pic"><p>Cover Image:</p></label>
-    <input type="file" name="cover_pic" id="form-img"><br>
-
-    <input type="submit" name="submit" value="upload">
-    </div>
-
     <div >
     <label for="gallery"><p>Media Gallery:</p></label>
     <input type="file" name="gallery" id="form-img"><br>
-
-    <input type="submit" name="submit" value="upload">
+     
+    <button type="submit" name="submit" class="form-button" >Upload</button>
     </div>
 </form>
 
