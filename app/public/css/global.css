@@ -99,6 +99,10 @@ footer h4{
 #rows{
     display: flex;
     flex-direction: row;
-    gap: 5em;
+    flex-wrap: wrap;
+    gap: 10em;
     margin: 2em;
+    align-items: center;
+    justify-content: center;
 }
+
