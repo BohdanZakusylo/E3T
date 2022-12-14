@@ -25,7 +25,39 @@ include ("components/header.php");
         </p>
     </form>
 
+    <?php
+                if($_SERVER["REQUEST_METHOD"] == "POST"){
+                    if(isset($_POST["submit"])){
+                    $fullName = filter_input(INPUT_POST, "full_name");
+                    $emailAddress = filter_input(INPUT_POST, "email_address", FILTER_VALIDATE_EMAIL);
+                    $talent = filter_input(INPUT_POST, "talent");
+                    $description = filter_input(INPUT_POST, "description");
 
+                    if(empty($fullName)){
+                        echo "Please provide all necessary information";
+                    } elseif(empty($emailAddress)) { 
+                        echo "Please provide all necessary information";
+                    }else if(empty($talent)) {
+                        echo "Please provide all necessary information";
+                    } elseif(empty($description)) {
+                        echo "Please provide all necessary information";
+                    } elseif(str_word_count($fullName) < 2) {
+                        echo "Your full name must contain at least 2 words";
+                    } elseif(str_word_count($description) < 5){
+                        echo "Your description needs to contain at least 5 words";
+                    } elseif(strlen($talent) < 3){
+                        echo "Your talent name needs to contain at least 3 characters";
+                    }else {
+                            echo "Thank you for contacting us!<br>";
+                            echo "Full Name: ".$fullName."<br>";
+                            echo "E-mail: ".$emailAddress."<br>";
+                            echo "Talent: ".$talent."<br>";
+                            echo "Description: ".$description."<br>";
+                            echo "We will contact you as soon as possiblie via your E-mail Address";
+                    }
+                }
+            }
+            ?>
 
 
 
@@ -45,6 +77,42 @@ include ("components/header.php");
             </p>
         </div>
     </form>
+
+    <?php
+                if($_SERVER["REQUEST_METHOD"] == "POST"){
+                    if(isset($_POST["submit_2"])){
+                    $fullName2 = filter_input(INPUT_POST, "full_name_2");
+                    $emailAddress2 = filter_input(INPUT_POST, "email_address_2", FILTER_VALIDATE_EMAIL);
+                    $event = filter_input(INPUT_POST, "name_of_event");
+                    $eventDescription = filter_input(INPUT_POST, "event_description");
+
+                    if(empty($fullName2)){
+                        echo "Please provide all necessary information";
+                    } elseif(empty($emailAddress2)) { 
+                        echo "Please provide all necessary information";
+                    }else if(empty($event)) {
+                        echo "Please provide all necessary information";
+                    } elseif(empty($eventDescription)) {
+                        echo "Please provide all necessary information";
+                    } elseif(str_word_count($fullName2) < 2) {
+                        echo "Your full name must contain at least 2 words";
+                    } elseif(str_word_count($eventDescription) < 5){
+                        echo "Your event description needs to contain at least 5 words";
+                    } elseif(strlen($event) < 3){
+                        echo "Your event name needs to contain at least 3 characters";
+                    }else {
+                            echo "Thank you for contacting us!<br>";
+                            echo "Full Name: ".$fullName2."<br>";
+                            echo "E-mail: ".$emailAddress2."<br>";
+                            echo "Event: ".$event."<br>";
+                            echo "Event description: ".$eventDescription."<br>";
+                            echo "We will contact you as soon as possiblie via your E-mail Address";
+                    }
+                }
+            }
+            ?>
+
+
 </div>
 <?php
 include "components/footer.php";
