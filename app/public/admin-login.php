@@ -20,21 +20,33 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $pass = filter_input(INPUT_POST,"password",FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     try{
-        $stmt = $dbHandler -> prepare("SELECT id FROM admin WHERE username = :uname");
+        $stmt = $dbHandler -> prepare("SELECT id, passHash FROM admin WHERE username = :uname"); #Tries to find username in DB
         $stmt -> bindParam("uname",$uname,PDO::PARAM_STR);
         $stmt -> execute();
-
-        $username = $stmt -> fetchColumn();
-        if(strlen($username)>0){
+        $queryResult = $stmt -> fetchAll();
+        
+        if($queryResult){  #Valid username
+            
             echo "Username match!";
         }
-        else{
+        else{  #Invalid username
+
             echo "Invalid username!";
+        }
+
+        $passHash = $queryResult[0][1]; #Password hash retrieved from DB
+
+        if(password_verify($pass,$passHash)){ # Verifies user password against retrieved hash
+            echo "Password match!";
+        }
+        else{
+            echo "Invalid password!";
         }
     }
     catch(Exception $err){
         echo "<p class='error'>$err</p>";
     }
+
 }
 ?>
 
