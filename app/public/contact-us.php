@@ -10,7 +10,7 @@ include ("components/header.php");
             wants to join E3T?, kindly reach out to us using the contact forms below
         </p>
     </div>
-    <form id="talent_form">
+    <form id="talent_form" method="POST" action="contact-us.php" enctype="multipart/form-data">
         <h1 class="for_talent">For talents</h1>
         <label class="label_1" for="full_name">Full name:</label><br>
         <input type="text" name="full_name" id="full_name" placeholder="Enter your full name here"><br>
@@ -25,7 +25,11 @@ include ("components/header.php");
         </p>
     </form>
 
-    <form id="client_form">
+
+
+
+
+    <form id="client_form" method="POST" action="contact-us.php" enctype="multipart/form-data">
         <div class="vertical_line">
             <h1 class="for_client">For clients</h1>
             <label class="label_2" for="full_name_2">Full name:</label><br>
