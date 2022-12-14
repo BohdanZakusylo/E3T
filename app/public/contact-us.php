@@ -25,6 +25,58 @@ include ("components/header.php");
         </p>
     </form>
 
+    <form id="client_form" method="POST" action="contact-us.php" enctype="multipart/form-data">
+        <div class="vertical_line">
+            <h1 class="for_client">For clients</h1>
+            <label class="label_2" for="full_name_2">Full name:</label><br>
+            <input type="text" class="form_2" name="full_name_2" id="full_name_2" placeholder="Enter your full name here"><br>
+            <label class="label_2" for="email_address_2">Email Address:</label><br>
+            <input type="email" class="form_2" name="email_address_2" id="email_address_2" placeholder="Enter your email address here"><br>
+            <label class="label_2" for="name_of_event">Name of Event:</label><br>
+            <input type="text" class="form_2" name="name_of_event" id="name_of_event" placeholder="What is the name of event"><br>
+            <label class="label_2" for="event_description">Description of event</label><br>
+            <textarea class="textarea_1" name="event_description" id="event_description" placeholder="Describe the event..."></textarea><br>
+            <p>
+                <input class="submit_2" type="submit" name="submit_2" value="Submit">
+            </p>
+        </div>
+    </form>
+
+    <?php
+                if($_SERVER["REQUEST_METHOD"] == "POST"){
+                    if(isset($_POST["submit_2"])){
+                    $fullName2 = filter_input(INPUT_POST, "full_name_2");
+                    $emailAddress2 = filter_input(INPUT_POST, "email_address_2", FILTER_VALIDATE_EMAIL);
+                    $event = filter_input(INPUT_POST, "name_of_event");
+                    $eventDescription = filter_input(INPUT_POST, "event_description");
+
+                    if(empty($fullName2)){
+                        echo "Please provide all necessary information";
+                    } elseif(empty($emailAddress2)) { 
+                        echo "Please provide all necessary information";
+                    } elseif(empty($event)) {
+                        echo "Please provide all necessary information";
+                    } elseif(empty($eventDescription)) {
+                        echo "Please provide all necessary information";
+                    } elseif(str_word_count($fullName2) < 2) {
+                        echo "Your full name must contain at least 2 words";
+                    } elseif(str_word_count($eventDescription) < 5){
+                        echo "Your event description needs to contain at least 5 words";
+                    } elseif(strlen($event) < 3){
+                        echo "Your event name needs to contain at least 3 characters";
+                    }else {
+                            echo "Thank you for contacting us!<br>";
+                            echo "Full Name: ".$fullName2."<br>";
+                            echo "E-mail: ".$emailAddress2."<br>";
+                            echo "Event: ".$event."<br>";
+                            echo "Event description: ".$eventDescription."<br>";
+                            echo "We will contact you as soon as possiblie via your E-mail Address";
+                    }
+                }
+            }
+    ?>
+
+
     <?php
                 if($_SERVER["REQUEST_METHOD"] == "POST"){
                     if(isset($_POST["submit"])){
@@ -57,61 +109,7 @@ include ("components/header.php");
                     }
                 }
             }
-            ?>
-
-
-
-    <form id="client_form" method="POST" action="contact-us.php" enctype="multipart/form-data">
-        <div class="vertical_line">
-            <h1 class="for_client">For clients</h1>
-            <label class="label_2" for="full_name_2">Full name:</label><br>
-            <input type="text" class="form_2" name="full_name_2" id="full_name_2" placeholder="Enter your full name here"><br>
-            <label class="label_2" for="email_address_2">Email Address:</label><br>
-            <input type="email" class="form_2" name="email_address_2" id="email_address_2" placeholder="Enter your email address here"><br>
-            <label class="label_2" for="name_of_event">Name of Event:</label><br>
-            <input type="text" class="form_2" name="name_of_event" id="name_of_event" placeholder="What is the name of event"><br>
-            <label class="label_2" for="event_description">Description of event</label><br>
-            <textarea class="textarea_1" name="event_description" id="event_description" placeholder="Describe the event..."></textarea><br>
-            <p>
-                <input class="submit_2" type="submit" name="submit_2" value="Submit">
-            </p>
-        </div>
-    </form>
-
-    <?php
-                if($_SERVER["REQUEST_METHOD"] == "POST"){
-                    if(isset($_POST["submit_2"])){
-                    $fullName2 = filter_input(INPUT_POST, "full_name_2");
-                    $emailAddress2 = filter_input(INPUT_POST, "email_address_2", FILTER_VALIDATE_EMAIL);
-                    $event = filter_input(INPUT_POST, "name_of_event");
-                    $eventDescription = filter_input(INPUT_POST, "event_description");
-
-                    if(empty($fullName2)){
-                        echo "Please provide all necessary information";
-                    } elseif(empty($emailAddress2)) { 
-                        echo "Please provide all necessary information";
-                    }else if(empty($event)) {
-                        echo "Please provide all necessary information";
-                    } elseif(empty($eventDescription)) {
-                        echo "Please provide all necessary information";
-                    } elseif(str_word_count($fullName2) < 2) {
-                        echo "Your full name must contain at least 2 words";
-                    } elseif(str_word_count($eventDescription) < 5){
-                        echo "Your event description needs to contain at least 5 words";
-                    } elseif(strlen($event) < 3){
-                        echo "Your event name needs to contain at least 3 characters";
-                    }else {
-                            echo "Thank you for contacting us!<br>";
-                            echo "Full Name: ".$fullName2."<br>";
-                            echo "E-mail: ".$emailAddress2."<br>";
-                            echo "Event: ".$event."<br>";
-                            echo "Event description: ".$eventDescription."<br>";
-                            echo "We will contact you as soon as possiblie via your E-mail Address";
-                    }
-                }
-            }
-            ?>
-
+    ?>
 
 </div>
 <?php
