@@ -1,7 +1,19 @@
 <?php
+session_start();
+if(isset($_SESSION["aLogin"])){ #Redirects to dashboard if logged in
+    header("Location: admin-dashboard.php");
+}
+
 $cssFile = "admin-login";
 $pageTitle = "admin-login";
 include "components/header.php";
+
+try{
+    $dbHandler = new PDO("mysql:host=mysql;dbname=Admin;charset=utf8","root","qwerty"); #Initialize DB connection
+}
+catch(Exception $err){
+    echo "<p class='error'>$err</p>";
+}
 ?>
 
 <main>
