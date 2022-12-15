@@ -1,11 +1,12 @@
 <?php
 $cssFile = "admin-dashboard";
 $pageTitle = "admin-dashboard";
-include "components/header.php";
+
 
 if(!isset($_SESSION["aLogin"])){ #Redirects to login if not logged in
     header("Location: admin-login.php");
 }
+include "components/header.php";
 ?>
 
 <!DOCTYPE html>

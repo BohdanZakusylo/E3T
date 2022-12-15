@@ -1,13 +1,12 @@
 <?php
 session_start();
 
-if(isset($_SESSION["aLogin"])){ #Redirects to dashboard if logged in
-    header("Location: admin-dashboard.php");
-}
-
+// if(isset($_SESSION["aLogin"])){ #Redirects to dashboard if logged in
+//     header("Location: admin-dashboard.php");
+// }
 $cssFile = "admin-login";
 $pageTitle = "admin-login";
-include "components/header.php";
+
 
 try{
     $dbHandler = new PDO("mysql:host=mysql;dbname=Admin;charset=utf8","root","qwerty"); #Initialize DB connection
@@ -28,13 +27,13 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         
     }
     catch(Exception $err){
-        echo "<p class='error'>$err</p>";
+       echo "<p class='error'>$err</p>";
     }
     if($queryResult){  #Valid email
         $passHash = $queryResult[0][1]; #Password hash retrieved from DB
 
         if(password_verify($pass,$passHash)){ # Verifies user password against retrieved hash
-            echo "Password match!";
+            #echo "Password match!";
             $_SESSION["aLogin"] = true;
             header("Location: admin-dashboard.php");
         }
@@ -49,6 +48,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
 
 }
+include "components/header.php";
 ?>
 
 <main>
