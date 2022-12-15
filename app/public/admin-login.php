@@ -16,18 +16,18 @@ catch(Exception $err){
 }
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
-    $uname = filter_input(INPUT_POST,"username",FILTER_SANITIZE_FULL_SPECIAL_CHARS); #Get the username and password from the form
+    $email = filter_input(INPUT_POST,"email",FILTER_VALIDATE_EMAIL); #Get the username and password from the form
     $pass = filter_input(INPUT_POST,"password",FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     try{
-        $stmt = $dbHandler -> prepare("SELECT id, passHash FROM admin WHERE username = :uname"); #Tries to find username in DB
-        $stmt -> bindParam("uname",$uname,PDO::PARAM_STR);
+        $stmt = $dbHandler -> prepare("SELECT id, passHash FROM admin WHERE email = :email"); #Tries to find username in DB
+        $stmt -> bindParam("email",$email,PDO::PARAM_STR);
         $stmt -> execute();
         $queryResult = $stmt -> fetchAll();
         
         if($queryResult){  #Valid username
             
-            echo "Username match!";
+            echo "Email match!";
         }
         else{  #Invalid username
 
@@ -55,8 +55,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         <form method="POST" autocomplete="off">
             <h1 class="admin_login">Admin Login</h1>
             <p>
-                <label for="username">Username:</label><br>
-                <input type="text" id="username" name="username" required><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br>
             </p>
             <p>
                 <label for="password">Password:</label><br>
