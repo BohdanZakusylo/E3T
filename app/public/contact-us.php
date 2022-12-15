@@ -44,41 +44,6 @@ include ("components/header.php");
 
     <?php
                 if($_SERVER["REQUEST_METHOD"] == "POST"){
-                    if(isset($_POST["submit_2"])){
-                    $fullName2 = filter_input(INPUT_POST, "full_name_2");
-                    $emailAddress2 = filter_input(INPUT_POST, "email_address_2", FILTER_VALIDATE_EMAIL);
-                    $event = filter_input(INPUT_POST, "name_of_event");
-                    $eventDescription = filter_input(INPUT_POST, "event_description");
-
-                    if(empty($fullName2)){
-                        echo "Please provide all necessary information";
-                    } elseif(empty($emailAddress2)) { 
-                        echo "Please provide all necessary information";
-                    } elseif(empty($event)) {
-                        echo "Please provide all necessary information";
-                    } elseif(empty($eventDescription)) {
-                        echo "Please provide all necessary information";
-                    } elseif(str_word_count($fullName2) < 2) {
-                        echo "Your full name must contain at least 2 words";
-                    } elseif(str_word_count($eventDescription) < 5){
-                        echo "Your event description needs to contain at least 5 words";
-                    } elseif(strlen($event) < 3){
-                        echo "Your event name needs to contain at least 3 characters";
-                    }else {
-                            echo "Thank you for contacting us!<br>";
-                            echo "Full Name: ".$fullName2."<br>";
-                            echo "E-mail: ".$emailAddress2."<br>";
-                            echo "Event: ".$event."<br>";
-                            echo "Event description: ".$eventDescription."<br>";
-                            echo "We will contact you as soon as possiblie via your E-mail Address";
-                    }
-                }
-            }
-    ?>
-
-
-    <?php
-                if($_SERVER["REQUEST_METHOD"] == "POST"){
                     if(isset($_POST["submit"])){
                     $fullName = filter_input(INPUT_POST, "full_name");
                     $emailAddress = filter_input(INPUT_POST, "email_address", FILTER_VALIDATE_EMAIL);
@@ -100,16 +65,55 @@ include ("components/header.php");
                     } elseif(strlen($talent) < 3){
                         echo "Your talent name needs to contain at least 3 characters";
                     }else {
-                            echo "Thank you for contacting us!<br>";
-                            echo "Full Name: ".$fullName."<br>";
-                            echo "E-mail: ".$emailAddress."<br>";
-                            echo "Talent: ".$talent."<br>";
-                            echo "Description: ".$description."<br>";
-                            echo "We will contact you as soon as possiblie via your E-mail Address";
+                            echo "<div class='message1'>";
+                            echo "<h2>Thank you for contacting us!</h2><br>";
+                            echo "<b>Full Name:</b> ".$fullName."<br>";
+                            echo "<b>E-mail:</b> ".$emailAddress."<br>";
+                            echo "<b>Talent:</b> ".$talent."<br>";
+                            echo "<b>Description:</b> ".$description."<br>";
+                            echo "We will contact you as soon as possiblie via your E-mail Address.";
+                            echo "</div>";
                     }
                 }
             }
     ?>
+    <?php
+                if($_SERVER["REQUEST_METHOD"] == "POST"){
+                    if(isset($_POST["submit_2"])){
+                    $fullName2 = filter_input(INPUT_POST, "full_name_2");
+                    $emailAddress2 = filter_input(INPUT_POST, "email_address_2", FILTER_VALIDATE_EMAIL);
+                    $event = filter_input(INPUT_POST, "name_of_event");
+                    $eventDescription = filter_input(INPUT_POST, "event_description");
+
+                    if(empty($fullName2)){
+                        echo "Please provide all necessary information";
+                    } elseif(empty($emailAddress2)) { 
+                        echo "Please provide all necessary information";
+                    } elseif(empty($event)) {
+                        echo "Please provide all necessary information";
+                    } elseif(empty($eventDescription)) {
+                        echo "Please provide all necessary information";
+                    } elseif(str_word_count($fullName2) < 2) {
+                        echo "Your full name must contain at least 2 words";
+                    } elseif(str_word_count($eventDescription) < 5){
+                        echo "Your event description needs to contain at least 5 words";
+                    } elseif(strlen($event) < 3){
+                        echo "Your event name needs to contain at least 3 characters";
+                    }else {
+                            echo "<div class='message2'>";
+                            echo "<h2>Thank you for contacting us!</h2><br>";
+                            echo "<b>Full Name:</b> ".$fullName2."<br>";
+                            echo "<b>E-mail:</b> ".$emailAddress2."<br>";
+                            echo "<b>Event:</b> ".$event."<br>";
+                            echo "<b>Event description:</b> ".$eventDescription."<br>";
+                            echo "We will contact you as soon as possiblie via your E-mail Address.";
+                            echo "</div>";
+                    }
+                }
+            }
+    ?>
+
+
 
 </div>
 <?php
