@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $cssFile = "admin-dashboard";
 $pageTitle = "admin-dashboard";
 
