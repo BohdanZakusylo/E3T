@@ -16,9 +16,9 @@
 <header>
     <img src='../img/logo.png' />
     <ul>
-        <li><a href='#' class='underline'>Talents</a></li>
-        <li><a href='#' class='underline'>Events</a></b></li>
-        <li><div id='login'><a href='#' id='a-color'>Login</a></div></li>
+        <li><a href='../talents.php' class='underline'>Talents</a></li>
+        <li><a href='../events.php' class='underline'>Events</a></b></li>
+        <li><div id='login'><a href='../login.php' id='a-color'>Login</a></div></li>
     </ul>
 </header>
 
