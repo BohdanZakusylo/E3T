@@ -7,26 +7,6 @@ use benhall14\phpCalendar\Calendar;
 
 $calendar = new Calendar();
 
-$calendar
-
-#   or
-/*
-$events = array(
-    array(
-        'start' => date('Y-01-14'),
-        'end' => date('Y-01-14'),
-        'summary' => 'My Birthday',
-        'mask' => true
-    ), 
-    array(
-        'start' => date('Y-12-25'),
-        'end' => date('Y-12-25'),
-        'summary' => 'Christmas',
-        'mask' => true
-    )
-);
-$calendar->addEvents($events);
-*/
 ?>
  <body>
 
