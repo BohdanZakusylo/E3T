@@ -69,11 +69,9 @@
 
 </section>
 
-    </body>
              
             <script src="js/swiper-bundle.min.js"></script>
              <script src="js/script.js"></script>
-        </html>
 
 <?php
 include "components/footer.php";
