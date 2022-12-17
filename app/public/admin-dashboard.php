@@ -60,6 +60,19 @@ include "components/header.php";
                     <button>Remove</button>
                 </form>
             </div>
+
+            <div class="delete_talent">
+                <h2>Register New Admin</h2>
+                <form class="form_delete">
+                    <label>Username</label><br>
+                    <input class="input_text" type="text" name="name"><br>
+                    <label>Email</label><br>
+                    <input class="input_text" type="email" name="email"><br>
+                    <label>Password</label><br>
+                    <input class="input_text" type="password" name="password"><br>
+                    <button>Register</button>
+                </form>
+            </div>
         </div>
 
 </body>
