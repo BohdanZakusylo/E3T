@@ -1,13 +1,3 @@
-<?php
-
-// require('../src/phpCalendar/Calendar.php');
-require('calendar/src/phpCalendar/Calendar.php');
-
-use benhall14\phpCalendar\Calendar;
-
-$calendar = new Calendar();
-
-?>
  <body>
 
         

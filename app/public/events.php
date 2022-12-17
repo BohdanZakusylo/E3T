@@ -12,7 +12,11 @@
     include "./components/header.php";
 ?>
 <?php
-include "calendar/html/calend.php";
+require('calendar/src/phpCalendar/Calendar.php');
+
+use benhall14\phpCalendar\Calendar;
+
+$calendar = new Calendar();
 
 //calendar code for us
     $outputs = $db->prepare("SELECT * FROM Events");
@@ -21,11 +25,10 @@ include "calendar/html/calend.php";
     var_dump($output);
     echo count($output)."<br>";
 
-    foreach ($output as $value){
-        echo "hello<br>";
-        $calendar->addEvent(date('Y-12-14'), date('Y-12-14'), 'My Birthday', true);
-    }
 
+    //adding the events
+    //$calendar->addEvent(date('Y-12-14'), date('Y-12-15'), 'My Birthday', true);
+    include "calendar/html/calend.php";
 ?>
 <?php
     include "./components/footer.php";
