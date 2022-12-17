@@ -21,10 +21,11 @@ $calendar = new Calendar();
 //calendar code for us
     $outputs = $db->prepare("SELECT * FROM Events");
     $outputs->execute();
-    $output = $outputs->fetchAll();
-    var_dump($output);
-    echo count($output)."<br>";
 
+    while ($output = $outputs->fetch()){
+        var_dump($output);
+        $calendar->addEvent(date($output["start_date"]), date($output["end_date"]), $output["event_description"], true);
+    }
 
     //adding the events
     //$calendar->addEvent(date('Y-12-14'), date('Y-12-15'), 'My Birthday', true);
