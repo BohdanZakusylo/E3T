@@ -1,9 +1,6 @@
 <?php
 session_start();
 
-// if(isset($_SESSION["aLogin"])){ #Redirects to dashboard if logged in
-//     header("Location: admin-dashboard.php");
-// }
 $cssFile = "admin-login";
 $pageTitle = "admin-login";
 include "components/header.php";
