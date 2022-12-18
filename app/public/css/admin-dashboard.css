@@ -112,9 +112,5 @@ input{
     font-size: 20px;
     margin-top: 20px;
 }
-.add_admin{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-}
+
 
