@@ -84,11 +84,11 @@
     background: rgba(0, 0, 0, 0.25);
 }
 
-.calendar tbody tr td.mask-start,
-.calendar tbody tr td.mask,
-.calendar tbody tr td.mask-end {
-    background: #C23B22;
-}
+/*.calendar tbody tr td.mask-start,*/
+/*.calendar tbody tr td.mask,*/
+/*.calendar tbody tr td.mask-end {*/
+/*    background: #C23B22;*/
+/*}*/
 
 .calendar .cal-weekview-time {
     border: rgba(0,0,0.25);
@@ -104,13 +104,13 @@
     min-height: 50px;
 }
 
-.calendar .cal-weekview-event.mask-start,
-.calendar .cal-weekview-event.mask,
-.calendar .cal-weekview-event.mask-end {
-    background: #C23B22;
-    margin-bottom: 3px;
-    padding: 5px;
-}
+/*.calendar .cal-weekview-event.mask-start,*/
+/*.calendar .cal-weekview-event.mask,*/
+/*.calendar .cal-weekview-event.mask-end {*/
+/*    background: #C23B22;*/
+/*    margin-bottom: 3px;*/
+/*    padding: 5px;*/
+/*}*/
 
 .calendar .cal-weekview-time-th {
     background: rgba(0, 0, 0, .1);
