@@ -34,7 +34,7 @@ include "components/header.php";
         <div class="container">            
                 <div class="new_talents">
                     <h2>Register new talents</h2>    
-                <form class="form_register">
+                <form class="form_register" method="POST" action="admin-dashboard.php">
                     <label>Name/Stage name</label><br>
                     <input class="input_text" type="text" name="name"><br>
                     <label>Talent</label><br>
@@ -59,7 +59,7 @@ include "components/header.php";
 
             <div class="delete_talent">
                 <h2>Delete talent</h2>
-                <form class="form_delete">
+                <form class="form_delete" method="POST" action="admin-dashboard.php">
                     <label>Name/Stage name</label><br>
                     <input class="input_text" type="text" name="name"><br>
                     <label>Email</label><br>
@@ -70,7 +70,7 @@ include "components/header.php";
 
             <div class="delete_talent">
                 <h2>Register New Admin</h2>
-                <form class="form_delete">
+                <form class="form_delete" method="POST" action="admin-dashboard.php">
                     <label>Username</label><br>
                     <input class="input_text" type="text" name="name"><br>
                     <label>Email</label><br>
