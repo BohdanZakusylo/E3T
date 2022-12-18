@@ -54,6 +54,7 @@ include "components/header.php";
                     <label>Price in Euro</label><br>
                     <input class="input_text" type="text" name="price"><br>
                     <button>Register</button>
+                    <input type="submit" name="submit" value="Register talent">
                 </form>
             </div>
 
@@ -65,19 +66,23 @@ include "components/header.php";
                     <label>Email</label><br>
                     <input class="input_text" type="email" name="email"><br>
                     <button>Remove</button>
+                    <input type="submit" name="submit" value="Delete talent">
                 </form>
             </div>
 
             <div class="delete_talent">
                 <h2>Register New Admin</h2>
                 <form class="form_delete" method="POST" action="admin-dashboard.php">
-                    <label>Username</label><br>
-                    <input class="input_text" type="text" name="name"><br>
+                    <label>First name</label><br>
+                    <input class="input_text" type="text" name="firstName"><br>
+                    <label>Last name</label><br>
+                    <input class="input_text" type="text" name="lastName"><br>
                     <label>Email</label><br>
                     <input class="input_text" type="email" name="email"><br>
                     <label>Password</label><br>
                     <input class="input_text" type="password" name="password"><br>
                     <button>Register</button>
+                    <input type="submit" name="submit" value="Register admin">
                 </form>
             </div>
         </div>
