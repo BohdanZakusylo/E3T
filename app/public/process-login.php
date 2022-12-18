@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $pass = filter_input(INPUT_POST,"password",FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     try{
-        $stmt = $dbHandler -> prepare("SELECT id, passHash FROM Admin WHERE email = :email"); #Tries to find email in DB
+        $stmt = $dbHandler -> prepare("SELECT Admin_id, Password FROM Admin WHERE Email = :email"); #Tries to find email in DB
         $stmt -> bindParam("email",$email,PDO::PARAM_STR);
         $stmt -> execute();
         $queryResult = $stmt -> fetchAll();
