@@ -36,7 +36,7 @@ $calendar = new Calendar();
             $calendar->addEvent(date($output["start_date"]), date($output["end_date"]), $output["event_description"], true);
         }
     }
-
+    #TODO also I can make the redirect to another page by adding in $calendar .= <a></a>
     //adding the events
     //$calendar->addEvent(date('Y-12-14'), date('Y-12-15'), 'My Birthday', true);
     include "calendar/html/calend.php";
