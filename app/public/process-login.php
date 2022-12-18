@@ -2,7 +2,7 @@
 session_start();
 
 try{
-    $dbHandler = new PDO("mysql:host=mysql;dbname=Admin;charset=utf8","root","qwerty"); #Initialize DB connection
+    $dbHandler = new PDO("mysql:host=mysql;dbname=E3T;charset=utf8","root","qwerty"); #Initialize DB connection
 }
 catch(Exception $err){
     echo "<p class='error'>$err</p>";
@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $pass = filter_input(INPUT_POST,"password",FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     try{
-        $stmt = $dbHandler -> prepare("SELECT id, passHash FROM admin WHERE email = :email"); #Tries to find email in DB
+        $stmt = $dbHandler -> prepare("SELECT id, passHash FROM Admin WHERE email = :email"); #Tries to find email in DB
         $stmt -> bindParam("email",$email,PDO::PARAM_STR);
         $stmt -> execute();
         $queryResult = $stmt -> fetchAll();
