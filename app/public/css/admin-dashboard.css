@@ -112,5 +112,10 @@ input{
     font-size: 20px;
     margin-top: 20px;
 }
+.error{
+    color: red;
+    font-size: 20px;
+    font-family: Roboto;
+}
 
 

@@ -4,11 +4,20 @@ session_start();
 $cssFile = "admin-dashboard";
 $pageTitle = "admin-dashboard";
 
-
 if(!isset($_SESSION["aLogin"])){ #Redirects to login if not logged in
     header("Location: admin-login.php");
 }
+
 include "components/header.php";
+
+try{
+    $dbHandler = new PDO("mysql:host=mysql;dbname=E3T;charset=utf8","root","qwerty"); #Initialize DB connection
+}
+catch(Exception $ex){
+    echo "<p class='error'>The following error occured: $ex</p>";
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -72,6 +81,69 @@ include "components/header.php";
 
             <div class="delete_talent">
                 <h2>Register New Admin</h2>
+                <?php 
+                if($_SERVER["REQUEST_METHOD"]=="POST"){
+                    if($_POST["submit"]=="Register admin"){
+                
+                        $errcount = 0; 
+                
+                        if(!$firstName = filter_input(INPUT_POST,"firstName",FILTER_SANITIZE_FULL_SPECIAL_CHARS)){ #Input validation
+                            echo "<p class='error'>Please enter a first name!</p>";
+                            $errcount++;
+                        }
+                   
+                        if(!$lastName = filter_input(INPUT_POST,"lastName",FILTER_SANITIZE_FULL_SPECIAL_CHARS)){
+                            echo "<p class='error'>Please enter a last name!</p>";
+                            $errcount++;
+                        }
+                
+                        if(!$email = filter_input(INPUT_POST,"email",FILTER_VALIDATE_EMAIL)){
+                            echo "<p class='error'>Please enter a valid email!</p>";
+                            $errcount++;
+                        }
+                        else{
+                            try{ #If the email is already registered, returns an error
+                                $stmt = $dbHandler -> prepare("SELECT Admin_id from Admin WHERE Email=:email");
+                                $stmt -> bindParam("email",$email,PDO::PARAM_STR);
+                                $stmt -> execute();
+                
+                                if($result = $stmt -> fetchColumn()){
+                                    echo "<p class='error'>This email is already in use!</p>";
+                                    $errcount++;
+                                }
+                            }
+                            catch(Exception $ex){
+                                echo "<p class='error'>The following error occured: $ex</p>";
+                                $errcount++;
+                            }
+                        }
+                
+                        $pass = filter_input(INPUT_POST,"password",FILTER_SANITIZE_SPECIAL_CHARS);
+                        if(strlen($pass)<8 OR strlen($pass)==0){
+                            echo "<p class='error'>The password must be at least 8 characters long!</p>";
+                            $errcount++;
+                        }
+                        $passHash = password_hash($pass,PASSWORD_BCRYPT);
+                
+                        if($errcount === 0){
+                            try{
+                                $stmt = $dbHandler -> 
+                                prepare("INSERT INTO `Admin` (`Admin_ID`, `FirstName`, `LastName`, `Email`, `Password`) VALUES (NULL, :firstName, :lastName, :email, :passHash)");
+                                $stmt -> bindParam("firstName",$firstName,PDO::PARAM_STR);
+                                $stmt -> bindParam("lastName",$lastName,PDO::PARAM_STR);
+                                $stmt -> bindParam("email",$email,PDO::PARAM_STR);
+                                $stmt -> bindParam("passHash",$passHash,PDO::PARAM_STR);
+                                $stmt -> execute();
+                                echo "<p>Admin registered sucessfully!<p>";
+                            }
+                            catch(Exception $ex){
+                                echo "<p class='error'>The following error occured: $ex</p>";
+                            }
+                        }
+                    
+                    }
+                }
+                ?>
                 <form class="form_delete" method="POST" action="admin-dashboard.php">
                     <label>First name</label><br>
                     <input class="input_text" type="text" name="firstName"><br>
