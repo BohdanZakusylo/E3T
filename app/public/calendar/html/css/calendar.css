@@ -3,6 +3,9 @@
     padding: 0;
 }
 
+.hre:hover{
+    color: #ED9275;
+}
 
 .calendar{
     background: #2CA8C2;

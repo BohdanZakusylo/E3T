@@ -25,7 +25,7 @@
 .calendar tbody tr td.mask-start,
 .calendar tbody tr td.mask,
 .calendar tbody tr td.mask-end {
-    background: #C23B22;
+    background: #ED9275;
 }
 </style>
         

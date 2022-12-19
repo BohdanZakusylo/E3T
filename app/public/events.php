@@ -29,11 +29,15 @@ $calendar = new Calendar();
             $events->bindParam(":id", $output["event_id"]);
             $events->execute();
             while($event = $events->fetch()){
-                $calendar->addEvent(date($event["start_date"]), date($event["end_date"]), $event["name"], true);
+                $id = $event["event_id"];
+                $link_to_event = "<a href='event-info.php?id=$id'>".$event['description']."</a>";
+                $calendar->addEvent(date($event["start_date"]), date($event["end_date"]), $link_to_event, true);
             }
         }
         else {
-            $calendar->addEvent(date($output["start_date"]), date($output["end_date"]), $output["name"], true);
+            $id = $output["event_id"];
+            $link_to_event = "<a href='event-info.php?id=$id'>".$output['name']."</a>";
+            $calendar->addEvent(date($output["start_date"]), date($output["end_date"]), $link_to_event, true);
         }
     }
     #TODO also I can make the redirect to another page by adding in $calendar .= <a></a>

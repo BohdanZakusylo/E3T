@@ -713,7 +713,11 @@ class Calendar
 
             $calendar .= '<div class="cal-day-box">';
 
+//            $calendar .= '<a class="hre" href="event-info.php?id='.$page_id.'">';
+
             $calendar .= $running_day->format('j');
+
+//            $calendar .= '</a>';
 
             $calendar .= '</div>';
 
