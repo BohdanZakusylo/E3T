@@ -14,7 +14,7 @@
 </head>
 <body>
 <header>
-    <img src='../img/logo.png' />
+    <img src="../img/logo.png" alt="logo"/>
     <ul>
         <li><a href='#' class='underline'>Talents</a></li>
         <li><a href='#' class='underline'>Events</a></b></li>
