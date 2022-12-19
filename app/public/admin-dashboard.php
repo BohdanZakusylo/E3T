@@ -103,7 +103,7 @@ catch(Exception $ex){
                         }
                         else{
                             try{ #If the email is already registered, returns an error
-                                $stmt = $dbHandler -> prepare("SELECT Admin_id from Admin WHERE Email=:email");
+                                $stmt = $dbHandler -> prepare("SELECT user_id from User WHERE email=:email");
                                 $stmt -> bindParam("email",$email,PDO::PARAM_STR);
                                 $stmt -> execute();
                 
@@ -128,7 +128,7 @@ catch(Exception $ex){
                         if($errcount === 0){
                             try{
                                 $stmt = $dbHandler -> 
-                                prepare("INSERT INTO `Admin` (`Admin_ID`, `FirstName`, `LastName`, `Email`, `Password`) VALUES (NULL, :firstName, :lastName, :email, :passHash)");
+                                prepare("INSERT INTO `User` (`user_id`, `first_name`, `last_name`, `email`, `pass_hash`) VALUES (NULL, :firstName, :lastName, :email, :passHash)");
                                 $stmt -> bindParam("firstName",$firstName,PDO::PARAM_STR);
                                 $stmt -> bindParam("lastName",$lastName,PDO::PARAM_STR);
                                 $stmt -> bindParam("email",$email,PDO::PARAM_STR);
