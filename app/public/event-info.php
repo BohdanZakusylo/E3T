@@ -27,7 +27,7 @@ if (!empty($_GET["id"])){
             echo "<b>Event take place in: </b> ".$output['place']."<br>";
             echo "<b>Description: </b> ".$output['event_description']."<br>";
             echo "<br>";
-            echo "<button><a href='events.php'>Go Back</a></button>";
+            echo "<a href='events.php'><button>Go Back</button></a>";
             echo "</div>";
             echo "</main>";
         }
