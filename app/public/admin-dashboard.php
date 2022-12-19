@@ -53,8 +53,7 @@ include "components/header.php";
                     <input class="input_text" type="password" name="password"><br>
                     <label>Price in Euro</label><br>
                     <input class="input_text" type="text" name="price"><br>
-                    <button>Register</button>
-                    <input type="submit" name="submit" value="Register talent">
+                    <button type="submit" name="submit" value="Register talent">Register</button>
                 </form>
             </div>
 
@@ -65,8 +64,7 @@ include "components/header.php";
                     <input class="input_text" type="text" name="name"><br>
                     <label>Email</label><br>
                     <input class="input_text" type="email" name="email"><br>
-                    <button>Remove</button>
-                    <input type="submit" name="submit" value="Delete talent">
+                    <button type="submit" name="submit" value="Delete talent">Delete</button>
                 </form>
             </div>
 
@@ -81,8 +79,7 @@ include "components/header.php";
                     <input class="input_text" type="email" name="email"><br>
                     <label>Password</label><br>
                     <input class="input_text" type="password" name="password"><br>
-                    <button>Register</button>
-                    <input type="submit" name="submit" value="Register admin">
+                    <button type="submit" name="submit" value="Register admin">Register</button>
                 </form>
             </div>
         </div>
