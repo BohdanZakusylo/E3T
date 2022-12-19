@@ -29,8 +29,8 @@
     color: #4070F4;
   }
 
-
   .image-content{
+    width: 260px;
     padding: 10px 0;
     height: 200px;
     background-color: #2E307A;
@@ -81,11 +81,25 @@
     background: #265DF2;
   }
 
-  /* @media screen and (max-width: 768px) {
-    .slide-content{
+  img {
+    width:200px;
+    height:200px;
+  }
+
+  @media screen and (max-width: 768px) {
+    /* .slide-content{
       margin: 0 10px;
-    }
-    .swiper-navBtn{
+    } */
+    /* .swiper-navBtn{
       display: none;
-    }
-  } */
+    } */
+
+      img {
+    width:200px;
+    height:200px;
+  }
+
+  .image-content{
+    width: 200px;
+  }
+  }
