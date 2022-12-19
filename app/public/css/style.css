@@ -11,7 +11,7 @@
 .slide-content{
   margin: 40px;
   overflow: hidden;
-  border-radius:;
+  border-radius:10px;
 }
 
 .swiper-button-next{
