@@ -9,6 +9,7 @@
 	grid-template-columns: repeat(12, 1fr);
 	font-family: Roboto, sans-serif;
 	padding-bottom: 5%;
+
 }
 #header_2{
 	grid-column: 1/13;
@@ -121,7 +122,7 @@ textarea{
 
 
 .message1 {
-	grid-column: 3/5;
+	grid-column: 5/9;
 	display: flex;
 	flex-direction: column;
 	border-radius: 10px;
@@ -129,11 +130,13 @@ textarea{
 	color: white;
 	padding: 15px;
 	text-align: center;
-	width: 450px;
+	width: 636px;
+	margin-top:35px;
+	
 }
 
 .message2 {
-	grid-column: 9/10;
+	grid-column: 5/9;
 	display: flex;
 	flex-direction: column;
 	border-radius: 10px;
@@ -141,7 +144,8 @@ textarea{
 	color: white;
 	padding: 15px;
 	text-align: center;
-	width: 450px;
+	width: 	636px;
+	margin-top:35px;
 }
 
 .message1 b {
@@ -152,6 +156,12 @@ textarea{
 .message2 b {
 	font-size: 16px;
 	color:#ED9275;
+}
+
+.error {
+	color:red;
+	font-weight: lighter;
+	padding-left:10px;
 }
 
 @media screen and (max-width: 393px) {
