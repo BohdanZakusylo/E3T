@@ -4,6 +4,18 @@ $pageTitle = "edit-profile.php";
 include ("components/header.php");
 ?>
 
+<?php
+    try{
+        $dbHandler = new PDO("mysql:host=mysql;dbname=E3T;charset=utf8","root","qwerty"); #Initialize DB connection
+        $dbHandler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        echo "Connection sucessful";
+        echo "<br>";
+    }
+    catch(Exception $ex){
+        echo "<p class='error'>The following error occured: $ex</p>";
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
