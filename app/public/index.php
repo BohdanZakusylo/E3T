@@ -55,7 +55,7 @@
         <div class="slide-content">
         <div class="card-wrapper swiper-wrapper">
         
-        <!-- for ($i=0; $i<9; $i++) -->
+
         <?php
 
     if($result) {
