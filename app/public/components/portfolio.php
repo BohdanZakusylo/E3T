@@ -7,10 +7,7 @@ function generate_portfolio(){
             <img src="../img/image.png">
             <h2>Mike Philips</h2>
             <div id="description">    
-                <h4>Description</h4>
-                <h6>.</h6>
-                <h6>.</h6>
-                <h6>.</h6>
+                
             </div>
             <br><br>
             <h4>Rating:</h4>

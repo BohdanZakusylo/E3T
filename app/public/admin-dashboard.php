@@ -1,4 +1,4 @@
-<?php
+<?php 
 $cssFile = "admin-dashboard";
 $pageTitle = "admin-dashboard";
 include "components/header.php";
