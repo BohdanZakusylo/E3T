@@ -22,7 +22,7 @@ form{
     font-weight: bolder;
     margin-right: 63%;
 }
-input[type=text],input[type=password]{
+input[type=text],input[type=password], input[type=email]{
     width: 80%;
 }
 label{
