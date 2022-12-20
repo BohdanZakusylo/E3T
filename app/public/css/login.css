@@ -1,0 +1,83 @@
+
+main {
+    font-family: Roboto, sans-serif;
+}
+
+#normal_login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+form{
+    background-color: #2E307A;
+    width: 30%;
+    height: 45%;
+    border-radius: 9px;
+    text-align: center;
+}
+.login{
+    color: white;
+    font-size: 25px;
+    font-weight: bolder;
+    margin-right: 63%;
+}
+input[type=text],input[type=password]{
+    width: 80%;
+}
+label{
+    color: white;
+    font-size: 22px;
+    font-weight: lighter;
+    margin-right: 57%;
+
+}
+input[type=submit]{
+    background-color: #ED9275;
+    border: none;
+    color: white;
+    width: 15%;
+    height: 30%;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-right: 65%;
+}
+.power{
+    display: flex;
+    justify-content: center;
+    margin-top: -7%;
+}
+.powered{
+    font-family: "Roboto Light", sans-serif;
+    font-style: italic;
+    font-size: 1.25em;
+}
+@media screen and (max-width: 393px){
+    form{
+        width: 90%;
+        height: 34%;
+        margin-bottom: 100%;
+    }
+    label{
+        font-size: 15px;
+        padding-right: 2%;
+    }
+    .login{
+        font-size: 20px;
+        padding-left: 1%;
+    }
+    input[type=submit]{
+        font-size: 10px;
+    }
+    .power{
+        display: flex;
+        justify-content: center;
+        padding-bottom: 100%;
+        margin-top: -100%;
+    }
+    .powered{
+        font-family: "Roboto Light", sans-serif;
+        font-style: italic;
+        font-size: 1.25em;
+    }
+}

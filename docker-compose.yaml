@@ -3,7 +3,7 @@ services:
     web:
         image: nginx:latest
         build:
-            context: .
+            context: ../E3T 2
             dockerfile: nginx.dockerfile
         ports:
             - "80:80"
@@ -15,7 +15,7 @@ services:
     php:
         image: php:latest
         build:
-            context: .
+            context: ../E3T 2
             dockerfile: PHP.dockerfile
         environment:
             - DB_SERVER=${DB_SERVER}
