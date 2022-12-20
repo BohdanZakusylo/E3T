@@ -9,8 +9,8 @@ include "components/header.php";
         <form>
             <h1 class="login">Login</h1>
             <p>
-                <label for="username">Username:</label><br>
-                <input type="text" id="username" name="username"><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email"><br>
             </p>
             <p>
                 <label for="password">Password:</label><br>
