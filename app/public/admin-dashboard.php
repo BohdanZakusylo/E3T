@@ -20,15 +20,6 @@ catch(Exception $ex){
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-</head>
-<body>   
         <div class="header">
             <h2>Admin Dashboard</h2>
         </div>
@@ -159,8 +150,6 @@ catch(Exception $ex){
             </div>
         </div>
 
-</body>
-</html>
 
 <?php
 include "components/footer.php";
