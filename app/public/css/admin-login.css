@@ -53,8 +53,9 @@ input[type=submit]{
     font-size: 1.25em;
 }
 .error{
-    font-family: 'Courier New', Courier, monospace;
     color: red;
+    font-size: 20px;
+    font-family: Roboto;
 }
 @media screen and (max-width: 393px){
     form{
