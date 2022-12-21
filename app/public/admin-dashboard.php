@@ -4,18 +4,28 @@ session_start();
 $cssFile = "admin-dashboard";
 $pageTitle = "admin-dashboard";
 
-if(!isset($_SESSION["aLogin"])){ #Redirects to login if not logged in
-    header("Location: admin-login.php");
+$host = 'localhost';
+$user_name = 'root';
+$dbname = 'e3t';
+try {
+    $dbHandler = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8;", "$user_name", "emperor");
 }
+catch (Exception $e){
+    echo "Unsuccessful Connection" . $e->getMessage();
+}
+
+//if(!isset($_SESSION["aLogin"])){ #Redirects to login if not logged in
+//    header("Location: admin-login.php");
+//}
 
 include "components/header.php";
 
-try{
-    $dbHandler = new PDO("mysql:host=mysql;dbname=E3T;charset=utf8","root","qwerty"); #Initialize DB connection
-}
-catch(Exception $ex){
-    echo "<p class='error'>The following error occured: $ex</p>";
-}
+//try{
+//    $dbHandler = new PDO("mysql:host=mysql;dbname=E3T;charset=utf8","root","qwerty"); #Initialize DB connection
+//}
+//catch(Exception $ex){
+//    echo "<p class='error'>The following error occured: $ex</p>";
+//}
 
 
 ?>
@@ -35,33 +45,106 @@ catch(Exception $ex){
 
         <div class="info">
             <div class="photo">
-                <img src="img/logo.png">
+                <img src="img/logo.png" alt="logo">
             </div>
             <h3>Naga</h3>
         </div>
 
         <div class="container">            
                 <div class="new_talents">
-                    <h2>Register new talents</h2>    
+                    <h2>Register new talents</h2>
+                    <?php
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+                        if ($_POST["submit"] == "Register talent"){
+                            $err_count = 0;
+                            if (!$stage_name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS)){
+                                echo "<p class='error'>Pls enter a Stage name</p>";
+                                $err_count++;
+                            }
+
+                            if (empty($talent_radio = filter_input(INPUT_POST, "talent", FILTER_SANITIZE_SPECIAL_CHARS))){
+                                echo "<p class='error'>Pls choose a talent</p>";
+                            }
+
+                            if(!$email = filter_input(INPUT_POST,"email",FILTER_VALIDATE_EMAIL)){
+                                echo "<p class='error'>Please enter a valid email!</p>";
+                                $err_count++;
+                            }
+                            else{
+                                try {
+                                    $query_1 = "SELECT id FROM talent WHERE email = :email";
+                                    $stmt_1 = $dbHandler->prepare($query_1);
+                                    $stmt_1->bindParam(":email", $email);
+                                    $stmt_1->execute();
+                                    if($result = $stmt_1 -> fetchColumn()){
+                                        echo "<p class='error'>This email is already in use!</p>";
+                                        $err_count++;
+                                    }
+                                }
+                                catch (Exception $e){
+
+                                }
+                            }
+
+                            $price = filter_input(INPUT_POST, "price", FILTER_VALIDATE_INT);
+                            if (!is_numeric($price)){
+                                echo "<p class='error'>Value must be numeric</p>";
+                                $err_count++;
+                            }
+                            elseif (strlen($price) > 100000){
+                                echo "<p class='error'>The amount is too big, reduce it</p>";
+                            }
+
+                            $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);
+                            if (strlen($password) < 8){
+                                echo "<p class='error'>The password must be at least 8 characters long</p>";
+                                $err_count++;
+                            }
+                            elseif (strlen($password) == 0){
+                                echo "<p>Please enter a password</p>";
+                                $err_count++;
+                            }
+
+                            $pass_hash = password_hash($password, PASSWORD_BCRYPT);
+
+                            if ($err_count === 0){
+                                try {
+                                    $query = "INSERT INTO talents (`stage_name`, `talent`, `email`, `password`, `price`) VALUES (:stage_name, :talent, :email, :pass_hash, :price)";
+                                    $stmt_1 = $dbHandler->prepare($query);
+                                    $stmt_1->bindParam("stage_name", $stage_name);
+                                    $stmt_1->bindParam("talent", $talent_radio);
+                                    $stmt_1->bindParam("email", $email);
+                                    $stmt_1->bindParam("pass_hash", $pass_hash);
+                                    $stmt_1->bindParam("price", $price);
+                                    $stmt_1->execute();
+                                    echo "Talent registered successfully";
+                                }
+                                catch (Exception $exc){
+                                    echo $exc->getMessage();
+                                }
+                            }
+                        }
+                    }
+                    ?>
                 <form class="form_register" method="POST" action="admin-dashboard.php">
-                    <label>Name/Stage name</label><br>
-                    <input class="input_text" type="text" name="name"><br>
-                    <label>Talent</label><br>
+                    <label for="name">Name/Stage name</label><br>
+                    <input class="input_text" type="text" name="name" id="name"><br>
+                    <label for="talent">Talent</label><br>
                     <div class="radiob">
-                        <input type="radio" name="talent" value="Singer">Singer
-                        <input type="radio" name="talent" value="Dancer">Dancer
-                        <input type="radio" name="talent" value="Actor">Actor
-                        <input type="radio" name="talent" value="Dj">Dj
-                        <input type="radio" name="talent" value="Magician">Magician<br>
-                        <input type="radio" name="talent" value="Comedian">Comedian
-                        <input type="radio" name="talent" value="Juggler">Juggler<br>
+                        <input type="radio" name="talent" value="Singer" id="talent">Singer
+                        <input type="radio" name="talent" value="Dancer" id="talent">Dancer
+                        <input type="radio" name="talent" value="Actor" id="talent">Actor
+                        <input type="radio" name="talent" value="Dj" id="talent">Dj
+                        <input type="radio" name="talent" value="Magician" id="talent">Magician<br>
+                        <input type="radio" name="talent" value="Comedian" id="talent">Comedian
+                        <input type="radio" name="talent" value="Juggler" id="talent">Juggler<br>
                     </div>
-                    <label>Email</label><br>
-                    <input class="input_text" type="email" name="email"><br>
-                    <label>Password</label><br>
-                    <input class="input_text" type="password" name="password"><br>
-                    <label>Price in Euro</label><br>
-                    <input class="input_text" type="text" name="price"><br>
+                    <label for="email">Email</label><br>
+                    <input class="input_text" type="email" name="email" id="email"><br>
+                    <label for="password">Password</label><br>
+                    <input class="input_text" type="password" name="password" id="password"><br>
+                    <label for="price">Price in Euro</label><br>
+                    <input class="input_text" type="number" name="price" id="price"><br>
                     <button>Register</button>
                     <input type="submit" name="submit" value="Register talent">
                 </form>
@@ -69,11 +152,40 @@ catch(Exception $ex){
 
             <div class="delete_talent">
                 <h2>Delete talent</h2>
+                <?php
+                if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+                    if ($_POST["submit"] == "Delete talent"){
+                        $err_count = 0;
+                        $name_delete = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS);
+                        $email_delete = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
+
+                        $query_2 = "SELECT `id` FROM talents where `email` = :email_delete";
+                        $stmt_2 = $dbHandler->prepare($query_2);
+                        $stmt_2->bindParam("email_delete", $email_delete);
+                        $stmt_2->execute();
+                        $result = $stmt_2->fetchAll(PDO::FETCH_ASSOC);
+                        foreach ($result as $results){
+                            if ($_POST["submit"] = "Delete talent" == TRUE){
+                                try {
+                                    $query_3 = "DELETE FROM talents where email = :email_delete";
+                                    $stmt_3 = $dbHandler->prepare($query_3);
+                                    $stmt_3->bindParam("email_delete", $email_delete);
+                                    $stmt_3->execute();
+                                    echo "Deleted";
+                                }
+                                catch (Exception $exce){
+                                    echo "<p class='error'>Could not delete talent account</p>";
+                                }
+                            }
+                        }
+                    }
+                }
+                ?>
                 <form class="form_delete" method="POST" action="admin-dashboard.php">
-                    <label>Name/Stage name</label><br>
-                    <input class="input_text" type="text" name="name"><br>
-                    <label>Email</label><br>
-                    <input class="input_text" type="email" name="email"><br>
+                    <label for="stage_name">Name/Stage name</label><br>
+                    <input class="input_text" type="text" name="name" id="stage_name"><br>
+                    <label for="email_delete">Email</label><br>
+                    <input class="input_text" type="email" name="email" id="email_delete"><br>
                     <button>Remove</button>
                     <input type="submit" name="submit" value="Delete talent">
                 </form>
@@ -84,19 +196,19 @@ catch(Exception $ex){
                 <?php 
                 if($_SERVER["REQUEST_METHOD"]=="POST"){
                     if($_POST["submit"]=="Register admin"){
-                
-                        $errcount = 0; 
-                
+
+                        $errcount = 0;
+
                         if(!$firstName = filter_input(INPUT_POST,"firstName",FILTER_SANITIZE_FULL_SPECIAL_CHARS)){ #Input validation
                             echo "<p class='error'>Please enter a first name!</p>";
                             $errcount++;
                         }
-                   
+
                         if(!$lastName = filter_input(INPUT_POST,"lastName",FILTER_SANITIZE_FULL_SPECIAL_CHARS)){
                             echo "<p class='error'>Please enter a last name!</p>";
                             $errcount++;
                         }
-                
+
                         if(!$email = filter_input(INPUT_POST,"email",FILTER_VALIDATE_EMAIL)){
                             echo "<p class='error'>Please enter a valid email!</p>";
                             $errcount++;
@@ -104,9 +216,9 @@ catch(Exception $ex){
                         else{
                             try{ #If the email is already registered, returns an error
                                 $stmt = $dbHandler -> prepare("SELECT Admin_id from Admin WHERE Email=:email");
-                                $stmt -> bindParam("email",$email,PDO::PARAM_STR);
+                                $stmt -> bindParam("email",$email);
                                 $stmt -> execute();
-                
+
                                 if($result = $stmt -> fetchColumn()){
                                     echo "<p class='error'>This email is already in use!</p>";
                                     $errcount++;
@@ -117,42 +229,42 @@ catch(Exception $ex){
                                 $errcount++;
                             }
                         }
-                
+
                         $pass = filter_input(INPUT_POST,"password",FILTER_SANITIZE_SPECIAL_CHARS);
                         if(strlen($pass)<8 OR strlen($pass)==0){
                             echo "<p class='error'>The password must be at least 8 characters long!</p>";
                             $errcount++;
                         }
                         $passHash = password_hash($pass,PASSWORD_BCRYPT);
-                
+
                         if($errcount === 0){
                             try{
-                                $stmt = $dbHandler -> 
+                                $stmt = $dbHandler ->
                                 prepare("INSERT INTO `Admin` (`Admin_ID`, `FirstName`, `LastName`, `Email`, `Password`) VALUES (NULL, :firstName, :lastName, :email, :passHash)");
-                                $stmt -> bindParam("firstName",$firstName,PDO::PARAM_STR);
-                                $stmt -> bindParam("lastName",$lastName,PDO::PARAM_STR);
-                                $stmt -> bindParam("email",$email,PDO::PARAM_STR);
-                                $stmt -> bindParam("passHash",$passHash,PDO::PARAM_STR);
+                                $stmt -> bindParam("firstName",$firstName);
+                                $stmt -> bindParam("lastName",$lastName);
+                                $stmt -> bindParam("email",$email);
+                                $stmt -> bindParam("passHash",$passHash);
                                 $stmt -> execute();
-                                echo "<p>Admin registered sucessfully!<p>";
+                                echo "<p>Admin registered successfully!<p>";
                             }
                             catch(Exception $ex){
                                 echo "<p class='error'>The following error occured: $ex</p>";
                             }
                         }
-                    
+
                     }
                 }
                 ?>
                 <form class="form_delete" method="POST" action="admin-dashboard.php">
-                    <label>First name</label><br>
-                    <input class="input_text" type="text" name="firstName"><br>
-                    <label>Last name</label><br>
-                    <input class="input_text" type="text" name="lastName"><br>
-                    <label>Email</label><br>
-                    <input class="input_text" type="email" name="email"><br>
-                    <label>Password</label><br>
-                    <input class="input_text" type="password" name="password"><br>
+                    <label for="first_name">First name</label><br>
+                    <input class="input_text" type="text" name="firstName" id="first_name"><br>
+                    <label for="last_name">Last name</label><br>
+                    <input class="input_text" type="text" name="lastName" id="last_name"><br>
+                    <label for="email_register">Email</label><br>
+                    <input class="input_text" type="email" name="email" id="email_register"><br>
+                    <label for="password_register">Password</label><br>
+                    <input class="input_text" type="password" name="password" id="email_register"><br>
                     <button>Register</button>
                     <input type="submit" name="submit" value="Register admin">
                 </form>
