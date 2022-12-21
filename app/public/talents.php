@@ -1,9 +1,13 @@
 <?php
+//if (empty($_GET["talent"])){
+//    header("Location: talents.php?talent=Singers");
+//    var_dump($_GET["talent"]);
+//}
 $cssFile = "talents";
 $pageTitle = "talents";
 include ("components/header.php");
 require "components/portfolio.php";
-
+require "db_connection/connection.php";
 ?>
 
 <main>
@@ -46,16 +50,16 @@ require "components/portfolio.php";
                 generate_portfolio("", $output["first_name"], $output["last_name"], "Singers",$output["description"], $output["price_per_hour"], "not available");
             }
         }
-        else{
-            $singers = $db->prepare('SELECT * FROM Talent WHERE talent = "Singers"');
-            $singers->execute();
-            while($singer = $singers->fetch()){
-                if ($singer["from_date_absent"] == NULL AND $singer["to_date_absent"] == NULL) {
-                    generate_portfolio("", $singer["first_name"], $singer["last_name"], "Singers", $singer["description"], $singer["price_per_hour"], "not available");
-                }
-            }
+//        else{
+//            $singers = $db->prepare('SELECT * FROM Talent WHERE talent = "Singers"');
+//            $singers->execute();
+//            while($singer = $singers->fetch()){
+//                if ($singer["from_date_absent"] == NULL AND $singer["to_date_absent"] == NULL) {
+//                    generate_portfolio("", $singer["first_name"], $singer["last_name"], "Singers", $singer["description"], $singer["price_per_hour"], "not available");
+//                }
+//            }
 
-        }
+        //}
         echo "</div>";
         ?>
 
