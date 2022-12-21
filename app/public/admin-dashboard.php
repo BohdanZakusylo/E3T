@@ -37,6 +37,7 @@ include "components/header.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+<!--    <link type="text/css" rel="stylesheet" href="css/admin-dashboard.css">-->
 </head>
 <body>   
         <div class="header">
@@ -117,11 +118,14 @@ include "components/header.php";
                                     $stmt_1->bindParam("pass_hash", $pass_hash);
                                     $stmt_1->bindParam("price", $price);
                                     $stmt_1->execute();
-                                    echo "Talent registered successfully";
+                                    echo "<p class='success'>Talent registered successfully</p>";
                                 }
                                 catch (Exception $exc){
                                     echo $exc->getMessage();
                                 }
+                            }
+                            else {
+                                echo "<p class='error'>Talent could not be registered</p>";
                             }
                         }
                     }
@@ -145,7 +149,6 @@ include "components/header.php";
                     <input class="input_text" type="password" name="password" id="password"><br>
                     <label for="price">Price in Euro</label><br>
                     <input class="input_text" type="number" name="price" id="price"><br>
-                    <button>Register</button>
                     <input type="submit" name="submit" value="Register talent">
                 </form>
             </div>
@@ -154,10 +157,14 @@ include "components/header.php";
                 <h2>Delete talent</h2>
                 <?php
                 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-                    if ($_POST["submit"] == "Delete talent"){
+                    if ($_POST["submit"] == "Remove"){
                         $err_count = 0;
-                        $name_delete = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS);
-                        $email_delete = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
+                        if (!$name_delete = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS)){
+                            echo "<p class='error'>Enter the name of talent to delete</p>";
+                        }
+                        if (!$email_delete = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL)){
+                            echo "<p class='error'>Enter the email address of talent to delete</p>";
+                        }
 
                         $query_2 = "SELECT `id` FROM talents where `email` = :email_delete";
                         $stmt_2 = $dbHandler->prepare($query_2);
@@ -165,17 +172,20 @@ include "components/header.php";
                         $stmt_2->execute();
                         $result = $stmt_2->fetchAll(PDO::FETCH_ASSOC);
                         foreach ($result as $results){
-                            if ($_POST["submit"] = "Delete talent" == TRUE){
+                            if ($_POST["submit"] = "Remove" == TRUE){
                                 try {
                                     $query_3 = "DELETE FROM talents where email = :email_delete";
                                     $stmt_3 = $dbHandler->prepare($query_3);
                                     $stmt_3->bindParam("email_delete", $email_delete);
                                     $stmt_3->execute();
-                                    echo "Deleted";
+                                    echo "<p class='success'>Talent deleted</p>";
                                 }
                                 catch (Exception $exce){
                                     echo "<p class='error'>Could not delete talent account</p>";
                                 }
+                            }
+                            else{
+                                echo "<p class='error'>Talent not found</p>";
                             }
                         }
                     }
@@ -186,8 +196,7 @@ include "components/header.php";
                     <input class="input_text" type="text" name="name" id="stage_name"><br>
                     <label for="email_delete">Email</label><br>
                     <input class="input_text" type="email" name="email" id="email_delete"><br>
-                    <button>Remove</button>
-                    <input type="submit" name="submit" value="Delete talent">
+                    <input type="submit" name="submit" value="Remove">
                 </form>
             </div>
 
@@ -246,13 +255,15 @@ include "components/header.php";
                                 $stmt -> bindParam("email",$email);
                                 $stmt -> bindParam("passHash",$passHash);
                                 $stmt -> execute();
-                                echo "<p>Admin registered successfully!<p>";
+                                echo "<p class='success'>Admin registered successfully!<p>";
                             }
                             catch(Exception $ex){
                                 echo "<p class='error'>The following error occured: $ex</p>";
                             }
                         }
-
+                        else{
+                            echo "<p class='error'>There was a problem when registering the admin</p>";
+                        }
                     }
                 }
                 ?>
@@ -265,7 +276,6 @@ include "components/header.php";
                     <input class="input_text" type="email" name="email" id="email_register"><br>
                     <label for="password_register">Password</label><br>
                     <input class="input_text" type="password" name="password" id="email_register"><br>
-                    <button>Register</button>
                     <input type="submit" name="submit" value="Register admin">
                 </form>
             </div>
