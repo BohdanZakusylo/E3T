@@ -1,12 +1,20 @@
 <?php
+<<<<<<< HEAD
 $cssFile = "index";
 $pageTitle = "E3T";
 include "components/header.php";
 
 include("connection.php");
 try {
+=======
+    $cssFile = "index";
+    $pageTitle = "E3T";
+    include "components/header.php";
+    require "db_connection/connection.php";
+    try {
+>>>>>>> 0be6b85 (Added the db connection and restored .gitignore fike)
     $query = "SELECT * FROM Events";
-    $stmt = $dbhandler->prepare($query);
+    $stmt = $db->prepare($query);
     $stmt->execute();
 
     $result = $stmt->fetchAll();
