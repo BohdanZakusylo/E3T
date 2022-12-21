@@ -1,42 +1,30 @@
 <?php
-<<<<<<< HEAD
 $cssFile = "index";
 $pageTitle = "E3T";
 include "components/header.php";
 
 include("connection.php");
 try {
-=======
     $cssFile = "index";
     $pageTitle = "E3T";
     include "components/header.php";
     require "db_connection/connection.php";
     try {
->>>>>>> 0be6b85 (Added the db connection and restored .gitignore fike)
-    $query = "SELECT * FROM Events";
-    $stmt = $db->prepare($query);
-    $stmt->execute();
-
-    $result = $stmt->fetchAll();
+        $query = "SELECT * FROM Events";
+        $stmt = $db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        }
+    catch(PDOException $ex){
+        echo "$ex";
+    }
     }
 catch (PDOException $e) {
     echo "Couldn't fetch data". $e->getMessage();
     }
     ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E3T - Home</title>
-    <link rel="stylesheet" type="text/css" href="index.css">
-    <link rel="stylesheet" href="css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    
+
 <main>
     <div id="top-background">
 
@@ -94,9 +82,6 @@ catch (PDOException $e) {
 </div>
 
 </section>
-
-    </body>
-             
             <script src="js/swiper-bundle.min.js"></script>
              <script src="js/script.js"></script>
         </html>
