@@ -1,18 +1,18 @@
 <?php
-    $cssFile = "index";
-    $pageTitle = "E3T";
-    include "components/header.php";
+$cssFile = "index";
+$pageTitle = "E3T";
+include "components/header.php";
 
-    include("connection.php");
-    try {
+include("connection.php");
+try {
     $query = "SELECT * FROM Events";
     $stmt = $dbhandler->prepare($query);
     $stmt->execute();
 
     $result = $stmt->fetchAll();
     }
-    catch (PDOException $e) {
-        echo "Couldn't fetch data". $e->getMessage();
+catch (PDOException $e) {
+    echo "Couldn't fetch data". $e->getMessage();
     }
     ?>
 
