@@ -27,6 +27,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST" AND $_GET["login"]==="admin"){
 
         if(password_verify($pass,$passHash)){ # Verifies user password against retrieved hash
             $_SESSION["aLogin"] = true;
+            setcookie("user_id",$queryResult[0][0],time()+10000);
             header("Location: admin-dashboard.php");
         }
         else{
@@ -60,6 +61,7 @@ elseif($_SERVER["REQUEST_METHOD"]=="POST" AND $_GET["login"]==="talent"){
 
         if(password_verify($pass,$passHash)){ # Verifies user password against retrieved hash
             $_SESSION["tLogin"] = true;
+            setcookie("user_id",$queryResult[0][0],time()+10000);
             header("Location: talent-dashboard.php");
         }
         else{
