@@ -14,11 +14,11 @@ include "components/header.php";
 
                 if($_GET["error"]=="EM"){
 
-                    echo "<p class='error'>Invalid email!</p>";
+                    echo "<p class='error'>Invalid credentials!</p>";
                 }
                 if($_GET["error"]=="PW"){
 
-                    echo "<p class='error'>Invalid password!</p>";
+                    echo "<p class='error'>Invalid credentials!</p>";
                 }
             }
             ?>
