@@ -3,11 +3,10 @@ $cssFile = "index";
 $pageTitle = "E3T";
 include "components/header.php";
 
-include("connection.php");
+include("db_connection/connection.php");
 try {
     $cssFile = "index";
     $pageTitle = "E3T";
-    include "components/header.php";
     require "db_connection/connection.php";
     try {
         $query = "SELECT * FROM Events";
@@ -82,9 +81,8 @@ catch (PDOException $e) {
 </div>
 
 </section>
-            <script src="js/swiper-bundle.min.js"></script>
-             <script src="js/script.js"></script>
-        </html>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/script.js"></script>
 
 <?php
 include "components/footer.php";
