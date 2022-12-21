@@ -4,6 +4,9 @@
     margin: 0px;
     padding: 0px;
 }
+#menu_b{
+	display: none;
+}
 header{
     height: 15vh;
     display:flex;
@@ -28,16 +31,14 @@ header ul li{
     padding: 5px;
     font-size: 1vw;
 }
-a{
-    text-decoration: none;
-}
+
 .underline{
     color:#2A2B68;
     font-size: 25px;
 }
 
 .underline:hover{
-    text-decoration: underline;
+    text-decoration: none;
 }
 #a-color{
     color:white;
@@ -52,6 +53,9 @@ a{
     align-items: center;
     justify-content: center;
     font-size: 25px;
+}
+#login a{
+	text-decoration:none;
 }
 
 footer{
@@ -76,6 +80,15 @@ footer{
     font-size: 25px;
     color: white;
     font-size: 25px;
+	text-decoration: none;
+}
+
+.link_box a{
+	text-decoration: none;
+	color: white;
+}
+.button_hover:hover{
+	
 }
 
 #underline{
@@ -104,3 +117,40 @@ footer h4{
     margin: 2em;
     justify-content: center;
 }
+
+  
+  @media screen and (max-width: 812px) {
+	footer{
+		height:82px;
+	}
+	
+	footer p{
+	  font-size: 16px;
+	}
+	.link_box{
+		height: 35px;
+		width: 110px;
+	}
+	footer a{
+	  font-size: 12px;
+	}
+	footer h4{
+		font-size: 10px;
+	}
+
+	header{
+		height: 67px;
+	}
+	header img{
+		height: 35px;
+		width: 64px;
+	}
+	header ul{
+		display: none;
+	}
+	#menu_b{
+		display: flex;
+		height: 40px;
+		width: 40px;
+	}
+  }

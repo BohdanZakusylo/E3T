@@ -132,3 +132,45 @@ a:hover {
 }
 
 
+@media screen and (max-width: 393px){
+	section{
+		height: 70px;
+	}
+	section div img{
+		height: 70px;
+		width: 70px;
+	}
+	.profile_pic{
+		height: 104px;
+		width: 103px;
+		margin-right: 140px;
+	}
+	.profile_pic img{
+		height: 104px;
+		width: 103px;
+	}
+	.description{
+		height: 200px;
+		width: 296px;
+	}
+	.description p{
+		font-size: 8px;
+	}
+	.profile-align{
+		flex-direction: column;
+		align-items: center;
+	}
+	.profile-align div button{
+		margin-right: 150px;
+	}
+	.profile_name h3{
+		margin-right: 140px;
+	}
+	.media-container .media{
+		height: 90px;
+		width: 146px;
+	}
+	.form-container{
+		display: none;
+	}
+}
