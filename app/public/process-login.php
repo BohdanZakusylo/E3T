@@ -75,6 +75,6 @@ elseif($_SERVER["REQUEST_METHOD"]=="POST" AND $_GET["login"]==="talent"){
 }
 else{
     echo "Well this is not supposed to happen";
-    #header("Location: login.php");
+    header("Location: login.php");
 }
 ?>
