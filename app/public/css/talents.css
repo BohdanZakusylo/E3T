@@ -73,3 +73,37 @@ form {
 	font-size: 20px;
 }
 
+
+  @media screen and (max-width: 812px) {
+	section{
+		height: 137px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	section h3{
+		font-size: 18px;
+	}
+	.container{
+		display: flex;
+		flex-direction: column;
+		margin-top: 0;
+	}
+	section p{
+		font-size:17px;
+		display: flex;
+		flex-direction: column;
+		width: 380px;
+		font-size: 15px;
+		font-style: italic;
+	}
+	#mainbody h2{
+		font-size: 20px;
+	}
+	#talents{
+		width: 100px;
+		height: 35px;
+	}
+	
+  }
