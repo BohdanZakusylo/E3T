@@ -2,7 +2,7 @@
 
 session_start();
 
-$user_id = $_SESSION['user_id'];
+$talent_id = $_SESSION['talent_id'];
 
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -21,17 +21,19 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
                 if (in_array($uploadfiletype, $acceptedtype)) {
 
-                    if (!is_dir($user_id)) {
-                        mkdir($user_id);
-                        if(!file_exists($user_id . "/" .$name)) {
-                            move_uploaded_file($tmp_name, $user_id. "/" . $name);
-                            echo "File uploaded successfully<br><br> <a href='talent-dashboard.php'>Return back to Dashboard </a>";
+                    if (!is_dir($talent_id)) {
+                        mkdir($talent_id);
+                        if(!file_exists($talent_id . "/" .$name)) {
+                            move_uploaded_file($tmp_name, $talent_id. "/" . $name);
+                            header("Location: ../talent-dashboard.php");
+                            // echo "File uploaded successfully<br><br> <a href='talent-dashboard.php'>Return back to Dashboard </a>";
                     } else {
                         echo "File already exist";
                     }
                 }  else {
-                        if(!file_exists($user_id . "/" .$name)) {
-                            move_uploaded_file($tmp_name, $user_id. "/" . $name);
+                        if(!file_exists($talent_id . "/" .$name)) {
+                            move_uploaded_file($tmp_name, $talent_id. "/" . $name);
+                            header("Location: ../talent-dashboard.php");
                     }
                     else {
                         echo "File already exist";

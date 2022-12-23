@@ -1,7 +1,7 @@
 
     <?php
         $host = "mysql";
-        $dbname = "E3T";
+        $dbname = "project";
         $username = "root";
         $password = "qwerty";
 
