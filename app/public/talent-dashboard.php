@@ -4,8 +4,8 @@ $cssFile = "talent-dashboard";
 $pageTitle = "talent-dashboard";
 include "components/header.php";
 
-
-$user_id = $_SESSION['user_id'];
+//this takes the session talent_id from the login page
+$talent_id = $_SESSION['talent_id'];
 
 ?>
 
@@ -13,14 +13,16 @@ $user_id = $_SESSION['user_id'];
     <?php 
     require("connection.php");
 
-    $query = "SELECT * FROM Talent WHERE user_id = ?";
+    $query = "SELECT * FROM Talent WHERE talent_id = ?";
     $stmt = $dbhandler ->prepare($query);
-    $stmt -> bindparam(1, $user_id, PDO::PARAM_INT);
+    $stmt -> bindparam(1, $talent_id, PDO::PARAM_INT);
     $stmt -> execute();
 
     $value = $stmt -> fetch(PDO::FETCH_ASSOC);
 
-    $profilestore = "media-files/". $user_id . "/profile_pic";
+    // I created a variable $finalstore here to specify directory of profile picture and to make the code below more readable
+
+    $profilestore = "media-files/". $talent_id . "/profile_pic";
     $finalstore = $profilestore . "/" . $value['profilepic_url'];
         
 ?>
@@ -37,18 +39,19 @@ $user_id = $_SESSION['user_id'];
 </section>
 
 <sub-section>
-  
+  <!-- the div below is for the profile picture  -->
     <div class="profile">
         <div class="profile-align">
-        <div class="profile_pic">
-            <img src="<?= $finalstore ?>"/>
-        </div>
-
-        <div>
-            <button class="button"><a href="edit-profile.php?id=<?= $value['user_id'] ?>">Edit Profile</a></button>
+            <div class="profile_pic">
+        <div style="background-image: url('<?= $finalstore ?>');">
         </div>
 </div>
-
+    <!-- this div below is for the Edit button  -->
+        <div>
+            <button class="button"><a href="edit-profile.php?id=<?= $value['talent_id'] ?>">Edit Profile</a></button>
+        </div>
+</div>
+ <!-- and this is for the first name and last name of the talent  -->
         <div class="profile_name">   
         <h3>
         <?= $value['first_name']. " " . $value['last_name']; ?>
@@ -56,21 +59,36 @@ $user_id = $_SESSION['user_id'];
         </div>
 </div>
 
+<!-- this is for the description  -->
 <div class="description">
     <h4>Description</h4>
     <p><?= $value['description'] ?></p>
 </div>
+
+
+<!-- here is the media Gallery section  -->
 <div>
     <h2><center>Media Gallery</center><h2>
-<div>
+</div>
     <div class="media-container">
      <?php 
- 
-       echo "<div class='media'>
-        </div>";
-     
-    ?> 
-</div>
+    //  the lines of code below is to fetch information directly from the folder containing the media 
+        $path = "media-files/". $talent_id . "/";
+        $extensions = array('jpg', 'jpeg', 'gif', 'png');
+        $images = glob($path."*.{".implode(',',$extensions)."}",GLOB_BRACE);
+      
+        
+        foreach($images as $image) {
+           
+				echo '<div class="media">
+                <a href="#">
+                <div style="background-image: url('. $image. ');"></div>
+                    </div>
+                    </a>';
+
+            } 
+
+            ?> 
 </div>
 
 
