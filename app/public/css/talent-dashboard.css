@@ -30,6 +30,14 @@ section {
 	height: 200px;
 }
 
+.dashboard {
+    margin: 0 auto;
+    color: white;
+    text-align: center;
+    padding-top: 60px;
+    font-size: 60px;
+    letter-spacing: 10px;
+}
 Sub-section {
     grid-column: 1/13;
 
@@ -37,16 +45,22 @@ Sub-section {
 
 .profile {
     margin-left: 130px;
-    width: 276px;
     z-index: 2;
     margin-top: -80px;
 }
 
-.profile_pic img {
+.profile_pic {
     height: 276px;
     border-radius: 10px;
-    background-color: white;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2)
+}
+
+.profile_pic div {
+    width: 230px;
+    height: 276px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .profile-align {
@@ -74,8 +88,8 @@ a:hover {
 }
 
 .profile_name {
-    margin: 10px 0;
-    text-align: center;
+    margin: 10px;
+    text-align: left;
 }
 
 .description {
@@ -98,8 +112,15 @@ a:hover {
 .media {
     width: 320px;
     height: 198px;
-    background-color: #2E307A;
     margin: 10px;
+}
+
+.media a div {
+    width: 320px;
+    height: 198px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #form_pic {
