@@ -3,9 +3,7 @@
 $cssFile = "edit-profile";
 $pageTitle = "edit-profile.php";
 include ("components/header.php");
-?>
 
-<?php
     try{
         $dbHandler = new PDO("mysql:host=mysql;dbname=E3T;charset=utf8","root","qwerty"); 
         $dbHandler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -27,56 +25,144 @@ include ("components/header.php");
     <title>Edit profile</title>
 </head>
 <body>
+
+    <?php
+
+        // I included this code, to get information from the talent-dashboard page using session 
+
+    $talent_id = $_SESSION["talent_id"];
+    require("connection.php");
+
+    $query = "SELECT * FROM Talent WHERE talent_id = ?";
+    $stmt = $dbhandler ->prepare($query);
+    $stmt -> bindparam(1, $talent_id, PDO::PARAM_INT);
+    $stmt -> execute();
+
+    $value = $stmt -> fetch(PDO::FETCH_ASSOC);
+
+    // I created a variable $finalstore here to specify directory of profile picture and to make the code below more readable
+
+    $profilestore = "media-files/". $talent_id . "/profile_pic";
+    $finalstore = $profilestore . "/" . $value['profilepic_url'];
+    ?>
 <main>
 <section>
+<div>
+   <h2 class="dashboard">Edit Profile</h2>
+</div>
 </section>
 
 <sub-section>
    
 <div class="profile">
-        <div class="profile-align">
-        <div class="profile_pic">
-            <img src="#"/>
+           <div style="background-image: url('<?= $finalstore ?>');">
         </div>
-</div>
+    </div>
 
-        <div class="profile_name">
+<?php 
 
 
+    if(isset($_POST['first_name'])) {
+            $first_name = filter_input(INPUT_POST, "first_name", FILTER_SANITIZE_SPECIAL_CHARS);
+
+            $query = "UPDATE Talent SET first_name = ? WHERE talent_id = ?";
+            $stmt = $dbhandler->prepare($query);
+            $stmt->bindparam(1, $first_name, PDO::PARAM_STR);
+            $stmt->bindparam(2, $talent_id, PDO::PARAM_INT);
+            $final = $stmt->execute();
+
+            if ($final) {
+                echo "First Name updated successfully";
+            }
+
+
+    }
+?>
 
         <h3><b>
         Edit profile
         </h3></b>
             <h2>First name:</h2>
-            <form action="edit-profile.php" method="POST" enctype="multipart/form-data">
-            <input type="text" name="first_name" id="first_name" placeholder="Enter your first name here"><br>
-            <input type="submit" name="edit_first_name" value = "Edit frist name"/>
+            <form action="" method="POST">
+                
+            <input type="text" name="first_name" id="first_name"  value="<?= $value['first_name']; ?>">
+            <input type="submit" value = "Update First Name"/>
 </form>
 
+
+
+<?php 
+
+
+if(isset($_POST['last_name'])) {
+    $last_name = filter_input(INPUT_POST, "last_name", FILTER_SANITIZE_SPECIAL_CHARS);
+
+    $query = "UPDATE Talent SET last_name = ? WHERE talent_id = ?";
+    $stmt = $dbhandler->prepare($query);
+    $stmt->bindparam(1, $last_name, PDO::PARAM_STR);
+    $stmt->bindparam(2, $talent_id, PDO::PARAM_INT);
+    $final = $stmt->execute();
+
+    if ($final) {
+        echo "Last Name updated successfully";
+    }
+
+
+}
+?>
+
+
+
+
 <h2>Last name:</h2>
-            <form action="edit-profile.php" method="POST" enctype="multipart/form-data">
-            <input type="text" name="last_name" id="last_name" placeholder="Enter your last name here"><br>
-            <input type="submit" name="edit_last_name" value="Edit last name"></input>
+            <form action="" method="POST">
+            <input type="text" name="last_name" id="last_name"  value="<?= $value['last_name']; ?>">
+            <input type="submit" value="Update last name"></input>
 </form>  
 
+
+
+<?php 
+
+
+
+if(isset($_POST['description'])) {
+    $description = filter_input(INPUT_POST, "description", FILTER_SANITIZE_SPECIAL_CHARS);
+
+    $query = "UPDATE Talent SET description = ? WHERE talent_id = ?";
+    $stmt = $dbhandler->prepare($query);
+    $stmt->bindparam(1, $description, PDO::PARAM_STR);
+    $stmt->bindparam(2, $talent_id, PDO::PARAM_INT);
+    $final = $stmt->execute();
+
+    if ($final) {
+        echo "Description Updated successfully";
+    }
+}
+?>
+
+
 <h4>Description</h4>
-    <form action="edit-profile.php" method="POST" enctype="multipart/form-data">
-        <input type="text" name="description" id="description" placeholder="Edit your description"><br>
-        <input type="submit" name="edit_description" value="Edit description"></input>
+    <form action="" method="POST">
+        <input type="text" name="description" id="description" value="<?= $value['description']; ?>">
+        <input type="submit" value="Update description"></input>
     </form>
 
-    <div class="upload">
-    <form action="edit-profile.php" method="POST" enctype="multipart/form-data">
 
-                
+
+    <div class="upload">
+         
 <br><br>
-<form action="edit-profile.php" method="POST" enctype="multipart/form-data">
+<form action="media-files/profile-img.php" method="POST" enctype="multipart/form-data">
     <label for="file-upload" class="custom-file-upload">
     <i class="fa fa-cloud-upload"></i> Upload Profile Image
     </label>
-    <input id="file-upload" name='upload_cont_img' type="file" style="display:none;">
-    <input type="submit" name="edit_image" value="Edit profile picture"></input>
+    <input id="file-upload" name='file' type="file" style="display:none;">
+    <input type="submit" name="edit_image" value="Update profile picture"></input>
 </form>
+
+
+
 
 
 <script>

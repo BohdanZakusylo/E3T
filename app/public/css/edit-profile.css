@@ -16,13 +16,34 @@ section {
 	height: 200px;
 }
 
+.dashboard {
+    margin: 0 auto;
+    color: white;
+    text-align: center;
+    padding-top: 60px;
+    font-size: 60px;
+    letter-spacing: 10px;
+}
+
 
 .profile {
     margin-left: 130px;
-    width: 276px;
     z-index: 2;
     margin-top: -80px;
+    height: 276px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
 }
+
+
+.profile div {
+    width: 230px;
+    height: 276px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .profile_name h3 b {
     font-size: 40px;
     color:black;
