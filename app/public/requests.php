@@ -6,10 +6,25 @@
 ?>
 
 <?php
-    $outputs = $db->prepare("SELECT first_name, last_name, email, description FROM Requests");
+    $outputs = $db->prepare("SELECT request_id, first_name, last_name, talent, email, description FROM Requests");
     $outputs->execute();
     while($output = $outputs->fetch()){
-        var_dump($output);
+        $first_name = $output["first_name"];
+        $last_name = $output["last_name"];
+        $talent = $output["talent"];
+        $email = $output["email"];
+        $description = $output["description"];
+        $requset_id = $output["request_id"];
+        echo "<form action='request-process.php?id=".$requset_id."'>";
+        echo "<div class='request'>";
+        echo "<p>".$first_name." ".$last_name."</p>";
+        echo "<p>".$talent."</p>";
+        echo "<p>".$email."</p>";
+        echo "<p>".$description."</p>";
+        echo "<input type='submit' name='accept' value='Accept'>";
+        echo "<input type='submit' name='decline' value='Decline'>";
+        echo "</div>";
+        echo "</form>";
     }
 ?>
 
