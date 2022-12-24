@@ -51,7 +51,7 @@ $talent_id = $_SESSION['talent_id'];
 </div>
     <!-- this div below is for the Edit button  -->
         <div>
-            <button class="button"><a href="edit-profile.php?id=<?= $value['talent_id'] ?>">Edit Profile</a></button>
+            <button class="button"><a href="edit-profile.php">Edit Profile</a></button>
         </div>
 </div>
  <!-- and this is for the first name and last name of the talent  -->
