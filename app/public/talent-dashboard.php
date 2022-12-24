@@ -2,6 +2,9 @@
 session_start();
 $cssFile = "talent-dashboard";
 $pageTitle = "talent-dashboard";
+if(!isset($_SESSION["tLogin"])){ #Redirects to login if not logged in
+    header("Location: login.php");
+}
 include "components/header.php";
 
 //this takes the session talent_id from the login page
