@@ -19,7 +19,7 @@
     margin: 50px;
 }
 
-.request input {
+.request a {
     width: 5em;
     height: 3em;
     background-color: #ED9275;

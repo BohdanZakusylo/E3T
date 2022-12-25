@@ -6,26 +6,37 @@
 ?>
 
 <?php
+if (!empty($_GET)){
+    $id = $_GET["id"];
+    $delete = $db->prepare("DELETE FROM Requests WHERE request_id = :id");
+    $delete->bindParam(":id", $id);
+    $delete->execute();
+}
+else {
     $outputs = $db->prepare("SELECT request_id, first_name, last_name, talent, email, description FROM Requests");
     $outputs->execute();
-    while($output = $outputs->fetch()){
+    $requset_id = 0;
+    while ($output = $outputs->fetch()) {
         $first_name = $output["first_name"];
         $last_name = $output["last_name"];
         $talent = $output["talent"];
         $email = $output["email"];
         $description = $output["description"];
         $requset_id = $output["request_id"];
-        echo "<form action='request-process.php?id=".$requset_id."'>";
-        echo "<div class='request'>";
-        echo "<p>".$first_name." ".$last_name."</p>";
-        echo "<p>".$talent."</p>";
-        echo "<p>".$email."</p>";
-        echo "<p>".$description."</p>";
-        echo "<input type='submit' name='accept' value='Accept'>";
-        echo "<input type='submit' name='decline' value='Decline'>";
-        echo "</div>";
-        echo "</form>";
+        echo "$requset_id";
+        echo "
+            <div class='request'>
+            <p>" . $first_name . " " . $last_name . "</p>
+            <p>" . $talent . "</p>
+            <p>" . $email . "</p>
+            <p>" . $description . "</p>
+            <a href='requests.php?id=$requset_id'><button>Decline</button></a>
+            <a href='request-process.php?id=$requset_id'><button>Accept</button></a>
+            </div>
+        ";
+        // $requset_id++;
     }
+}
 ?>
 
 <?php
