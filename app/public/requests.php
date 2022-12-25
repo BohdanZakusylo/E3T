@@ -15,7 +15,6 @@ if (!empty($_GET)){
 else {
     $outputs = $db->prepare("SELECT request_id, first_name, last_name, talent, email, description FROM Requests");
     $outputs->execute();
-    $requset_id = 0;
     while ($output = $outputs->fetch()) {
         $first_name = $output["first_name"];
         $last_name = $output["last_name"];
