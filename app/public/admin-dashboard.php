@@ -5,28 +5,18 @@ global $email_process;
 $cssFile = "admin-dashboard";
 $pageTitle = "admin-dashboard";
 
-$host = 'localhost';
-$user_name = 'root';
-$dbname = 'e3t';
-try {
-    $dbHandler = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8;", "$user_name", "emperor");
-}
-catch (Exception $e){
-    echo "Unsuccessful Connection" . $e->getMessage();
-}
-
 if(!isset($_SESSION["aLogin"])){ #Redirects to log in if not logged in
     header("Location: admin-login.php");
 }
 
 include "components/header.php";
 
-//try{
-//    $dbHandler = new PDO("mysql:host=mysql;dbname=E3T;charset=utf8","root","qwerty"); #Initialize DB connection
-//}
-//catch(Exception $ex){
-//    echo "<p class='error'>The following error occurred: $ex</p>";
-//}
+try{
+    $dbHandler = new PDO("mysql:host=mysql;dbname=E3T;charset=utf8","root","qwerty"); #Initialize DB connection
+}
+catch(Exception $ex){
+    echo "<p class='error'>The following error occurred: $ex</p>";
+}
 
 
 ?>
@@ -50,24 +40,14 @@ include "components/header.php";
             </div>
             <h3>
                 <?php
-                $query_4 = "SELECT * FROM admin";
-                $stmt_4 = $dbHandler->prepare($query_4);
-//                $stmt_4->bindParam("email_process", $email_process);
-                $stmt_4->execute();
-                $name = $stmt_4->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($name as $names){
-                    if (isset($_SESSION['aLogin'])){
-                        echo $names['FirstName'];
-                    }
-                }
-////                $users = $_SESSION['users'];
-//                while ($name = $stmt_4->fetch(PDO::FETCH_ASSOC)){
-////                    $_SESSION['user'] = $email_process;
-//                    if (isset($_SESSION['users'])){
-//                        echo $name['FirstName'];
-////                    echo $_SESSION['users'];
-//                    }
-//                }
+                $Admin_ID = $_COOKIE['user_id'];//Shows the name of the current admin.
+                $query = "SELECT * FROM admin where Admin_ID = ?";
+                $stmt = $dbHandler->prepare($query);
+                $stmt -> bindparam(1, $Admin_ID, PDO::PARAM_INT);
+                $stmt->execute();
+
+                $res = $stmt -> fetch(PDO::FETCH_ASSOC);
+                echo $res['FirstName'] . " " . $res['LastName'];
                 ?>
             </h3>
         </div>
@@ -77,24 +57,24 @@ include "components/header.php";
                     <h2>Register new talents</h2>
                     <?php
                     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-                        if ($_POST["submit"] == "Register talent"){
+                        if ($_POST["submit"] == "Register talent"){ // Registration of new talents
                             $err_count = 0;
-                            if (!$stage_name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS)){
+                            if (!$stage_name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS)){//Input verification
                                 echo "<p class='error'>Pls enter a Stage name</p>";
                                 $err_count++;
                             }
 
-                            if (empty($talent_radio = filter_input(INPUT_POST, "talent", FILTER_SANITIZE_SPECIAL_CHARS))){
+                            if (empty($talent_radio = filter_input(INPUT_POST, "talent", FILTER_SANITIZE_SPECIAL_CHARS))){//Input verification
                                 echo "<p class='error'>Pls choose a talent</p>";
                             }
 
-                            if(!$email = filter_input(INPUT_POST,"email",FILTER_VALIDATE_EMAIL)){
+                            if(!$email = filter_input(INPUT_POST,"email",FILTER_VALIDATE_EMAIL)){//Input verification
                                 echo "<p class='error'>Please enter a valid email!</p>";
                                 $err_count++;
                             }
                             else{
                                 try {
-                                    $query_1 = "SELECT id FROM talent WHERE email = :email";
+                                    $query_1 = "SELECT id FROM talent WHERE email = :email"; //Checks if the email exists in the database
                                     $stmt_1 = $dbHandler->prepare($query_1);
                                     $stmt_1->bindParam(":email", $email);
                                     $stmt_1->execute();
@@ -104,11 +84,11 @@ include "components/header.php";
                                     }
                                 }
                                 catch (Exception $e){
-
+                                    echo "<p class='error'>Error, Please check your inputs</p>";
                                 }
                             }
 
-                            $price = filter_input(INPUT_POST, "price", FILTER_VALIDATE_INT);
+                            $price = filter_input(INPUT_POST, "price", FILTER_VALIDATE_INT);//Input verification
                             if (!is_numeric($price)){
                                 echo "<p class='error'>Value must be numeric</p>";
                                 $err_count++;
@@ -117,12 +97,12 @@ include "components/header.php";
                                 echo "<p class='error'>The amount is too big, reduce it</p>";
                             }
 
-                            $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);
+                            $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);//Input verification
                             if (strlen($password) < 8){
                                 echo "<p class='error'>The password must be at least 8 characters long</p>";
                                 $err_count++;
                             }
-                            elseif (strlen($password) == 0){
+                            elseif (strlen($password) == 0){//Input verification
                                 echo "<p>Please enter a password</p>";
                                 $err_count++;
                             }
@@ -130,7 +110,7 @@ include "components/header.php";
                             $pass_hash = password_hash($password, PASSWORD_BCRYPT);
 
                             if ($err_count === 0){
-                                try {
+                                try {//Registers new talent if no error
                                     $query = "INSERT INTO talents (`stage_name`, `talent`, `email`, `password`, `price`) VALUES (:stage_name, :talent, :email, :pass_hash, :price)";
                                     $stmt_1 = $dbHandler->prepare($query);
                                     $stmt_1->bindParam("stage_name", $stage_name);
@@ -142,7 +122,6 @@ include "components/header.php";
                                     echo "<p class='success'>Talent registered successfully</p>";
                                 }
                                 catch (Exception $exc){
-                                    echo $exc->getMessage();
                                 }
                             }
                             else {
@@ -180,10 +159,10 @@ include "components/header.php";
                 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                     if ($_POST["submit"] == "Remove"){
                         $err_count = 0;
-                        if (!$name_delete = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS)){
+                        if (!$name_delete = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS)){//Input verification
                             echo "<p class='error'>Enter the name of talent to delete</p>";
                         }
-                        if (!$email_delete = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL)){
+                        if (!$email_delete = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL)){//Input verification
                             echo "<p class='error'>Enter the email address of talent to delete</p>";
                         }
 
@@ -234,12 +213,12 @@ include "components/header.php";
                             $errcount++;
                         }
 
-                        if(!$lastName = filter_input(INPUT_POST,"lastName",FILTER_SANITIZE_FULL_SPECIAL_CHARS)){
+                        if(!$lastName = filter_input(INPUT_POST,"lastName",FILTER_SANITIZE_FULL_SPECIAL_CHARS)){//Input verification
                             echo "<p class='error'>Please enter a last name!</p>";
                             $errcount++;
                         }
 
-                        if(!$email = filter_input(INPUT_POST,"email",FILTER_VALIDATE_EMAIL)){
+                        if(!$email = filter_input(INPUT_POST,"email",FILTER_VALIDATE_EMAIL)){//Input verification
                             echo "<p class='error'>Please enter a valid email!</p>";
                             $errcount++;
                         }
@@ -260,7 +239,7 @@ include "components/header.php";
                             }
                         }
 
-                        $pass = filter_input(INPUT_POST,"password",FILTER_SANITIZE_SPECIAL_CHARS);
+                        $pass = filter_input(INPUT_POST,"password",FILTER_SANITIZE_SPECIAL_CHARS);//Input verification
                         if(strlen($pass)<8 OR strlen($pass)==0){
                             echo "<p class='error'>The password must be at least 8 characters long!</p>";
                             $errcount++;
@@ -268,7 +247,7 @@ include "components/header.php";
                         $passHash = password_hash($pass,PASSWORD_BCRYPT);
 
                         if($errcount === 0){
-                            try{
+                            try{//Register new admin if no errors
                                 $stmt = $dbHandler ->
                                 prepare("INSERT INTO `admin` (`Admin_ID`, `FirstName`, `LastName`, `Email`, `Password`) VALUES (NULL, :firstName, :lastName, :email, :passHash)");
                                 $stmt -> bindParam("firstName",$firstName);
