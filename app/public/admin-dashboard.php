@@ -1,5 +1,6 @@
 <?php
 session_start();
+global $email_process;
 
 $cssFile = "admin-dashboard";
 $pageTitle = "admin-dashboard";
@@ -14,9 +15,9 @@ catch (Exception $e){
     echo "Unsuccessful Connection" . $e->getMessage();
 }
 
-//if(!isset($_SESSION["aLogin"])){ #Redirects to login if not logged in
-//    header("Location: admin-login.php");
-//}
+if(!isset($_SESSION["aLogin"])){ #Redirects to log in if not logged in
+    header("Location: admin-login.php");
+}
 
 include "components/header.php";
 
@@ -24,7 +25,7 @@ include "components/header.php";
 //    $dbHandler = new PDO("mysql:host=mysql;dbname=E3T;charset=utf8","root","qwerty"); #Initialize DB connection
 //}
 //catch(Exception $ex){
-//    echo "<p class='error'>The following error occured: $ex</p>";
+//    echo "<p class='error'>The following error occurred: $ex</p>";
 //}
 
 
@@ -37,7 +38,6 @@ include "components/header.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-<!--    <link type="text/css" rel="stylesheet" href="css/admin-dashboard.css">-->
 </head>
 <body>   
         <div class="header">
@@ -48,7 +48,28 @@ include "components/header.php";
             <div class="photo">
                 <img src="img/logo.png" alt="logo">
             </div>
-            <h3>Naga</h3>
+            <h3>
+                <?php
+                $query_4 = "SELECT * FROM admin";
+                $stmt_4 = $dbHandler->prepare($query_4);
+//                $stmt_4->bindParam("email_process", $email_process);
+                $stmt_4->execute();
+                $name = $stmt_4->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($name as $names){
+                    if (isset($_SESSION['aLogin'])){
+                        echo $names['FirstName'];
+                    }
+                }
+////                $users = $_SESSION['users'];
+//                while ($name = $stmt_4->fetch(PDO::FETCH_ASSOC)){
+////                    $_SESSION['user'] = $email_process;
+//                    if (isset($_SESSION['users'])){
+//                        echo $name['FirstName'];
+////                    echo $_SESSION['users'];
+//                    }
+//                }
+                ?>
+            </h3>
         </div>
 
         <div class="container">            
@@ -249,7 +270,7 @@ include "components/header.php";
                         if($errcount === 0){
                             try{
                                 $stmt = $dbHandler ->
-                                prepare("INSERT INTO `Admin` (`Admin_ID`, `FirstName`, `LastName`, `Email`, `Password`) VALUES (NULL, :firstName, :lastName, :email, :passHash)");
+                                prepare("INSERT INTO `admin` (`Admin_ID`, `FirstName`, `LastName`, `Email`, `Password`) VALUES (NULL, :firstName, :lastName, :email, :passHash)");
                                 $stmt -> bindParam("firstName",$firstName);
                                 $stmt -> bindParam("lastName",$lastName);
                                 $stmt -> bindParam("email",$email);
