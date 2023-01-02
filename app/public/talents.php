@@ -25,9 +25,9 @@ require "db_connection/connection.php";
 	<sub-section id="mainbody">
 		<h2>Talents</h2>
 
-		<form method="GET">
+		<form method="GET" action="talents.php">
 			<label for="talents" class="label">Talent Categories<br></label>
-			<select name="talents" id="talents">
+			<select name="talent" id="talents">
 				<option name="talent"><a href="talents.php?talent=singers">Singers</a></option>
 				<option name="talent"><a href="talents.php?talent=dancers">Dancers</a></option>
 				<option name="talent"><a href="talents.php?talent=magicians">Magicians</a></option>
@@ -47,26 +47,23 @@ require "db_connection/connection.php";
             $outputs->bindParam(":talent", $_GET["talent"]);
             $outputs->execute();
             while($output = $outputs->fetch()){
-                generate_portfolio("", $output["first_name"], $output["last_name"], "Singers",$output["description"], $output["price_per_hour"], "not available");
+                generate_portfolio("", $output["first_name"], $output["last_name"], $output["talent"] ,$output["description"], $output["price_per_hour"], "not available");
             }
         }
-//        else{
-//            $singers = $db->prepare('SELECT * FROM Talent WHERE talent = "Singers"');
-//            $singers->execute();
-//            while($singer = $singers->fetch()){
-//                if ($singer["from_date_absent"] == NULL AND $singer["to_date_absent"] == NULL) {
-//                    generate_portfolio("", $singer["first_name"], $singer["last_name"], "Singers", $singer["description"], $singer["price_per_hour"], "not available");
-//                }
-//            }
+        else{
+            $singers = $db->prepare('SELECT * FROM Talent WHERE talent = "Singers"');
+            $singers->execute();
+            while($singer = $singers->fetch()){
+                if ($singer["from_date_absent"] == NULL AND $singer["to_date_absent"] == NULL) {
+                    generate_portfolio("", $singer["first_name"], $singer["last_name"], "Singers", $singer["description"], $singer["price_per_hour"], "not available");
+                }
+            }
 
-        //}
+        }
         echo "</div>";
         ?>
 
 
-		<div>
-			<a href="#"><center>Next ></center></a>
-		</div>
     </sub-section>
 </main>
 
