@@ -8,7 +8,7 @@ if(!isset($_SESSION["tLogin"])){ #Redirects to login if not logged in
 include "components/header.php";
 
 //this takes the session talent_id from the login page
-$talent_id = $_SESSION['talent_id'];
+$talent_id = $_SESSION['id'];
 
 ?>
 
@@ -16,7 +16,7 @@ $talent_id = $_SESSION['talent_id'];
     <?php 
     require("connection.php");
 
-    $query = "SELECT * FROM Talent WHERE talent_id = ?";
+    $query = "SELECT * FROM Talent WHERE id = ?";
     $stmt = $dbhandler ->prepare($query);
     $stmt -> bindparam(1, $talent_id, PDO::PARAM_INT);
     $stmt -> execute();

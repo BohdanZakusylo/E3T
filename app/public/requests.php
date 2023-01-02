@@ -54,5 +54,4 @@ else {
 
 <?php
     include "components/footer.php";
-
 ?>

@@ -41,13 +41,13 @@ catch(Exception $ex){
             <h3>
                 <?php
                 $Admin_ID = $_COOKIE['user_id'];//Shows the name of the current admin.
-                $query = "SELECT * FROM admin where Admin_ID = ?";
+                $query = "SELECT * FROM User where user_id = ?";
                 $stmt = $dbHandler->prepare($query);
                 $stmt -> bindparam(1, $Admin_ID, PDO::PARAM_INT);
                 $stmt->execute();
 
                 $res = $stmt -> fetch(PDO::FETCH_ASSOC);
-                echo $res['FirstName'] . " " . $res['LastName'];
+                echo $res['first_name'] . " " . $res['last_name'];
                 ?>
             </h3>
         </div>
