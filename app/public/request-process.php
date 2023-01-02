@@ -1,6 +1,6 @@
 
 <?php
-    require "db_connection/connection.php";
+    include "db_connection/connection.php";
     if (!empty($_GET)){
         $outputs = $db->prepare("SELECT  first_name, last_name, talent, email, description FROM Requests WHERE request_id = :request_id");
         $outputs->bindParam(":request_id", $_GET["id"]);
@@ -18,7 +18,8 @@
             $delete->bindParam(":id", $_GET["id"]);
             $delete->execute();
         }
+        echo "This talent has been accepted. Thank you!";
+        echo "<a href='requests.php'>Go back</a>";
     }
-    header('Location: requests.php');
-
+    
 ?>
