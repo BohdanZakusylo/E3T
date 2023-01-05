@@ -1,19 +1,15 @@
 <?php
 session_start();
 
-try{
-    $dbHandler = new PDO("mysql:host=mysql;dbname=E3T;charset=utf8","root","qwerty"); #Initialize DB connection
-}
-catch(Exception $err){
-    echo "<p class='error'>$err</p>";
-}
+include "db_connection/connection.php";
+
 
 if($_SERVER["REQUEST_METHOD"]=="POST" AND $_GET["login"]==="admin"){
     $email = filter_input(INPUT_POST,"email",FILTER_VALIDATE_EMAIL); #Get the email and password from the form
     $pass = filter_input(INPUT_POST,"password",FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     try{
-        $stmt = $dbHandler -> prepare("SELECT user_id, pass_hash FROM User WHERE email = :email"); #Tries to find email in DB
+        $stmt = $db -> prepare("SELECT user_id, pass_hash FROM User WHERE email = :email"); #Tries to find email in DB
         $stmt -> bindParam("email",$email,PDO::PARAM_STR);
         $stmt -> execute();
         $queryResult = $stmt -> fetchAll();
@@ -47,7 +43,7 @@ elseif($_SERVER["REQUEST_METHOD"]=="POST" AND $_GET["login"]==="talent"){
     $pass = filter_input(INPUT_POST,"password",FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     try{
-        $stmt = $dbHandler -> prepare("SELECT id, password FROM Talent WHERE email = :email"); #Tries to find email in DB
+        $stmt = $db -> prepare("SELECT id, password FROM Talent WHERE email = :email"); #Tries to find email in DB
         $stmt -> bindParam("email",$email,PDO::PARAM_STR);
         $stmt -> execute();
         $queryResult = $stmt -> fetchAll();

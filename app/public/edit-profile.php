@@ -3,6 +3,9 @@
 $cssFile = "edit-profile";
 $pageTitle = "edit-profile.php";
 include ("components/header.php");
+include "db_connection/connection.php";
+
+#TODO change the setAttriburte statement
 
     try{
         $dbHandler = new PDO("mysql:host=mysql;dbname=E3T;charset=utf8","root","qwerty"); 

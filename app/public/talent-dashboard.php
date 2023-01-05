@@ -14,10 +14,10 @@ $talent_id = $_SESSION['id'];
 
 <body>
     <?php 
-    require("connection.php");
+    include "db_connection/connection.php";
 
     $query = "SELECT * FROM Talent WHERE id = ?";
-    $stmt = $dbhandler ->prepare($query);
+    $stmt = $db ->prepare($query);
     $stmt -> bindparam(1, $talent_id, PDO::PARAM_INT);
     $stmt -> execute();
 
