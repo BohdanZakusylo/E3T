@@ -30,7 +30,9 @@ main {
 
 h1 {
     font-size: 60px ;
-
+}
+br{
+	margin-bottom: 20px;
 }
 
 #subTitle {
@@ -65,7 +67,18 @@ h1 {
 }
 
 @media screen and (max-width:812px){
-	.textBanner h1{
+	h1{
 		font-size: 25px;
+	}
+	br{
+		margin-bottom: 0;
+	}
+	p{
+		font-size: 16px;
+	}
+	#button{
+		height:28px;
+		width: 127px; 
+		font-size: 
 	}
 }

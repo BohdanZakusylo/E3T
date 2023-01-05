@@ -4,7 +4,6 @@ $cssFile = "login";
 $pageTitle = "login";
 include "components/header.php";
 ?>
-
 <main>
     <div id="normal_login">
         <form action="process-login.php?login=talent" method="POST">
@@ -23,7 +22,7 @@ include "components/header.php";
             }
             ?>
             <p>
-                <label for="email">Email:</label><br>
+                <label for="email" class="email">Email:</label><br>
                 <input type="email" id="email" name="email"><br>
             </p>
             <p>
