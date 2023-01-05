@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 try{
     $dbHandler = new PDO("mysql:host=mysql;dbname=E3T;charset=utf8","root","qwerty"); #Initialize DB connection
 }

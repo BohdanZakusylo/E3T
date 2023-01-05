@@ -112,7 +112,16 @@ require "db_connection/connection.php";
         <label class="label_1" for="email_address">Email Address:<span class="error">* <?php echo $emailAddressErr;?></label><br>
         <input type="email" name="email_address" id="email_address" placeholder="Enter your email address here"><br>
         <label class="label_1" for="talent">Talent<span class="error">* <?php echo $talentErr;?></label><br>
-        <input type="text" name="talent" id="talent" placeholder="Enter your talent here"><br>
+        <select id="talent" name="talent">
+            <option value="default" selected disabled>Choose your talent</option>
+            <option value="singer">Singer</option>
+            <option value="dancer">Dancer</option>
+            <option value="actor">Actor</option>
+            <option value="dj">DJ</option>
+            <option value="magician">Magician</option>
+            <option value="comedian">Comedian</option>
+            <option value="juggler">Juggler</option>
+        </select>
         <label class="label_1" for="description">Give a description of what you do<span class="error">* <?php echo $descriptionErr;?></label><br>
         <textarea name="description" id="description" placeholder="Description..."></textarea><br>
         <p>

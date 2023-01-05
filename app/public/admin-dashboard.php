@@ -11,6 +11,7 @@ if(!isset($_SESSION["aLogin"])){ #Redirects to log in if not logged in
 
 include "components/header.php";
 
+
 try{
     $dbHandler = new PDO("mysql:host=mysql;dbname=E3T;charset=utf8","root","qwerty"); #Initialize DB connection
 }
@@ -41,7 +42,7 @@ catch(Exception $ex){
             <h3>
                 <?php
                 $Admin_ID = $_COOKIE['user_id'];//Shows the name of the current admin.
-                $query = "SELECT * FROM User where user_id = ?";
+                $query = "SELECT * FROM user where user_id = ?";
                 $stmt = $dbHandler->prepare($query);
                 $stmt -> bindparam(1, $Admin_ID, PDO::PARAM_INT);
                 $stmt->execute();
@@ -59,8 +60,13 @@ catch(Exception $ex){
                     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                         if ($_POST["submit"] == "Register talent"){ // Registration of new talents
                             $err_count = 0;
-                            if (!$stage_name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS)){//Input verification
-                                echo "<p class='error'>Pls enter a Stage name</p>";
+                            if (!$first_name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS)){//Input verification
+                                echo "<p class='error'>Pls enter a First Name</p>";
+                                $err_count++;
+                            }
+
+                            if (!$last_name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS)){//Input verification
+                                echo "<p class='error'>Pls enter a Last Name</p>";
                                 $err_count++;
                             }
 
@@ -107,16 +113,23 @@ catch(Exception $ex){
                                 $err_count++;
                             }
 
+                            if (!$description = filter_input(INPUT_POST, "description", FILTER_SANITIZE_SPECIAL_CHARS)){//Input verification
+                                echo "<p class='error'>Pls enter a Description</p>";
+                                $err_count++;
+                            }
+
                             $pass_hash = password_hash($password, PASSWORD_BCRYPT);
 
                             if ($err_count === 0){
                                 try {//Registers new talent if no error
-                                    $query = "INSERT INTO talents (`stage_name`, `talent`, `email`, `password`, `price`) VALUES (:stage_name, :talent, :email, :pass_hash, :price)";
+                                    $query = "INSERT INTO talent (`first_name`,`last_name`, `talent`, `email`, `password`,`description`, `price_per_hour`) VALUES (:first_name,:last_name, :talent, :email, :pass_hash, :description, :price)";
                                     $stmt_1 = $dbHandler->prepare($query);
-                                    $stmt_1->bindParam("stage_name", $stage_name);
+                                    $stmt_1->bindParam("first_name", $first_name);
+                                    $stmt_1->bindParam("last_name", $last_name);
                                     $stmt_1->bindParam("talent", $talent_radio);
                                     $stmt_1->bindParam("email", $email);
                                     $stmt_1->bindParam("pass_hash", $pass_hash);
+                                    $stmt_1->bindParam("description", $description);
                                     $stmt_1->bindParam("price", $price);
                                     $stmt_1->execute();
                                     echo "<p class='success'>Talent registered successfully</p>";
@@ -131,7 +144,9 @@ catch(Exception $ex){
                     }
                     ?>
                 <form class="form_register" method="POST" action="admin-dashboard.php">
-                    <label for="name">Name/Stage name</label><br>
+                    <label for="name">First Name</label><br>
+                    <input class="input_text" type="text" name="name" id="name"><br>
+                    <label for="name">Last Name</label><br>
                     <input class="input_text" type="text" name="name" id="name"><br>
                     <label for="talent">Talent</label><br>
                     <div class="radiob">
@@ -147,8 +162,10 @@ catch(Exception $ex){
                     <input class="input_text" type="email" name="email" id="email"><br>
                     <label for="password">Password</label><br>
                     <input class="input_text" type="password" name="password" id="password"><br>
-                    <label for="price">Price in Euro</label><br>
+                    <label for="price">Price per hour (&euro;)</label><br>
                     <input class="input_text" type="number" name="price" id="price"><br>
+                    <label for="description">Description</label><br>
+                    <input class="input_text" type="text" name="description" id="description"><br>
                     <input type="submit" name="submit" value="Register talent">
                 </form>
             </div>
@@ -166,7 +183,7 @@ catch(Exception $ex){
                             echo "<p class='error'>Enter the email address of talent to delete</p>";
                         }
 
-                        $query_2 = "SELECT `id` FROM talents where `email` = :email_delete";
+                        $query_2 = "SELECT `id` FROM talent where `email` = :email_delete";
                         $stmt_2 = $dbHandler->prepare($query_2);
                         $stmt_2->bindParam("email_delete", $email_delete);
                         $stmt_2->execute();
@@ -174,7 +191,7 @@ catch(Exception $ex){
                         foreach ($result as $results){
                             if ($_POST["submit"] = "Remove" == TRUE){
                                 try {
-                                    $query_3 = "DELETE FROM talents where email = :email_delete";
+                                    $query_3 = "DELETE FROM talent where email = :email_delete";
                                     $stmt_3 = $dbHandler->prepare($query_3);
                                     $stmt_3->bindParam("email_delete", $email_delete);
                                     $stmt_3->execute();
