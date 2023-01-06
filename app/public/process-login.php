@@ -15,6 +15,7 @@ catch(Exception $err){
 >>>>>>> 15881c320b72ee66a0a74915c2884e9ff89de17a
 
 if($_SERVER["REQUEST_METHOD"]=="POST" AND $_GET["login"]==="admin"){
+if($_SERVER["REQUEST_METHOD"]=="POST" AND $_GET["login"]==="admin"){
     $email = filter_input(INPUT_POST,"email",FILTER_VALIDATE_EMAIL); #Get the email and password from the form
     $pass = filter_input(INPUT_POST,"password",FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
