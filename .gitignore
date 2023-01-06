@@ -1,0 +1,7 @@
+app/.DS_Store
+.DS_Store
+custom.php.ini
+docker-compose.yaml
+nginx.conf
+nginx.dockerfile
+db_connection/*
