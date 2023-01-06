@@ -42,7 +42,7 @@ catch(Exception $ex){
             <h3>
                 <?php
                 $Admin_ID = $_COOKIE['user_id'];//Shows the name of the current admin.
-                $query = "SELECT * FROM user where user_id = ?";
+                $query = "SELECT * FROM User where user_id = ?";
                 $stmt = $dbHandler->prepare($query);
                 $stmt -> bindparam(1, $Admin_ID, PDO::PARAM_INT);
                 $stmt->execute();
@@ -80,7 +80,7 @@ catch(Exception $ex){
                             }
                             else{
                                 try {
-                                    $query_1 = "SELECT id FROM talent WHERE email = :email"; //Checks if the email exists in the database
+                                    $query_1 = "SELECT id FROM Talent WHERE email = :email"; //Checks if the email exists in the database
                                     $stmt_1 = $dbHandler->prepare($query_1);
                                     $stmt_1->bindParam(":email", $email);
                                     $stmt_1->execute();
@@ -122,7 +122,7 @@ catch(Exception $ex){
 
                             if ($err_count === 0){
                                 try {//Registers new talent if no error
-                                    $query = "INSERT INTO talent (`first_name`,`last_name`, `talent`, `email`, `password`,`description`, `price_per_hour`) VALUES (:first_name,:last_name, :talent, :email, :pass_hash, :description, :price)";
+                                    $query = "INSERT INTO Talent (`first_name`,`last_name`, `talent`, `email`, `password`,`description`, `price_per_hour`) VALUES (:first_name,:last_name, :talent, :email, :pass_hash, :description, :price)";
                                     $stmt_1 = $dbHandler->prepare($query);
                                     $stmt_1->bindParam("first_name", $first_name);
                                     $stmt_1->bindParam("last_name", $last_name);
@@ -176,29 +176,31 @@ catch(Exception $ex){
                 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                     if ($_POST["submit"] == "Remove"){
                         $err_count = 0;
-                        if (!$name_delete = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS)){//Input verification
+                        if (!$name_delete = filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_SPECIAL_CHARS)){//Input verification
                             echo "<p class='error'>Enter the name of talent to delete</p>";
                         }
                         if (!$email_delete = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL)){//Input verification
                             echo "<p class='error'>Enter the email address of talent to delete</p>";
                         }
 
-                        $query_2 = "SELECT `id` FROM talent where `email` = :email_delete";
+                        $query_2 = "SELECT `id` FROM Talent where `email` = :email_delete && `last_name` = :name_delete";
                         $stmt_2 = $dbHandler->prepare($query_2);
                         $stmt_2->bindParam("email_delete", $email_delete);
+                        $stmt_2->bindParam("name_delete", $name_delete);
                         $stmt_2->execute();
                         $result = $stmt_2->fetchAll(PDO::FETCH_ASSOC);
                         foreach ($result as $results){
                             if ($_POST["submit"] = "Remove" == TRUE){
                                 try {
-                                    $query_3 = "DELETE FROM talent where email = :email_delete";
+                                    $query_3 = "DELETE FROM Talent where email = :email_delete && `last_name` = :name_delete";
                                     $stmt_3 = $dbHandler->prepare($query_3);
                                     $stmt_3->bindParam("email_delete", $email_delete);
+                                    $stmt_3->bindParam("name_delete", $name_delete);
                                     $stmt_3->execute();
                                     echo "<p class='success'>Talent deleted</p>";
                                 }
                                 catch (Exception $exce){
-                                    echo "<p class='error'>Could not delete talent account</p>";
+                                    echo "<p class='error'>Could not delete talent account</p>".$exce->getMessage();
                                 }
                             }
                             else{
@@ -209,8 +211,8 @@ catch(Exception $ex){
                 }
                 ?>
                 <form class="form_delete" method="POST" action="admin-dashboard.php">
-                    <label for="stage_name">Name/Stage name</label><br>
-                    <input class="input_text" type="text" name="name" id="stage_name"><br>
+                    <label for="stage_name">Last name</label><br>
+                    <input class="input_text" type="text" name="lastname" id="stage_name"><br>
                     <label for="email_delete">Email</label><br>
                     <input class="input_text" type="email" name="email" id="email_delete"><br>
                     <input type="submit" name="submit" value="Remove">

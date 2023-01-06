@@ -4,10 +4,7 @@ $pageTitle = "E3T";
 include "components/header.php";
 
 include("db_connection/connection.php");
-try {
-    $cssFile = "index";
-    $pageTitle = "E3T";
-    require "db_connection/connection.php";
+
     try {
         $query = "SELECT * FROM Events";
         $stmt = $db->prepare($query);
@@ -16,10 +13,6 @@ try {
         }
     catch(PDOException $ex){
         echo "$ex";
-    }
-    }
-catch (PDOException $e) {
-    echo "Couldn't fetch data". $e->getMessage();
     }
     ?>
 
@@ -33,7 +26,7 @@ catch (PDOException $e) {
                                     <p>Discover talents and organise events in Emmen and<br> surroundings</p>
                                 </div>
                                     <div id="button">
-                                        <a href="events.php"><b>Discover Talents</b></a>
+                                        <a href="talents.php"><b>Discover Talents</b></a>
                                     </div>
                         </div>
 
@@ -70,7 +63,7 @@ catch (PDOException $e) {
         </div>';
 }
     }else {
-        echo "couldn't load events";
+        echo "<p class='error'>couldn't load events</p>";
     }
 ?>
         </div>

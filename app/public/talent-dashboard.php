@@ -15,16 +15,16 @@ include "components/header.php";
 
 //this takes the session talent_id from the login page
 $talent_id = $_SESSION['id'];
-$talent_id = $_SESSION['id'];
+
 
 ?>
 
 <body>
     <?php 
-    include "db_connection/connection.php";
+    require_once ("db_connection/connection.php");
 
-    $query = "SELECT * FROM Talent WHERE talent_id = ?";
-    $stmt = $dbhandler ->prepare($query);
+    $query = "SELECT * FROM Talent WHERE id = ?";
+    $stmt = $db ->prepare($query);
     $stmt -> bindparam(1, $talent_id, PDO::PARAM_INT);
     $stmt -> execute();
 

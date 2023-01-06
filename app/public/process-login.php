@@ -20,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST" AND $_GET["login"]==="admin"){
     if($queryResult){  #Valid email
         $passHash = $queryResult[0][1]; #Password hash retrieved from DB
 
-        if(password_verify($pass,$passHash)){ # Verifies user password against retrieved hash
+        if((password_verify($pass, $passHash))){ # Verifies user password against retrieved hash
             $_SESSION["aLogin"] = true;
             setcookie("user_id",$queryResult[0][0],time()+10000);
             header("Location: admin-dashboard.php");
@@ -54,7 +54,7 @@ elseif($_SERVER["REQUEST_METHOD"]=="POST" AND $_GET["login"]==="talent"){
     if($queryResult){  #Valid email
         $passHash = $queryResult[0][1]; #Password hash retrieved from DB
 
-        if(password_verify($pass,$passHash)){ # Verifies user password against retrieved hash
+        if((password_verify($pass, $passHash))){ # Verifies user password against retrieved hash
             $_SESSION["tLogin"] = true;
             setcookie("user_id",$queryResult[0][0],time()+10000);
             header("Location: talent-dashboard.php");

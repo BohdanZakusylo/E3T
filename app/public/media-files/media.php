@@ -2,7 +2,7 @@
 
 session_start();
 
-$talent_id = $_SESSION['talent_id'];
+$talent_id = $_SESSION['id'];
 
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
