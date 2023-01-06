@@ -1,6 +1,5 @@
 <?php
 session_start();
-session_start();
 $cssFile = "login";
 $pageTitle = "login";
 include "components/header.php";
