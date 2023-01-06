@@ -1,0 +1,118 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: Roboto, sans-serif;
+}
+
+main {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+}
+
+section {
+	grid-column: 1/13;
+	background-color: #2E307A;
+	height: 200px;
+}
+
+.dashboard {
+    margin: 0 auto;
+    color: white;
+    text-align: center;
+    padding-top: 60px;
+    font-size: 60px;
+    letter-spacing: 10px;
+}
+
+
+.profile {
+    margin-left: 130px;
+    z-index: 2;
+    margin-top: -80px;
+    height: 276px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.profile div {
+    width: 230px;
+    height: 276px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.profile_name h3 b {
+    font-size: 40px;
+    color:black;
+
+}
+
+
+.profile_name h4, h2 {
+    margin-top: 20px;
+    color: #2E307A;
+    font-weight: lighter;
+	font-size: 22px;
+}
+
+.profile_pic img {
+    height: 276px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2)
+}
+
+.profile-align {
+    display: flex;
+    flex-direction: row;
+    align-items:flex-end;
+}
+
+
+input[type=text]{
+	width: 407px;
+	height: 32px;
+	color: #2E307A;
+	border-color: #2E307A;
+}
+
+
+.custom-file-upload {
+    width: 440px;
+    height: 70px;
+    border-radius:8px;
+    color: white;
+    background-color: #2E307A;
+    text-align: center;
+    font-size: 18px;
+    padding: 20px;  
+    
+    
+  }
+
+
+
+
+input[name="description"] {
+    width: 1500px;
+    height: 222px;
+    border-radius: 8px;
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+input[type=submit] {
+    background-color: #ED9275;
+  border-radius: 8px;
+  color: white;
+  padding: 10px 18px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 18px;
+  margin:10px auto;
+}
+
