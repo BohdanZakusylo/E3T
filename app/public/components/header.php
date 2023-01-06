@@ -14,8 +14,8 @@
 </head>
 <body>
 <header>
-    <a href="../index.php"><img src='../img/logo.png' /></a>
-	<a href=""><img id="menu_b" src="../img/menu_button.jpg" /></a>
+    <a href="index.php"><img src='img/logo.png' /></a>
+	<a href=""><img id="menu_b" src="img/menu_button.jpg" /></a>
     <ul>
         <li><a href='talents.php' class='underline'>Talents</a></li>
         <li><a href='events.php' class='underline'>Events</a></b></li>
