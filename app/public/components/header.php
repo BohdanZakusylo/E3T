@@ -17,9 +17,9 @@
     <a href="../index.php"><img src='../img/logo.png' /></a>
 	<a href=""><img id="menu_b" src="../img/menu_button.jpg" /></a>
     <ul>
-        <li><a href='../talents.php' class='underline'>Talents</a></li>
-        <li><a href='../events.php' class='underline'>Events</a></b></li>
-        <li><div id='login'><a href='../login.php' id='a-color'>Login</a></div></li>
+        <li><a href='talents.php' class='underline'>Talents</a></li>
+        <li><a href='events.php' class='underline'>Events</a></b></li>
+        <li><div id='login'><a href='login.php' id='a-color'>Login</a></div></li>
     </ul>
 </header>
 
