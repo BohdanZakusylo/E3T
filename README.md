@@ -33,6 +33,7 @@ E3T is an organization focused on event management, and they have expressed a mo
 ## Structure
 ```
 1. .idea
+    - README.md
     - .gitgnore
     - E3T.iml
     - dataSources.xml
@@ -93,7 +94,7 @@ E3T is an organization focused on event management, and they have expressed a mo
                                 - swiper-bundle.min.js
                                 - media-files
                                     - profile-img.php
-                                        database
+                                       - database
                                             - E3T.sql
 3. components
     - header.php
