@@ -7,12 +7,12 @@ This project was commissioned by EvenTTalentT, a new event- and talent-managemen
 E3T is an organization focused on event management, and they have expressed a motivation to facilitate new events in the Emmen area, their profile also includes private events like weddings or birthday parties. The other branch of the agency is the tasked with the discovery and recruitment of talented individuals, providing them with a contract and leasing them to their own, or third-party events as performers. 
 
 ## Team members:
-* Bohdan Zakusylo - Team Leader
-* Ada Bilici - Secretary
-* Michael Ehiosumwen - Quality Control Checker
-* Peter Rubint - Server Manager
-* Gerald Atumah - Team Member
-* Ioan Mich - Team Member
+* **Bohdan Zakusylo** - Team Leader
+* **Ada Bilici** - Secretary
+* **Michael Ehiosumwen** - Quality Control Checker
+* **Peter Rubint** - Server Manager
+* **Gerald Atumah** - Team Member
+* **Ioan Mich** - Team Member
 
 ## Running
 ### Software
