@@ -32,95 +32,102 @@ E3T is an organization focused on event management, and they have expressed a mo
 
 ## Structure
 ```
-1. .idea
-    - README.md
-    - .gitgnore
-    - E3T.iml
-    - dataSources.xml
-    - modules.xml
-    - php.xml
-    - vcs.xml
-    - .DS_Store
-    - .env
-    - .swp
-    - custom.php.ini
-    - docker-compose.yaml
-    - nginx.conf
-    - nginx.dockerfile
-2. src
-        - calendar.php
-        - edit-profile.php
-        - admin-dashboard.php
-        - admin-login.php
-        - contact-us.php
-        - events.php
-        - index.php
-        - login.php
-        - process-login.php
-        - talent-dashboard.php
-        - talents.php
-        - change-password.php
-        - confirmation.php
-        - event-info.php
-        - process-login.php
-        - request-process.php
-        - requests.php
-        - manage_events.php
-            - css
-                - admin-dashboard.css
-                - admin-login.css
-                - contact-us.css
-                - edit-profile.css
-                - events.css
-                - global.css
-                - index.css
-                - login.css
-                - portfolio.css
-                - style.css
-                - swiper-bundle.min.css
-                - talent-dashboard.css
-                - talents.css
-                - change-password.css
-                - confiramtion.css
-                - event-info.css
-                - requests.css
-                    - img
-                        - logo.png
-                        - banner.png
-                        - favicon.ico
-                            - js
-                                - script.js
-                                - swiper-bundle.min.js
-                                - media-files
-                                    - profile-img.php
-                                       - database
-                                            - E3T.sql
-3. components
-    - header.php
-    - footer.php
-    - db_connection.php
-    - portfolio.php
+.idea
+    README.md
+    .gitgnore
+    E3T.iml
+    dataSources.xml
+    modules.xml
+    php.xml
+    vcs.xml
+    .DS_Store
+    .env
+    .swp
+    custom.php.ini
+    docker-compose.yaml
+    nginx.conf
+    nginx.dockerfile
+
+src
+    calendar.php
+    edit-profile.php
+    admin-dashboard.php
+    admin-login.php
+    contact-us.php
+    events.php
+    index.php
+    login.php
+    process-login.php
+    talent-dashboard.php
+    talents.php
+    change-password.php
+    confirmation.php
+    event-info.php
+    process-login.php
+    request-process.php
+    requests.php
+    manage_events.php
+    profile-img.php
+
+css
+    admin-dashboard.css
+    admin-login.css
+    contact-us.css
+    edit-profile.css
+    events.css
+    global.css
+    index.css
+    login.css
+    portfolio.css
+    style.css
+    swiper-bundle.min.css
+    talent-dashboard.css
+    talents.css
+    change-password.css
+    confiramtion.css
+    event-info.css
+    requests.css
+
+img
+    logo.png
+    banner.png
+    favicon.ico
+
+js
+    script.js
+    swiper-bundle.min.js
+
+database
+    E3T.sql
+
+components
+    header.php
+    footer.php
+    db_connection.php
+    portfolio.php
 
 ```
 
 ## Build with
+
+### Programming languages
 * PHP
 * HTML/CSS
 * JavaScript
-* NGINX
 
 ### Server Environment
 * [Proxmox Virtual Environment](https://www.proxmox.com/en/)
-* Windows Server
+* **Windows Server**
     - DHCP
     - Active Directory
-* Ubuntu Server
+* **Ubuntu Server**
     - Linux
     - Apache
     - MySQL
     - PHP
-* pfSense Firewall
-* Windows 10 Client
+* **pfSense Firewall**
+* **Windows 10 Client**
+* **NGINX**
 
 ## Copyright
  © 2023 E3T, Inc. All rights reserved.
