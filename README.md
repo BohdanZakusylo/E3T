@@ -16,13 +16,13 @@ E3T is an organization focused on event management, and they have expressed a mo
 
 ## Running
 ### Software
-* **XAMPP**
+* **XAMPP**__
     - `htdoc` directory
-* **Docker**
+* **Docker**__
     - open Command Prompt and run `docker-compose up` while in the root directory of this project. The port 80 will be exposed and accessible via the browser (http://localhost:80/).
-* **WAMP**
+* **WAMP**__
     - store files in the `WWW` directory
-* **phpMyAdmin**
+* **phpMyAdmin**__ 
     - access to database
 ### Reference software documentation
 * [XAMPP](https://www.apachefriends.org/docs/)
