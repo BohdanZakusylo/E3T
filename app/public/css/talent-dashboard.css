@@ -168,17 +168,24 @@ font-size: 15px;
   font-weight: 600;
 }
 
-.logout {
+.change {
    grid-column: 1/13;
    display: flex;
    flex-direction: row;
    justify-content: center;
+   margin-bottom: 20px;
 }
 
 .logout div .button {
-   padding: 5px;
+   padding: 7px;
 }
 
+
+.change button {
+   text-align: center;
+   width: 200px;
+   padding: 7px;
+}
 
 @media screen and (max-width: 393px){
    section{

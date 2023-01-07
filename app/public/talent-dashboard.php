@@ -119,11 +119,16 @@ $talent_id = $_SESSION['id'];
 
     </sub-section>
 
+    <div class="change">
     <form method="POST" action="" class="logout">
     <div>
             <button class="button" type="submit" name="logout">Logout</a></button>
     </div>
+        </form>
     
+    <div>
+            <button class="button" type="submit" name="changepw"><a href="change-password.php">Change Password</a></button>
+    </div>
 </main>
 </body>
 
