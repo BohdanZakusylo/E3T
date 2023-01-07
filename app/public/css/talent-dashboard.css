@@ -94,13 +94,28 @@ a:hover {
 }
 
 .description {
-   width: 80%;
+   width: 70%;
    border-radius: 8px;
    background-color: white;
    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
    padding: 10px;
    margin: 30px auto;
 } 
+
+.description h4 {
+   font-size: 20px;
+   background-color: #2E307A;
+   border-radius: 5px;
+   width: 100%;
+   margin: 0 auto 20px;
+   padding: 10px;
+   color: white;
+}
+
+.describe {
+   font-size: 16px;
+   color: #2E307A;
+}
 
 .media-container {
    display: flex;

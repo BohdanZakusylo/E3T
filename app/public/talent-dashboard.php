@@ -72,7 +72,7 @@ $talent_id = $_SESSION['id'];
 <!-- this is for the description  -->
 <div class="description">
     <h4>Description</h4>
-    <p><?= $value['description'] ?></p>
+    <p class="describe"><?= $value['description'] ?></p>
 </div>
 
 
