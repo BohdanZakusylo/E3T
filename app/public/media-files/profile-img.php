@@ -1,6 +1,6 @@
 <?php
 session_start();
-$talent_id = $_SESSION['talent_id'];
+$talent_id = $_SESSION['id'];
 
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -21,9 +21,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
             if (in_array($uploadfiletype, $acceptedtype)) {
               
-                $query =  "UPDATE Talent SET profilepic_url = ? WHERE talent_id = ?";
-                require("../connection.php");
-                $stmt = $dbhandler->prepare($query);
+                $query =  "UPDATE Talent SET profilepic_url = ? WHERE id = ?";
+                require_once("../db_connection/connection.php");
+                $stmt = $db->prepare($query);
                 $stmt -> bindparam(1, $name, PDO::PARAM_STR);
                 $stmt -> bindparam(2, $talent_id, PDO::PARAM_INT);
                 $final = $stmt ->execute();

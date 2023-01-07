@@ -25,11 +25,17 @@ form{
 input[type=text],input[type=password],input[type=email]{
     width: 80%;
 }
+.email{
+    color: white;
+    font-size: 22px;
+    font-weight: lighter;
+    margin-right: 66%;
+}
 label{
     color: white;
     font-size: 22px;
     font-weight: lighter;
-    margin-right: 57%;
+    margin-right: 58%;
 
 }
 input[type=submit]{

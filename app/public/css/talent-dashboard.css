@@ -1,159 +1,234 @@
- General styling for the whole page
+General styling for the whole page
 
- * {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	font-family: Roboto, sans-serif;
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   font-family: Roboto, sans-serif;
 }
 
 p {
-    font-size: 15px;
+   font-size: 15px;
 } 
 
 h2 {
-    font-size: 25px;
+   font-size: 25px;
 }
 
 h1 {
-    font-size: 40px;
+   font-size: 40px;
 }
 
 main {
-	display: grid;
-	grid-template-columns: repeat(12, 1fr);
+   display: grid;
+   grid-template-columns: repeat(12, 1fr);
 }
 
 section {
-	grid-column: 1/13;
-	background-color: #2E307A;
-	height: 200px;
+   grid-column: 1/13;
+   background-color: #2E307A;
+   height: 200px;
 }
 
 .dashboard {
-    margin: 0 auto;
-    color: white;
-    text-align: center;
-    padding-top: 60px;
-    font-size: 60px;
-    letter-spacing: 10px;
+   margin: 0 auto;
+   color: white;
+   text-align: center;
+   padding-top: 60px;
+   font-size: 60px;
+   letter-spacing: 10px;
 }
 Sub-section {
-    grid-column: 1/13;
+   grid-column: 1/13;
 
 }
 
 .profile {
-    margin-left: 130px;
-    z-index: 2;
-    margin-top: -80px;
+   margin-left: 130px;
+   z-index: 2;
+   margin-top: -80px;
 }
 
 .profile_pic {
-    height: 276px;
-    border-radius: 15px;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+   height: 276px;
+   border-radius: 15px;
+   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .profile_pic div {
-    width: 230px;
-    height: 276px;
-    border-radius: 15px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+   width: 230px;
+   height: 276px;
+   border-radius: 15px;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
 }
 
 .profile-align {
-    display: flex;
-    flex-direction: row;
-    align-items:flex-end;
+   display: flex;
+   flex-direction: row;
+   align-items:flex-end;
 }
 
 .button {
-    background-color: #2E307A;
-    width: 100px;
-    padding: 3px;
-    border-radius: 2px;
-    border: none;
+   background-color: #2E307A;
+   width: 100px;
+   padding: 3px;
+   border-radius: 2px;
+   border: none;
 }
 
 button a {
-    color: white;
-    text-decoration: none;
+   color: white;
+   text-decoration: none;
 }
 
 a:hover {
-    text-decoration: none;
-    color: #ED9275;
+   text-decoration: none;
+   color: #ED9275;
 }
 
 .profile_name {
-    margin: 10px;
-    text-align: left;
+   margin: 10px;
+   text-align: left;
 }
 
 .description {
-    width: 80%;
-    border-radius: 8px;
-    background-color: white;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
-    padding: 10px;
-    margin: 30px auto;
+   width: 70%;
+   border-radius: 8px;
+   background-color: white;
+   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+   padding: 10px;
+   margin: 30px auto;
 } 
 
+.description h4 {
+   font-size: 20px;
+   background-color: #2E307A;
+   border-radius: 5px;
+   width: 100%;
+   margin: 0 auto 20px;
+   padding: 10px;
+   color: white;
+}
+
+.describe {
+   font-size: 16px;
+   color: #2E307A;
+}
+
 .media-container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 80%;
-    justify-content: center;
-    margin: 20px auto
+   display: flex;
+   flex-wrap: wrap;
+   width: 80%;
+   justify-content: center;
+   margin: 20px auto
 }
 
 .media {
-    width: 320px;
-    height: 198px;
-    margin: 10px;
+   width: 320px;
+   height: 198px;
+   margin: 10px;
 }
 
 .media a div {
-    width: 320px;
-    height: 198px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+   width: 320px;
+   height: 198px;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
 }
 
 #form_pic {
-    width: 30%;
+   width: 30%;
 } 
 
 .form-container {
-    margin: 10px auto 30px;
-    width: 70%;
-    background-color: #2E307A;
-    color: white;
-    padding: 10px 10px 30px;
+   margin: 10px auto 30px;
+   width: 70%;
+   background-color: #2E307A;
+   color: white;
+   padding: 10px 10px 30px;
 }
 
 #form {
-    margin: 0px auto;
-    display: flex;
-    justify-content: center;
+   margin: 0px auto;
+   display: flex;
+   justify-content: center;
 }
 
 #form-img {
- font-size: 15px;
+font-size: 15px;
 } 
 
 .form-button {
-   font-size: 15px; 
-   padding: 5px 8px;
-   color:#2E307A;
-   font-weight: 600;
+  font-size: 15px; 
+  padding: 5px 8px;
+  color:#2E307A;
+  font-weight: 600;
+}
+
+.change {
+   grid-column: 1/13;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   margin-bottom: 20px;
+}
+
+.logout div .button {
+   padding: 7px;
 }
 
 
+.change button {
+   text-align: center;
+   width: 200px;
+   padding: 7px;
+}
+
+@media screen and (max-width: 393px){
+   section{
+       height: 70px;
+   }
+   section div img{
+       height: 70px;
+       width: 70px;
+   }
+   .profile_pic{
+       height: 104px;
+       width: 103px;
+       margin-right: 140px;
+   }
+   .profile_pic img{
+       height: 104px;
+       width: 103px;
+   }
+   .description{
+       height: 200px;
+       width: 296px;
+   }
+   .description p{
+       font-size: 8px;
+   }
+   .profile-align{
+       flex-direction: column;
+       align-items: center;
+   }
+   .profile-align div button{
+       margin-right: 150px;
+   }
+   .profile_name h3{
+       margin-right: 140px;
+   }
+   .media-container .media{
+       height: 90px;
+       width: 146px;
+   }
+   .form-container{
+       display: none;
+   }
+}
 @media screen and (max-width: 393px){
 	section{
 		height: 70px;

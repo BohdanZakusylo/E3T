@@ -1,7 +1,9 @@
 <?php
+session_start();
 $cssFile = "contact-us";
 $pageTitle = "contact-us";
 include ("components/header.php");
+require "db_connection/connection.php";
 ?>
 
 <div id="body">
@@ -47,6 +49,17 @@ include ("components/header.php");
                             echo "<b>Description:</b> ".$description."<br>";
                             echo "We will contact you as soon as possiblie via your E-mail Address.";
                             echo "</div>";
+                            $full = explode(" ", $fullName);
+                            $first_name = $full[0];
+                            $last_name = $full[1];
+                            $input = $db->prepare("INSERT INTO Requests (first_name, last_name, email, talent, description) VALUES (:first_name, :last_name, :email, :talent, :description)");
+                            $input->bindParam(':first_name', $first_name);
+                            $input->bindParam(':last_name', $last_name);
+                            $input->bindParam(':email', $emailAddress);
+                            $input->bindParam(':talent', $talent);
+                            $input->bindParam(':description', $description);
+                            $input->execute();
+
                     }
                 }
             }
@@ -99,7 +112,16 @@ include ("components/header.php");
         <label class="label_1" for="email_address">Email Address:<span class="error">* <?php echo $emailAddressErr;?></label><br>
         <input type="email" name="email_address" id="email_address" placeholder="Enter your email address here"><br>
         <label class="label_1" for="talent">Talent<span class="error">* <?php echo $talentErr;?></label><br>
-        <input type="text" name="talent" id="talent" placeholder="Enter your talent here"><br>
+        <select id="talent" name="talent">
+            <option value="default" selected disabled>Choose your talent</option>
+            <option value="singer">Singer</option>
+            <option value="dancer">Dancer</option>
+            <option value="actor">Actor</option>
+            <option value="dj">DJ</option>
+            <option value="magician">Magician</option>
+            <option value="comedian">Comedian</option>
+            <option value="juggler">Juggler</option>
+        </select>
         <label class="label_1" for="description">Give a description of what you do<span class="error">* <?php echo $descriptionErr;?></label><br>
         <textarea name="description" id="description" placeholder="Description..."></textarea><br>
         <p>

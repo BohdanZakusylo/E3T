@@ -5,19 +5,26 @@ $pageTitle = "talent-dashboard";
 if(!isset($_SESSION["tLogin"])){ #Redirects to login if not logged in
     header("Location: login.php");
 }
+
+    if (isset($_POST['logout'])) {
+    session_destroy();
+    header("Location: login.php");
+}
+
 include "components/header.php";
 
 //this takes the session talent_id from the login page
-$talent_id = $_SESSION['talent_id'];
+$talent_id = $_SESSION['id'];
+
 
 ?>
 
 <body>
     <?php 
-    require("connection.php");
+    require_once ("db_connection/connection.php");
 
-    $query = "SELECT * FROM Talent WHERE talent_id = ?";
-    $stmt = $dbhandler ->prepare($query);
+    $query = "SELECT * FROM Talent WHERE id = ?";
+    $stmt = $db ->prepare($query);
     $stmt -> bindparam(1, $talent_id, PDO::PARAM_INT);
     $stmt -> execute();
 
@@ -65,7 +72,7 @@ $talent_id = $_SESSION['talent_id'];
 <!-- this is for the description  -->
 <div class="description">
     <h4>Description</h4>
-    <p><?= $value['description'] ?></p>
+    <p class="describe"><?= $value['description'] ?></p>
 </div>
 
 
@@ -112,7 +119,16 @@ $talent_id = $_SESSION['talent_id'];
 
     </sub-section>
 
+    <div class="change">
+    <form method="POST" action="" class="logout">
+    <div>
+            <button class="button" type="submit" name="logout">Logout</a></button>
+    </div>
+        </form>
     
+    <div>
+            <button class="button" type="submit" name="changepw"><a href="change-password.php">Change Password</a></button>
+    </div>
 </main>
 </body>
 

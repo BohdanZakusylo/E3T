@@ -4,9 +4,9 @@ $cssFile = "login";
 $pageTitle = "login";
 include "components/header.php";
 ?>
-
 <main>
     <div id="normal_login">
+        <form action="process-login.php?login=talent" method="POST">
         <form action="process-login.php?login=talent" method="POST">
             <h1 class="login">Login</h1>
             <?php 
@@ -22,8 +22,21 @@ include "components/header.php";
                 }
             }
             ?>
+            <?php 
+            if(isset($_GET["error"])){
+
+                if($_GET["error"]=="EM"){
+
+                    echo "<p class='error'>Invalid credentials!</p>";
+                }
+                if($_GET["error"]=="PW"){
+
+                    echo "<p class='error'>Invalid credentials!</p>";
+                }
+            }
+            ?>
             <p>
-                <label for="email">Email:</label><br>
+                <label for="email" class="email">Email:</label><br>
                 <input type="email" id="email" name="email"><br>
             </p>
             <p>

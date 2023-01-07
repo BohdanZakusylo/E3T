@@ -25,7 +25,7 @@ include "components/header.php";
             }
             ?>
             <p>
-                <label for="email">Email:</label><br>
+                <label for="email" class="email">Email:</label><br>
                 <input type="email" id="email" name="email" required><br>
             </p>
             <p>

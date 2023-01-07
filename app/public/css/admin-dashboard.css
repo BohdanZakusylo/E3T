@@ -112,10 +112,19 @@ input{
     font-size: 20px;
     margin-top: 20px;
 }
+input[type=submit]{
+    background-color: #ED9275;
+    border-radius: 5px;
+    color: white;
+}
 .error{
     color: red;
     font-size: 20px;
     font-family: Roboto;
 }
-
+.success{
+    color: green;
+    font-size: 20px;
+    font-family: Roboto;
+}
 

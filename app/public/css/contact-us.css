@@ -18,15 +18,19 @@
 	color: white;
 	background-color: #2E307A;
 	height: 244px;
-	padding-top: 5%;
+	padding-top: 3%;
 	padding-left: 9%;
 }
 .header_2_text{
 	font-size: 35px;
+	color: white;
+	font-weight: 500;
+	text-align: left;
 }
 .header_text{
 	font-size: 20px;
-	width: 55%;
+	width: 46%;
+	font-weight: 300;
 }
 
 
@@ -68,10 +72,17 @@ input[type=submit]{
 	margin-top: 2%;
 }.for_talent{
 	 font-size: 30px;
+	font-weight: 500;
  }
 .for_client{
 	font-size: 30px;
 	margin-left: 8%;
+}
+select{
+	width: 100%;
+	height: 32px;
+	color: #2E307A;
+	border-color: #2E307A;
 }
 .textarea_1{
 	width: 100%;
@@ -170,7 +181,7 @@ textarea{
 		flex-direction: column;
 		align-items: center;
 		padding-left: 0;
-		height: 135px;
+		height: auto;
 		text-align: center;
 	}
 	.header_text{
@@ -184,6 +195,9 @@ textarea{
 
 	}
 
+	select{
+		height: 21px;
+	}
 
 	#talent_form{
 		grid-column: 1/13;
@@ -214,9 +228,13 @@ textarea{
 	}
 	.for_talent{
 		font-size: 15px;
+		font-weight: bolder;
+		text-align: left;
 	}
 	.for_client{
 		font-size: 15px;
+		text-align: left;
+		font-weight: bolder;
 	}
 	input[type=submit]{
 		height: 23px;
