@@ -84,7 +84,6 @@ E3T is an organization focused on event management, and they have expressed a mo
                 - confiramtion.css
                 - event-info.css
                 - requests.css
-
                     - img
                         - logo.png
                         - banner.png
@@ -109,6 +108,19 @@ E3T is an organization focused on event management, and they have expressed a mo
 * HTML/CSS
 * JavaScript
 * NGINX
+
+### Server Environment
+* [Proxmox Virtual Environment](https://www.proxmox.com/en/)
+* Windows Server
+    - DHCP
+    - Active Directory
+* Ubuntu Server
+    - Linux
+    - Apache
+    - MySQL
+    - PHP
+* pfSense Firewall
+* Windows 10 Client
 
 ## Copyright
  © 2023 E3T, Inc. All rights reserved.
