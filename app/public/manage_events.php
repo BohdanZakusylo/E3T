@@ -1,6 +1,35 @@
 <?php
-
-
+	
+	if($_SERVER['REQUEST_METHOD']=='POST'){
+		// $event_name=filter_input(INPUT_POST, "name_event");
+		// $start_date=filter_input(INPUT_POST, "start_date");
+		// $end_date=filter_input(INPUT_POST, "end_date");
+		// $time=filter_input(INPUT_POST, "time");
+		// $place=filter_input(INPUT_POST, "place");
+		// $description=filter_input(INPUT_POST, "description");
+		// $performing_talent=filter_input(INPUT_POST, "performing_talent");
+	}
+	
+	if(isset($_GET["add"])){
+		if($_GET['add']=="true"){
+			try{
+				$db= new PDO("mysql:host=mysql;dbname=E3T;charset=UTF8", "root", "qwerty");
+				$query=$db->prepare("INSERT INTO Events VALUES(NULL, :event_name, :start_date, :end_date, :time, NULL, NULL, :place, :description, 0)");
+				
+				$query->bindParam(':event_name', $_REQUEST['name_event']);
+				$query->bindParam(':start_date', $_REQUEST['start_date']);
+				$query->bindParam(':end_date', $_REQUEST['end_date']);
+				$query->bindParam(':time', $_REQUEST['time']);
+				$query->bindParam(':place', $_REQUEST['place']);
+				$query->bindParam(':description', $_REQUEST['description']);
+				
+				
+				$query->execute();
+			}catch(Exception $ex){
+				echo $ex;
+			}
+		}
+	}
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +47,7 @@
 		<div class="main">
 			<div class="add_events">
 				<h2>Add new events</h2>
-				<form action="" method="POST">
+				<form action="manage_events.php?add=true" method="POST">
 					<div class="spacing">
 						<label class="label" for="name_event">Name of Event</label> <br>
 						<input type="text" name="name_event" class="input_text" required>
@@ -83,6 +112,5 @@
 			<a href="" class="back">Go back</a>
 		</div>
 		
-
 	</body>
 </html>
