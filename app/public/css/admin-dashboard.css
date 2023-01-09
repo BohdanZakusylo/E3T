@@ -154,5 +154,12 @@ select{
         color: red;
     }
 }
+.last_buttons{
+    display: flex;
+    justify-content: center;
+}
+.logout{
+    justify-items: center;
+}
 
 

@@ -10,8 +10,7 @@ if(!isset($_SESSION["aLogin"])){ #Redirects to log in if not logged in
     header("Location: admin-login.php");
 }
 
-include "components/header.php";
-
+include "components/header.php"
 
 try{
     $dbHandler = new PDO("mysql:host=mysql;dbname=E3T;charset=utf8","root","qwerty"); #Initialize DB connection
