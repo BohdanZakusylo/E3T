@@ -29,8 +29,8 @@ E3T is an organization focused on event management, and they have expressed a mo
 * **Docker**
     * clone the SSH of the project
     * open cmd and type:
-    `git clone [url]`
-    `cd [folder]`
+    `git clone {copied ssh link}`
+    `cd [folder path]`
     * run docker
     * open cmd and type:
     `docker-compose up`
