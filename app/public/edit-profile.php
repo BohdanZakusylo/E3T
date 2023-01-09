@@ -5,13 +5,18 @@ $pageTitle = "edit-profile.php";
 include ("components/header.php");
 include "db_connection/connection.php";
 
-#TODO change the setAttriburte statement
+if (!isset($_SESSION['tLogin'])) {
+    header("Location: login.php");
+}
+
+if (isset($_SESSION['upload'])) {
+    echo "Successfully Uploaded";
+    unset($_SESSION['upload']);
+}
 
     try{
         $dbHandler = new PDO("mysql:host=mysql;dbname=E3T;charset=utf8","root","qwerty"); 
         $dbHandler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Connection sucessful";
-        echo "<br>";
     }
     catch(Exception $ex){
         echo "<p class='error'>The following error occured: $ex</p>";
@@ -31,8 +36,6 @@ include "db_connection/connection.php";
 
     <?php
 
-        // I included this code, to get information from the talent-dashboard page using session 
-
     $talent_id = $_SESSION["id"];
 
     $query = "SELECT * FROM Talent WHERE id = ?";
@@ -46,6 +49,8 @@ include "db_connection/connection.php";
 
     $profilestore = "media-files/". $talent_id . "/profile_pic";
     $finalstore = $profilestore . "/" . $value['profilepic_url'];
+
+
     ?>
 <main>
 <section>
@@ -57,10 +62,10 @@ include "db_connection/connection.php";
 <sub-section>
    
 <div class="profile">
-           <div style="background-image: url('<?= $finalstore ?>');">
+           <div style="background-image: url('<?php echo $finalstore ?>');">
         </div>
     </div>
-
+<div class="main">
 <?php 
 
 
@@ -181,7 +186,7 @@ if(isset($_POST['description'])) {
 </div>
 
 </div>
-
+</div>
 
 </sub-section>
 
