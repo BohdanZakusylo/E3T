@@ -13,12 +13,12 @@ if(!isset($_SESSION["aLogin"])){ #Redirects to log in if not logged in
 include "components/header.php";
 
 
-//try{
-//    $dbHandler = new PDO("mysql:host=mysql;dbname=E3T;charset=utf8","root","qwerty"); #Initialize DB connection
-//}
-//catch(Exception $ex){
-//    echo "<p class='error'>The following error occurred: $ex</p>";
-//}
+try{
+    $dbHandler = new PDO("mysql:host=mysql;dbname=E3T;charset=utf8","root","qwerty"); #Initialize DB connection
+}
+catch(Exception $ex){
+    echo "<p class='error'>The following error occurred: $ex</p>";
+}
 
 
 ?>
