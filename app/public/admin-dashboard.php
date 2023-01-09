@@ -1,7 +1,7 @@
 <?php
 session_start();
 global $dbHandler;
-global $err_count_1;
+global $err_count;
 global $email_delete;
 $cssFile = "admin-dashboard";
 $pageTitle = "admin-dashboard";
@@ -13,12 +13,12 @@ if(!isset($_SESSION["aLogin"])){ #Redirects to log in if not logged in
 include "components/header.php";
 
 
-try{
-    $dbHandler = new PDO("mysql:host=mysql;dbname=E3T;charset=utf8","root","qwerty"); #Initialize DB connection
-}
-catch(Exception $ex){
-    echo "<p class='error'>The following error occurred: $ex</p>";
-}
+//try{
+//    $dbHandler = new PDO("mysql:host=mysql;dbname=E3T;charset=utf8","root","qwerty"); #Initialize DB connection
+//}
+//catch(Exception $ex){
+//    echo "<p class='error'>The following error occurred: $ex</p>";
+//}
 
 
 ?>
@@ -60,7 +60,7 @@ catch(Exception $ex){
         <?php
                 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                     if ($_POST["submit"] == "Register talent"){ // Registration of new talents
-                        $err_count_1 = 0;
+                        $err_count = 0;
                     }
                 }
                 ?>
@@ -72,13 +72,13 @@ catch(Exception $ex){
                     if ($_POST["submit"] == "Register talent") { // Registration of new talents
                         if (!$first_name = filter_input(INPUT_POST, "first_name", FILTER_SANITIZE_SPECIAL_CHARS)) {//Input verification
                             echo "<i class='error'>Enter a First Name!</i>";
-                            $err_count_1++;
+                            $err_count++;
                         }
                     }
                 }
                 ?>
             </span> <span class="error">*</span><br>
-            <input class="input_text" type="text" name="first_name" id="name" value="<?php if (isset($_POST['first_name'])){echo $_POST['first_name'];} ?>"><br>
+            <input class="input_text" type="text" name="first_name" id="name" value="<?php if ($err_count > 0){ if (isset($_POST['first_name'])){echo $_POST['first_name'];}} ?>"><br>
 
             <label for="name">Last Name</label>
             <span>
@@ -87,13 +87,13 @@ catch(Exception $ex){
                     if ($_POST["submit"] == "Register talent") { // Registration of new talents
                         if (!$last_name = filter_input(INPUT_POST, "last_name", FILTER_SANITIZE_SPECIAL_CHARS)) {//Input verification
                             echo "<i class='error'>Enter a last Name!</i>";
-                            $err_count_1++;
+                            $err_count++;
                         }
                     }
                 }
                 ?>
             </span><span class="error">*</span><br>
-            <input class="input_text" type="text" name="last_name" id="name" value="<?php if (isset($_POST['last_name'])){echo $_POST['last_name'];} ?>"><br>
+            <input class="input_text" type="text" name="last_name" id="name" value="<?php if ($err_count > 0){ if (isset($_POST['last_name'])){echo $_POST['last_name'];}} ?>"><br>
 
             <label for="talent">Talent</label>
             <span>
@@ -102,7 +102,7 @@ catch(Exception $ex){
                     if ($_POST["submit"] == "Register talent") { // Registration of new talents
                         if (empty($talent_radio = filter_input(INPUT_POST, "talent", FILTER_SANITIZE_SPECIAL_CHARS))){//Input verification
                             echo "<i class='error'>Choose a talent!</i>";
-                            $err_count_1++;
+                            $err_count++;
                         }
                     }
                 }
@@ -125,7 +125,7 @@ catch(Exception $ex){
                     if ($_POST["submit"] == "Register talent") { // Registration of new talents
                         if(!$email = filter_input(INPUT_POST,"email",FILTER_VALIDATE_EMAIL)){//Input verification
                             echo "<i class='error'>Enter a valid email!</i>";
-                            $err_count_1++;
+                            $err_count++;
                         }
                         else{
                             try {
@@ -135,7 +135,7 @@ catch(Exception $ex){
                                 $stmt_1->execute();
                                 if($result = $stmt_1 -> fetchColumn()){
                                     echo "<i class='error'>This email is already in use!</i>";
-                                    $err_count_1++;
+                                    $err_count++;
                                 }
                             }
                             catch (Exception $e){
@@ -145,7 +145,7 @@ catch(Exception $ex){
                 }
                 ?>
             </span><span class="error">*</span><br>
-            <input class="input_text" type="email" name="email" id="email" value="<?php if (isset($_POST['email'])){echo $_POST['email'];} ?>"><br>
+            <input class="input_text" type="email" name="email" id="email" value="<?php if ($err_count > 0){ if (isset($_POST['email'])){echo $_POST['email'];}} ?>"><br>
 
             <label for="password">Password</label>
             <span>
@@ -155,7 +155,7 @@ catch(Exception $ex){
                         $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);//Input verification
                         if (strlen($password) < 8){
                             echo "<i class='error'>The password must be at least 8 characters long!</i>";
-                            $err_count_1++;
+                            $err_count++;
                         }
                     }
                 }
@@ -171,17 +171,17 @@ catch(Exception $ex){
                         $price = filter_input(INPUT_POST, "price", FILTER_VALIDATE_INT);//Input verification
                         if (!is_numeric($price)){
                             echo "<i class='error'>Value must be numeric!</i>";
-                            $err_count_1++;
+                            $err_count++;
                         }
                         elseif (strlen($price) > 10000000){
                             echo "<i class='error'>The amount is too big, reduce it!</i>";
-                            $err_count_1++;
+                            $err_count++;
                         }
                     }
                 }
                 ?>
             </span><span class="error">*</span><br>
-            <input class="input_text" type="number" name="price" id="price" value="<?php if (isset($_POST['price'])){echo $_POST['price'];} ?>"><br>
+            <input class="input_text" type="number" name="price" id="price" value="<?php if ($err_count > 0){ if (isset($_POST['price'])){echo $_POST['price'];}} ?>"><br>
 
             <label for="description">Description</label>
             <span>
@@ -190,13 +190,13 @@ catch(Exception $ex){
                     if ($_POST["submit"] == "Register talent") { // Registration of new talents
                         if (!$description = filter_input(INPUT_POST, "description", FILTER_SANITIZE_SPECIAL_CHARS)){//Input verification
                             echo "<i class='error'>Enter a Description!</i>";
-                            $err_count_1++;
+                            $err_count++;
                         }
                     }
                 }
                 ?>
             </span><span class="error">*</span><br>
-            <input class="input_text" type="text" name="description" id="description" value="<?php if (isset($_POST['description'])){echo $_POST['description'];} ?>"><br>
+            <input class="input_text" type="text" name="description" id="description" value="<?php if ($err_count > 0){ if (isset($_POST['description'])){echo $_POST['description'];}} ?>"><br>
 
             <span>
                 <?php
@@ -204,7 +204,7 @@ catch(Exception $ex){
                 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                     if ($_POST["submit"] == "Register talent"){ // Registration of new talents
                     $pass_hash = password_hash($password, PASSWORD_BCRYPT);
-                    if ($err_count_1 === 0){
+                    if ($err_count === 0){
                         try {//Registers new talent if no error
                             $query = "INSERT INTO talent (`first_name`,`last_name`, `talent`, `email`, `password`,`description`, `price_per_hour`) VALUES (:first_name,:last_name, :talent, :email, :pass_hash, :description, :price)";
                             $stmt_1 = $dbHandler->prepare($query);
@@ -253,11 +253,12 @@ catch(Exception $ex){
                                 $stmt_5->bindParam("email_delete", $email_delete);
                                 $stmt_5->execute();
                                 $first_name_remove = $stmt_5->fetchAll(PDO::FETCH_ASSOC);
+                                if (!$first_name_delete = filter_input(INPUT_POST, "first_name_delete", FILTER_SANITIZE_SPECIAL_CHARS)) {//Input verification
+                                    echo "<i class='error'>Enter the first name of talent to delete</i>";
+                                    $err_count++;
+                                }
                                 foreach ($first_name_remove as $first_name_removed) {
-                                    if (!$first_name_delete = filter_input(INPUT_POST, "first_name_delete", FILTER_SANITIZE_SPECIAL_CHARS)) {//Input verification
-                                        echo "<i class='error'>Enter the first name of talent to delete</i>";
-                                        $err_count++;
-                                    } elseif ($first_name_delete != $first_name_removed) {
+                                     if ($first_name_delete != $first_name_removed) {
                                         echo "<i class='error'>Talent First name not found</i>";
                                         $err_count++;
                                     }
@@ -267,7 +268,7 @@ catch(Exception $ex){
                         ?>
                     </span><span class="error">*</span>
             <br>
-            <input class="input_text" type="text" name="first_name_delete" id="first_name_delete" value="<?php if (isset($_POST['first_name_delete'])){echo $_POST['first_name_delete'];} ?>"><br>
+            <input class="input_text" type="text" name="first_name_delete" id="first_name_delete" value="<?php if ($err_count > 0){ if (isset($_POST['first_name_delete'])){echo $_POST['first_name_delete'];}} ?>"><br>
 
             <label for="last_name_delete">Last Name</label>
             <span>
@@ -279,11 +280,12 @@ catch(Exception $ex){
                                 $stmt_6->bindParam("email_delete", $email_delete);
                                 $stmt_6->execute();
                                 $last_name_remove = $stmt_6->fetchAll(PDO::FETCH_ASSOC);
+                                if (!$last_name_delete = filter_input(INPUT_POST, "last_name_delete", FILTER_SANITIZE_SPECIAL_CHARS)) {//Input verification
+                                    echo "<i class='error'>Enter the last name of talent to delete</i>";
+                                    $err_count++;
+                                }
                                 foreach ($last_name_remove as $last_name_removed) {
-                                    if (!$last_name_delete = filter_input(INPUT_POST, "last_name_delete", FILTER_SANITIZE_SPECIAL_CHARS)) {//Input verification
-                                        echo "<i class='error'>Enter the last name of talent to delete</i>";
-                                        $err_count++;
-                                    } elseif ($last_name_delete != $last_name_removed) {
+                                    if ($last_name_delete != $last_name_removed) {
                                         echo "<i class='error'>Talent last name not found</i>";
                                         $err_count++;
                                     }
@@ -293,7 +295,7 @@ catch(Exception $ex){
                 ?>
             </span><span class="error">*</span>
             <br>
-            <input class="input_text" type="text" name="last_name_delete" id="last_name_delete" value="<?php if (isset($_POST['last_name_delete'])){echo $_POST['last_name_delete'];} ?>"><br>
+            <input class="input_text" type="text" name="last_name_delete" id="last_name_delete" value="<?php if ($err_count > 0){ if (isset($_POST['last_name_delete'])){echo $_POST['last_name_delete'];}} ?>"><br>
 
             <label for="email_delete">Email</label>
             <span>
@@ -310,7 +312,7 @@ catch(Exception $ex){
                 ?>
             </span><span class="error">*</span>
             <br>
-            <input class="input_text" type="email" name="email_delete" id="email_delete" value="<?php if (isset($_POST['email_delete'])){echo $_POST['email_delete'];} ?>"><br>
+            <input class="input_text" type="email" name="email_delete" id="email_delete" value="<?php if ($err_count > 0){ if (isset($_POST['email_delete'])){echo $_POST['email_delete'];}} ?>"><br>
             <span>
                 <?php
                 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -368,7 +370,7 @@ catch(Exception $ex){
                 }
                 ?>
             </span><span class="error">*</span><br>
-            <input class="input_text" type="text" name="firstName" id="first_name" value="<?php if (isset($_POST['firstName'])){echo $_POST['firstName'];} ?>"><br>
+            <input class="input_text" type="text" name="firstName" id="first_name" value="<?php if ($err_count > 0){ if (isset($_POST['firstName'])){echo $_POST['firstName'];}} ?>"><br>
 
             <label for="last_name">Last name</label>
             <span>
@@ -383,7 +385,7 @@ catch(Exception $ex){
                 }
                 ?>
             </span><span class="error">*</span><br>
-            <input class="input_text" type="text" name="lastName" id="last_name" value="<?php if (isset($_POST['lastName'])){echo $_POST['lastName'];} ?>"><br>
+            <input class="input_text" type="text" name="lastName" id="last_name" value="<?php if ($err_count > 0){ if (isset($_POST['lastName'])){echo $_POST['lastName'];}} ?>"><br>
 
             <label for="email_register">Email</label>
             <span>
@@ -414,7 +416,7 @@ catch(Exception $ex){
                 }
                 ?>
             </span><span class="error">*</span><br>
-            <input class="input_text" type="email" name="email_admin" id="email_register" value="<?php if (isset($_POST['email_admin'])){echo $_POST['email_admin'];} ?>"><br>
+            <input class="input_text" type="email" name="email_admin" id="email_register" value="<?php if ($err_count > 0) {if (isset($_POST['email_admin'])){echo $_POST['email_admin'];}} ?>"><br>
 
             <label for="password_register">Password</label>
             <span>
