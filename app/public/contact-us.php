@@ -129,7 +129,7 @@ require "db_connection/connection.php";
         </p>
     </form>
     
-    <form id="client_form" method="POST" action="contact-us.php" enctype="multipart/form-data">
+    <form id="client_form" method="POST" action="request-events-process.php" enctype="multipart/form-data">
         <div class="vertical_line">
             <h1 class="for_client">For clients</h1>
             <label class="label_2" for="full_name_2">Full name:<span class="error">* <?php echo $fullName2Err;?></label><br>
