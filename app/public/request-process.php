@@ -1,5 +1,8 @@
-
 <?php
+    if(!isset($_SESSION["aLogin"])){ #Redirects to log in if not logged in
+        header("Location: admin-login.php");
+    }
+
     include "db_connection/connection.php";
     if (!empty($_GET)){
         $outputs = $db->prepare("SELECT  first_name, last_name, talent, email, description FROM Requests WHERE request_id = :request_id");

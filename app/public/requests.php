@@ -1,4 +1,8 @@
 <?php
+
+    if(!isset($_SESSION["aLogin"])){ #Redirects to log in if not logged in
+        header("Location: admin-login.php");
+    }
     $cssFile = "requests";
     $pageTitle = "Requests";
     include "components/header.php";

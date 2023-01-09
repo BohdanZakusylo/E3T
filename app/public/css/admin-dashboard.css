@@ -14,10 +14,9 @@ label{
     margin-top: -40px;
 }
 .info h3{
-    font-family: Roboto;
+    font-family: Roboto, sans-serif;
     font-size: 35px;
-    margin: 0;
-    margin-top: 10px;
+    margin: 10px 0 0;
     color:#2e307a;
 }
 .photo{
@@ -28,7 +27,7 @@ label{
     width: 276px;
     height: 276px;
     border-radius: 10px;
-    box-shadow: 0px 5px 10px grey;
+    box-shadow: 0 5px 10px grey;
 }
 input{
     margin: 5px;
@@ -41,8 +40,7 @@ input{
 .input_text{
     width: 444px;
     height: 34px;
-    margin: 15px;
-    margin-left: 0;
+    margin: 15px 15px 15px 0;
 }
 
 .header{
@@ -57,7 +55,7 @@ input{
     text-align: center;
     padding: 10px;
     font-size: 30px;
-    font-family: Roboto;
+    font-family: Roboto, serif;
 }
 
 .new_talents{
@@ -65,7 +63,7 @@ input{
 }
 .delete_talent{
     padding: 15px;
-    font-family: Roboto;
+    font-family: Roboto, serif;
     font-size: 15px;
 }
 .delete_talent h2{
@@ -73,7 +71,7 @@ input{
     margin-bottom: 20px;
 }
 .new_talents h2{
-    font-family: Roboto;
+    font-family: Roboto, serif;
     font-size: 30px;
     margin-bottom: 20px;
 }
@@ -83,11 +81,11 @@ input{
 } 
  
 .radiob{
-    font-family: Roboto;
+    font-family: Roboto, serif;
     font-size: 15px;
 }
 .form_register{
-    font-family: Roboto;
+    font-family: Roboto, serif;
     font-size: 15px;
 }
 
@@ -95,7 +93,7 @@ input{
     background-color: #ed9275;
     border: 0;
     color: white;
-    font-family: Roboto;
+    font-family: Roboto, serif;
     width: 137px;
     height: 38px;
     border-radius: 5px;
@@ -105,7 +103,7 @@ input{
     background-color: #ed9275;
     border: 0;
     color: white;
-    font-family: Roboto;
+    font-family: Roboto, serif;
     width: 137px;
     height: 38px;
     border-radius: 5px;
@@ -117,14 +115,44 @@ input[type=submit]{
     border-radius: 5px;
     color: white;
 }
+.add_admin{
+    padding: 15px;
+    font-family: Roboto, serif;
+    font-size: 15px;
+}
+.add_admin h2{
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+select{
+    width: 444px;
+    height: 34px;
+    border: 0;
+    background-color: #D9D9D9;
+}
 .error{
     color: red;
-    font-size: 20px;
-    font-family: Roboto;
+    font-size: 15px;
+    font-family: Roboto, serif;
 }
 .success{
     color: green;
     font-size: 20px;
-    font-family: Roboto;
+    font-family: Roboto, serif;
 }
+.check{
+    animation-name: check;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@keyframes check {
+    from {
+        color: green
+    }
+    to {
+        color: red;
+    }
+}
+
 
