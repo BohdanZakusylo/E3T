@@ -98,6 +98,16 @@ $talent_id = $_SESSION['id'];
 
             } 
 
+            $extensions = array('mp4', 'mkv', '3gp', 'webm');
+            $videos = glob($path."*.{".implode(',',$extensions)."}",GLOB_BRACE);
+
+        foreach($videos as $video) {
+            echo '<div class="video">
+                <video controls src="'.$video.'" height="200px">
+            </div>';
+        }
+
+
             ?> 
 </div>
 
