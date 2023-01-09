@@ -13,8 +13,8 @@ include "components/header.php";
 <section>
 
 <div class="container">
-    <h2>Thank you for your submission!</h2>
-    <h3>Your details have been recieved and you'll be contacted via email</h3>
+    <h2>This talent has been accepted!</h2>
+    <h3>Thank you</h3>
 
     <div class="buttonpad">
             <button class="button" type="submit" name="logout"><a href="contact-us.php"> < Go back</a></button>
