@@ -20,10 +20,12 @@ E3T is an organization focused on event management, and they have expressed a mo
     1. go into the XAMPP directory and add a folder for the files
     2. create folder to store the project inside of the `htdocs` folder
     3. clone repository
-    4. make sure the local path is entered to the correct XAMPP directory, in this case `C:\xampp\htdocs\[your_folder_name]\`
-    5. If you now go to the `classicpress-dev` folder in XAMPP you should see a lot of files have been added
-    6. go to your browser and visit `localhost/classicpress-dev/src`
-    
+    4. open cmd and type:
+    `git clone {copied ssh link}`
+    5. make sure the local path is entered to the correct XAMPP directory, in this case `C:\xampp\htdocs\[your_folder_name]\`
+    6. If you now go to the `classicpress-dev` folder in XAMPP you should see a lot of files have been added
+    7. go to your browser and visit `localhost/classicpress-dev/src`
+
 * **Docker**
     1. clone the SSH of the project
     2. open cmd and type:
