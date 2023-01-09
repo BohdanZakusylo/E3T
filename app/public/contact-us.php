@@ -47,7 +47,7 @@ require "db_connection/connection.php";
                             echo "<b>E-mail:</b> ".$emailAddress."<br>";
                             echo "<b>Talent:</b> ".$talent."<br>";
                             echo "<b>Description:</b> ".$description."<br>";
-                            echo "We will contact you as soon as possiblie via your E-mail Address.";
+                            echo "We will contact you as soon as possible via your E-mail Address.";
                             echo "</div>";
                             $full = explode(" ", $fullName);
                             $first_name = $full[0];
@@ -99,7 +99,7 @@ require "db_connection/connection.php";
                             echo "<b>E-mail:</b> ".$emailAddress2."<br>";
                             echo "<b>Event:</b> ".$event."<br>";
                             echo "<b>Event description:</b> ".$eventDescription."<br>";
-                            echo "We will contact you as soon as possiblie via your E-mail Address.";
+                            echo "We will contact you as soon as possible via your E-mail Address.";
                             echo "</div>";
                     }
                 }
@@ -114,13 +114,13 @@ require "db_connection/connection.php";
         <label class="label_1" for="talent">Talent<span class="error">* <?php echo $talentErr;?></label><br>
         <select id="talent" name="talent">
             <option value="default" selected disabled>Choose your talent</option>
-            <option value="singer">Singer</option>
-            <option value="dancer">Dancer</option>
-            <option value="actor">Actor</option>
-            <option value="dj">DJ</option>
-            <option value="magician">Magician</option>
-            <option value="comedian">Comedian</option>
-            <option value="juggler">Juggler</option>
+            <option value="Singer">Singer</option>
+            <option value="Dancer">Dancer</option>
+            <option value="Actor">Actor</option>
+            <option value="DJ">DJ</option>
+            <option value="Magician">Magician</option>
+            <option value="Comedian">Comedian</option>
+            <option value="Juggler">Juggler</option>
         </select>
         <label class="label_1" for="description">Give a description of what you do<span class="error">* <?php echo $descriptionErr;?></label><br>
         <textarea name="description" id="description" placeholder="Description..."></textarea><br>
@@ -129,7 +129,7 @@ require "db_connection/connection.php";
         </p>
     </form>
     
-    <form id="client_form" method="POST" action="contact-us.php" enctype="multipart/form-data">
+    <form id="client_form" method="POST" action="request-events-process.php" enctype="multipart/form-data">
         <div class="vertical_line">
             <h1 class="for_client">For clients</h1>
             <label class="label_2" for="full_name_2">Full name:<span class="error">* <?php echo $fullName2Err;?></label><br>

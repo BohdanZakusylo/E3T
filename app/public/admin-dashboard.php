@@ -10,8 +10,21 @@ if(!isset($_SESSION["aLogin"])){ #Redirects to log in if not logged in
     header("Location: admin-login.php");
 }
 
-include "components/header.php";
+if (isset($_POST['log_out'])){
+    session_destroy();
+    header("location: admin-login.php");
+}
+if (isset($_POST['change_password'])){
+    header("location: admin_change_password.php");
+}
+if (isset($_POST['talent_request'])){
+    header("location: requests.php");
+}
+if (isset($_POST['add_event'])){
+    header("location: manage_events.php");
+}
 
+include "components/header.php";
 
 try{
     $dbHandler = new PDO("mysql:host=mysql;dbname=E3T;charset=utf8","root","qwerty"); #Initialize DB connection
@@ -42,7 +55,7 @@ catch(Exception $ex){
     </div>
     <h3>
         <?php
-        $Admin_ID = $_COOKIE['user_id'];//Shows the name of the current admin.
+        $Admin_ID = $_SESSION['user_id'];//Shows the name of the current admin.
         $query = "SELECT * FROM user where user_id = ?";
         $stmt = $dbHandler->prepare($query);
         $stmt -> bindparam(1, $Admin_ID, PDO::PARAM_INT);
@@ -153,10 +166,24 @@ catch(Exception $ex){
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     if ($_POST["submit"] == "Register talent") { // Registration of new talents
                         $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);//Input verification
-                        if (strlen($password) < 8){
-                            echo "<i class='error'>The password must be at least 8 characters long!</i>";
-                            $err_count++;
-                        }
+                            if (strlen($password) >= 7) {
+                                if (ctype_lower($password)) {
+                                    echo "<i class='error'>Password cannot be all lower case</i>";
+                                    $err_count++;
+                                } elseif (ctype_upper($password)) {
+                                    echo "<i class='error'>Password cannot be all upper case</i>";
+                                    $err_count++;
+                                } elseif (ctype_digit($password)) {
+                                    echo "<i class='error'>Password cannot be all numbers</i>";
+                                    $err_count++;
+                                } elseif (!preg_match("/[A-Za-z0-9\s_-]/", $password)) {
+                                    echo "<i class='error'>Password cannot contain special characters</i>";
+                                    $err_count++;
+                                }
+                            }else {
+                                echo "<i class='error'>The password must be at least 7 characters long!</i>";
+                                $err_count++;
+                            }
                     }
                 }
                 ?>
@@ -169,19 +196,21 @@ catch(Exception $ex){
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     if ($_POST["submit"] == "Register talent") { // Registration of new talents
                         $price = filter_input(INPUT_POST, "price", FILTER_VALIDATE_INT);//Input verification
-                        if (!is_numeric($price)){
-                            echo "<i class='error'>Value must be numeric!</i>";
-                            $err_count++;
+                        if (is_numeric((string)$price)){
+                            if (strlen($price) > 6){
+                                echo "<i class='error'>The amount is too big, reduce it!</i>";
+                                $err_count++;
+                            }
                         }
-                        elseif (strlen($price) > 10000000){
-                            echo "<i class='error'>The amount is too big, reduce it!</i>";
+                        else{
+                            echo "<i class='error'>Value must be numeric!</i>";
                             $err_count++;
                         }
                     }
                 }
                 ?>
             </span><span class="error">*</span><br>
-            <input class="input_text" type="number" name="price" id="price" value="<?php if ($err_count > 0){ if (isset($_POST['price'])){echo $_POST['price'];}} ?>"><br>
+            <input class="input_text" type="number" name="price" id="price" value="<?php if ($err_count > 0){ if (isset($_POST['price'])){echo $_POST['price'];}} ?>" min="0" max=""><br>
 
             <label for="description">Description</label>
             <span>
@@ -464,8 +493,17 @@ catch(Exception $ex){
             <input type="submit" name="submit" value="Register admin">
         </form>
     </div>
-</div>
 
+
+</div>
+<div class="last_buttons">
+    <form method="post" action="admin-dashboard.php">
+        <input type="submit" name="add_event" value="ADD EVENTS">
+        <input type="submit" name="talent_request" value="VIEW TALENT REQUEST">
+        <input type="submit" name="change_password" value="CHANGE PASSWORD">
+        <input class="logout" type="submit" name="log_out" value="LOG OUT">
+    </form>
+</div>
 </body>
 </html>
 
