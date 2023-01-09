@@ -17,9 +17,25 @@ E3T is an organization focused on event management, and they have expressed a mo
 ## Running
 ### Software
 * **XAMPP**
-    - `htdoc` directory
+    * go into the XAMPP directory and add a folder for the files
+    * create folder to store the project inside of the `htdocs` folder
+    * clone repository
+    * open cmd and type:
+    `git clone [url]`
+    * make sure the local path is entered to the correct XAMPP directory, in this case `C:\xampp\htdocs\[your_folder_name]\`
+    * If you now go to the `classicpress-dev` folder in XAMPP you should see a lot of files have been added
+    * go to your browser and visit `localhost/classicpress-dev/src`
+
 * **Docker**
-    - open Command Prompt and run `docker-compose up` while in the root directory of this project. The port 80 will be exposed and accessible via the browser (http://localhost:80/).
+    * clone respository
+    * open cmd and type:
+    `git clone [url]` and 
+    `cd [folder path]`
+    * run docker
+    * open cmd and type:
+    `docker-compose up`
+    * Access project via browser (http://localhost:80/)
+
 * **WAMP**
     - store files in the `WWW` directory
 * **phpMyAdmin**
