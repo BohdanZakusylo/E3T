@@ -2,12 +2,7 @@
  session_start();
 $cssFile = "change-password";
 $pageTitle = "Change Password";
-try {
-    $dbHandler = new PDO("mysql:host=localhost;dbname=e3t;charset=utf8", "root", "emperor");
-}
-catch (Exception $e){
-    echo $e->getMessage();
-}
+
 
 if(!isset($_SESSION['aLogin'])) {
     header("Location: login.php");
@@ -36,7 +31,7 @@ $Admin_id = $_SESSION['user_id'];
                     if(!empty($new_password) && !empty($re_new_password)) {
 
 
-//                        require_once("db_connection/connection.php");
+                        require_once("db_connection/connection.php");
                         $query = "SELECT * from user WHERE user_id = ?";
                         $stmt = $dbHandler->prepare($query);
                         $stmt->bindparam(1, $Admin_id, PDO::PARAM_INT);
