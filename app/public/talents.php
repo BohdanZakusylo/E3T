@@ -47,7 +47,10 @@ require "db_connection/connection.php";
             $outputs->bindParam(":talent", $_GET["talent"]);
             $outputs->execute();
             while($output = $outputs->fetch()){
-                generate_portfolio("", $output["first_name"], $output["last_name"], $output["talent"] ,$output["description"], $output["price_per_hour"], "not available");
+                $s_id = $output["id"];
+                $picture = $output["profilepic_url"];
+                $url = "../media-files/$s_id/profile_pic/$picture";
+                generate_portfolio($url, $output["first_name"], $output["last_name"], $output["talent"] ,$output["description"], $output["price_per_hour"], "not available");
             }
         }
         else{
@@ -55,7 +58,10 @@ require "db_connection/connection.php";
             $singers->execute();
             while($singer = $singers->fetch()){
                 if ($singer["from_date_absent"] == NULL AND $singer["to_date_absent"] == NULL) {
-                    generate_portfolio("", $singer["first_name"], $singer["last_name"], "Singers", $singer["description"], $singer["price_per_hour"], "not available");
+                    $s_id = $singer["id"];
+                    $picture = $singer["profilepic_url"];
+                    $url = "../media-files/$s_id/profile_pic/$picture";
+                    generate_portfolio($url, $singer["first_name"], $singer["last_name"], "Singers", $singer["description"], $singer["price_per_hour"], "not available");
                 }
             }
 
