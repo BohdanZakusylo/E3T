@@ -139,6 +139,10 @@ a:hover {
    background-size: cover;
 }
 
+.video {
+   margin: 10px;
+}
+
 #form_pic {
    width: 30%;
 } 
