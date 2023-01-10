@@ -9,8 +9,8 @@ require "db_connection/connection.php";
 <div id="body">
     <div id="header_2">
         <h1 class="header_2_text">Contact Us</h1>
-        <p class="header_text">Do you want E3T to host your events? or do are you a new talent that
-            wants to join E3T?, kindly reach out to us using the contact forms below
+        <p class="header_text">Do you want E3T to host your events? Or are you a new talent that
+            wants to join E3T? Kindly reach out to us using the contact forms below.
         </p>
     </div>
     <?php 
