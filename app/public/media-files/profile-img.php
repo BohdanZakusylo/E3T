@@ -1,6 +1,6 @@
 <?php
 session_start();
-$Admin_id = $_SESSION['id'];
+$talent_id = $_SESSION['id'];
 
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -32,18 +32,18 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
            // The code below is to check if the folder(media-files/$talent_id/profile_pic exist already, if it does, then move to the else code but if not make a new directory named (media-files/$talent_id/profile_pic) and place the picture in there using move_uploaded_file      
 
-                if (!is_dir($Admin_id. "/profile_pic")) {
+                if (!is_dir($talent_id. "/profile_pic")) {
                 
-                    mkdir($Admin_id. "/profile_pic"); // this will create an empty folder for the new profile picture
-                    move_uploaded_file($tmp_name, $Admin_id. "/profile_pic" . "/" . $name); //this will upload the picture into the folder
+                    mkdir($talent_id. "/profile_pic"); // this will create an empty folder for the new profile picture
+                    move_uploaded_file($tmp_name, $talent_id. "/profile_pic" . "/" . $name); //this will upload the picture into the folder
                     echo "Uploaded successfully";
                     header("Location: ../edit-profile.php");
                     echo "Successfully Updated";
                 }
             } else {
-                $file = glob($Admin_id . '/profile_pic/*');
+                $file = glob($talent_id . '/profile_pic/*');
                 unlink($file[0]);  //this will delete the previous profile picture from the drie
-                    move_uploaded_file($tmp_name, $Admin_id. "/profile_pic" . "/" . $name);
+                    move_uploaded_file($tmp_name, $talent_id. "/profile_pic" . "/" . $name);
                    header("Location: ../edit-profile.php");
                    echo "Successfully Updated";
             }
