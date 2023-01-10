@@ -36,7 +36,7 @@ include("db_connection/connection.php");
 
 <section>
             <div id="events">
-                <h1>Upcoming Events</h1>
+                <h2>Upcoming Events</h2>
             </div>
 
             <div class="slide-container swiper">
