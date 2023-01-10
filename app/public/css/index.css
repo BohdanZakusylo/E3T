@@ -17,6 +17,7 @@ main {
     height: 600px;
     object-fit: cover;
     background-repeat: repeat;
+    color: white;
 }
 
 .textBanner {
@@ -30,6 +31,7 @@ main {
 
 h1 {
     font-size: 60px ;
+    color: white;
 }
 br{
 	margin-bottom: 20px;
