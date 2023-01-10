@@ -4,13 +4,16 @@
 	
 	if(isset($_GET["add"])){
 		if($_SERVER['REQUEST_METHOD']=='POST'){
-				$uploadedFileType = finfo_file($fileinfo, $_FILES["uploadfile"]["img"]);
+		$target_dir="event_images/";
+		$target_file=$target_dir.basename($_FILES['photo']['name']);
+		move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file);
+		$location=$target_dir.$_FILES["photo"]["full_path"];
 		}
 		
-		
 		if($_GET['add']=="true"){
+				
 			try{
-				$query=$db->prepare("INSERT INTO Events VALUES(NULL, :event_name, :start_date, :end_date, :time, NULL, NULL, :place, :description, 0)");
+				$query=$db->prepare("INSERT INTO Events VALUES(NULL, :event_name, :start_date, :end_date, :time, NULL, NULL, :place, :description, :image_url)");
 				
 				$query->bindParam(':event_name', $_REQUEST['name_event']);
 				$query->bindParam(':start_date', $_REQUEST['start_date']);
@@ -18,6 +21,7 @@
 				$query->bindParam(':time', $_REQUEST['time']);
 				$query->bindParam(':place', $_REQUEST['place']);
 				$query->bindParam(':description', $_REQUEST['description']);
+				$query->bindParam(':image_url', $location);
 				
 				$query->execute();
 				echo"<h2>Talent added</h2>";
@@ -31,6 +35,9 @@
 	
 	$delete=$db->query("SELECT name FROM Events");
 	$event_delete=$delete->fetch();
+	
+	$count_talent=$db->query("SELECT COUNT(talent) FROM Talent");
+	$nr_talent=$count_talent->fetch();
 	
 	if(isset($_GET["delete"])){
 		if($_GET['delete']=="1")
@@ -56,7 +63,7 @@
 		<div class="main">
 			<div class="add_events">
 				<h2>Add new events</h2>
-				<form action="manage_events.php?add=true" method="POST">
+				<form action="manage_events.php?add=true" method="POST" enctype="multipart/form-data">
 					<div class="spacing">
 						<label class="label" for="name_event">Name of Event</label> <br>
 						<input type="text" name="name_event" class="input_text" required>
@@ -89,10 +96,19 @@
 					
 					<div class="spacing">
 						<label class="label" for="performing_talent">Performing talent</label> <br>
-						<input type="text" name="performing_talent" class="input_text" required>
+						<select type="text" name="performing_talent" class="input_text" required>
+							<option>Singers</option>
+							<option>Dancers</option> 
+							<option>Magicians</option>
+							<option>Comedians</option>
+							<option>DJs</option>
+							<option>Jugglers</option>
+							<option>Actors</option>
+							<option>Others</option>
+						</select>
 					</div>
 					
-					<input type="file" name="event_photo">
+					<input name="photo" id="photo" type="file">
 					
 					<div>
 						<button type="submit">Register event</button>
