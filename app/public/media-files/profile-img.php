@@ -1,4 +1,5 @@
-<?php session_start();
+<?php 
+session_start();
 $talent_id = $_SESSION['id'];
 
 if(isset($_SESSION['upload'])) {
@@ -8,71 +9,74 @@ if(isset($_SESSION['upload'])) {
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     $name = $_FILES['file']['name'];
+    $error = $_FILES['file']['error'];
+    $tmp_name = $_FILES['file']['tmp_name'];
+    $type = $_FILES['file']['type'];
+    $size = $_FILES['file']['size'];
 
+    
+            if ($error == 0) {
+                $accepted_type = ["image/png", "image/jpeg", "image/jpg", "image/gif"];
+                $file_info = finfo_open(FILEINFO_MIME_TYPE);
+                $uploaded_file = finfo_file($file_info, $tmp_name);
 
-                if ($final) {
+                if (in_array($uploaded_file, $accepted_type)) {
 
-           // The code below is to check if the folder(media-files/$talent_id/profile_pic exist already, if it does, then move to the else code but if not make a new directory named (media-files/$talent_id/profile_pic) and place the picture in there using move_uploaded_file      
+                    require_once("../db_connection/connection.php");
+                    $query = "UPDATE Talent SET profilepic_url = ? WHERE id = ?";
+                    $stmt = $db->prepare($query);
+                    $stmt->bindparam(1, $name);
+                    $stmt->bindparam(2, $talent_id, PDO::PARAM_INT);
+                    $final = $stmt->execute();
 
-                    $final_location = $talent_id. "/profile_pic" . "/" . $name;
+                    if ($final)  {
 
-                if (!is_dir($talent_id. "/profile_pic")) {
-           // The code below is to check if the folder(media-files/$talent_id/profile_pic exist already, if it does, then move to the else code but if not make a new directory named (media-files/$talent_id/profile_pic) and place the picture in there using move_uploaded_file      
-                    if(!is_dir($talent_id)) {
+                    if (!is_dir($talent_id)) {
                         mkdir($talent_id);
+                        if(!is_dir($talent_id. "/profile_pic")) {
+                            mkdir($talent_id. "/profile_pic");
+                            $finalstore = $talent_id. "/profile_pic" . "/" . $name;
+                            move_uploaded_file($tmp_name, $talent_id. "/profile_pic" . "/" . $name);
+                            $_SESSION['upload'] = "Uploaded successfully";
+                            header("Location: ../edit-profile.php");
+                        } else {
+                            $file = glob($talent_id . '/profile_pic/*');
+                            unlink($file[0]);  //this will delete the previous profile picture from the directory
+                            move_uploaded_file($tmp_name, $talent_id. "/profile_pic" . "/" . $name);
+                            $_SESSION['upload'] = "Uploaded successfully";
+                            header("Location: ../edit-profile.php");
+                        }
 
-                     if (!is_dir($talent_id. "/profile_pic")) {
 
-                    mkdir($talent_id. "/profile_pic"); // this will create an empty folder for the new profile picture
-                    move_uploaded_file($tmp_name, $talent_id. "/profile_pic" . "/" . $name); //this will upload the picture into the folder
-                    echo "Uploaded successfully";
-                    header("Location: ../edit-profile.php");
-                    echo "Successfully Updated";
-                    move_uploaded_file($tmp_name, $final_location); //this will upload the picture into the folder
+                    } elseif(is_dir($talent_id)) {
 
-                    $_SESSION['upload'] = "Uploaded successfully";
+                      if(!is_dir($talent_id. "/profile_pic")) {
+                        mkdir($talent_id. "/profile_pic");
+                        $finalstore = $talent_id. "/profile_pic" . "/" . $name;
+                        move_uploaded_file($tmp_name, $talent_id. "/profile_pic" . "/" . $name);
+                        $_SESSION['upload'] = "Uploaded successfully";
+                        header("Location: ../edit-profile.php");
+                    
+                    } else {
+                        $file = glob($talent_id . '/profile_pic/*');
+                        unlink($file[0]);  //this will delete the previous profile picture from the directory
+                        move_uploaded_file($tmp_name, $talent_id. "/profile_pic" . "/" . $name);
+                        $_SESSION['upload'] = "Uploaded successfully";
+                        header("Location: ../edit-profile.php");
+                    }
 
-                    // echo "Uploaded successfully";
-                    // echo "Successfully Updated";
-
-                    // echo "<form method='POST' action=''>
-
-                    //     <input type='submit' name='submit'>
-                    // </form>"
-                }
             } else {
-                $file = glob($talent_id . '/profile_pic/*');
-                unlink($file[0]);  //this will delete the previous profile picture from the directory
-                    move_uploaded_file($tmp_name, $talent_id. "/profile_pic" . "/" . $name);
-                   header("Location: ../edit-profile.php");
-                   echo "Successfully Updated";
-                    $_SESSION['upload'] = "Uploaded successfully";
-                //    header("Location: ../edit-profile.php");
-                //    echo "Successfully Updated";
-            }
-        }elseif (is_dir($talent_id)) {
-            if (!is_dir($talent_id. "/profile_pic")) {
+                echo "Could update profile picture";
+            } 
 
-                mkdir($talent_id. "/profile_pic"); // this will create an empty folder for the new profile picture
-                move_uploaded_file($tmp_name, $final_location); //this will upload the picture into the folder
-                $_SESSION['upload'] = "Uploaded successfully";
-                // echo "Uploaded successfully";
-                // header("Location: ../edit-profile.php");
-                // echo "Successfully Updated";
-        } else {
-            $file = glob($talent_id . '/profile_pic/*');
-            unlink($file[0]);  //this will delete the previous profile picture from the directory
-                move_uploaded_file($tmp_name, $talent_id. "/profile_pic" . "/" . $name);
-                $_SESSION['upload'] = "Uploaded successfully";
-            //    header("Location: ../edit-profile.php");
-            //    echo "Successfully Updated";
-        }
-    }
+    }  else {
+        echo "Please uploaded a supported file type (png, jpeg or jpg)";
+    } 
 
-        } else {
-            echo "Couldn't update information in the database";
-        }
-
+} else {
+    echo "An error occured while uploading your file"; 
+    } 
+}
 }
 
 
