@@ -42,7 +42,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 }
             } else {
                 $file = glob($Admin_id . '/profile_pic/*');
-                unlink($file[0]);  //this will delete the previous profile picture from the director
+                unlink($file[0]);  //this will delete the previous profile picture from the directo
                     move_uploaded_file($tmp_name, $Admin_id. "/profile_pic" . "/" . $name);
                    header("Location: ../edit-profile.php");
                    echo "Successfully Updated";
