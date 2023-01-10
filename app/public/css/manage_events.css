@@ -1,0 +1,76 @@
+*{
+	font-family: Roboto;
+}
+body{
+	margin: 0;
+	padding: 0;
+}
+.main{
+	display:flex;
+	justify-content: space-evenly;
+}
+.spacing{
+	margin: 10px;
+	margin-bottom: 20px;
+}
+.add_events{
+	margin: 15px;
+	padding: 5px;
+}
+.delete_events{
+	margin: 15px;
+	padding: 5px;
+}
+.form_margin{
+	margin-left:15px;
+}
+.events_manage{
+	background-color: #2E307A;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 102px;
+	font-size: 20px;
+}
+.input_text{
+	width: 444px;
+	height: 34px;
+	background-color: #d9d9d9;
+}
+input{
+	padding: 3px;
+	border: 0;
+}
+.label{
+	font-weight: bold;
+	font-size: large;
+}
+button{
+	margin-top: 10px;
+	border: none;
+	color: white;
+	background-color: #ED9275;
+	width: 137px;
+	height: 38px;
+	font-size: 20px;
+	border-radius: 10px;
+}
+.go_back{
+	display:flex;
+	justify-content: center;
+	align-items:center;
+	
+}
+.back{
+	text-decoration: none;
+	color: white;
+	background-color: #2E307A;
+	height: 55px;
+	width: 235px;
+	font-size: 20px;
+	border-radius: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
