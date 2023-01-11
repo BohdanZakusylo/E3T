@@ -29,7 +29,7 @@ include "components/header.php";
                 <label for="password">Password:</label><br>
                 <input type="password" id="password" name="password"><br>
             </p>
-            <p>
+            <p id="login_p">
                 <input type="submit" name="login" value="Login">
             </p>
         </form>
