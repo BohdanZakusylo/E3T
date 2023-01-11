@@ -137,15 +137,23 @@ if (isset($_SESSION['upload'])) {
 
                 if(isset($_POST['fromdate'])) {
                     $fromdate = filter_input(INPUT_POST, "fromdate", FILTER_SANITIZE_SPECIAL_CHARS);
+                    if(strlen($fromdate)===0){
+                        $talent_id = $_SESSION["id"];
+                        $query = "UPDATE Talent SET from_date_absent = NULL WHERE id = ?";
+                        $stmt = $db->prepare($query);
+                        $stmt->bindparam(1, $talent_id, PDO::PARAM_INT);
 
-                    $talent_id = $_SESSION["id"];
-                    $query = "UPDATE Talent SET from_date_absent = ? WHERE id = ?";
-                    $stmt = $db->prepare($query);
-                    $stmt->bindparam(1, $fromdate, PDO::PARAM_STR);
-                    $stmt->bindparam(2, $talent_id, PDO::PARAM_INT);
+                        $final = $stmt->execute();
+                    }
+                    else{
+                        $talent_id = $_SESSION["id"];
+                        $query = "UPDATE Talent SET from_date_absent = ? WHERE id = ?";
+                        $stmt = $db->prepare($query);
+                        $stmt->bindparam(1, $fromdate, PDO::PARAM_STR);
+                        $stmt->bindparam(2, $talent_id, PDO::PARAM_INT);
 
-                    $final = $stmt->execute();
-
+                        $final = $stmt->execute();
+                    }
                     if ($final) {
                         echo "Vacation start updated successfully";
                     }
@@ -163,15 +171,23 @@ if (isset($_SESSION['upload'])) {
 
                 if(isset($_POST['todate'])) {
                     $todate = filter_input(INPUT_POST, "todate", FILTER_SANITIZE_SPECIAL_CHARS);
+                    if(strlen($todate)===0){
+                        $talent_id = $_SESSION["id"];
+                        $query = "UPDATE Talent SET to_date_absent = NULL WHERE id = ?";
+                        $stmt = $db->prepare($query);
+                        $stmt->bindparam(1, $talent_id, PDO::PARAM_INT);
 
-                    $talent_id = $_SESSION["id"];
-                    $query = "UPDATE Talent SET to_date_absent = ? WHERE id = ?";
-                    $stmt = $db->prepare($query);
-                    $stmt->bindparam(1, $todate, PDO::PARAM_STR);
-                    $stmt->bindparam(2, $talent_id, PDO::PARAM_INT);
+                        $final = $stmt->execute();
+                    }
+                    else{
+                        $talent_id = $_SESSION["id"];
+                        $query = "UPDATE Talent SET to_date_absent = ? WHERE id = ?";
+                        $stmt = $db->prepare($query);
+                        $stmt->bindparam(1, $todate, PDO::PARAM_STR);
+                        $stmt->bindparam(2, $talent_id, PDO::PARAM_INT);
 
-                    $final = $stmt->execute();
-
+                        $final = $stmt->execute();
+                    }
                     if ($final) {
                         echo "Vacation end updated successfully";
                     }
