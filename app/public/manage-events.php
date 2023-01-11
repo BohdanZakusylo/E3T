@@ -15,7 +15,7 @@
 		
 		
 		if($_GET['add']=="true"){
-				
+				$get_id=$_POST['performing_talent'];
 			try{
 				$query=$db->prepare("INSERT INTO Events VALUES(NULL, :event_name, :start_date, :end_date, :time, :talent_id, :admin_id, :place, :description, :image_url)");
 				
@@ -23,14 +23,14 @@
 				$query->bindParam(':start_date', $_REQUEST['start_date']);
 				$query->bindParam(':end_date', $_REQUEST['end_date']);
 				$query->bindParam(':time', $_REQUEST['time']);
-				$query->bindParam(':talent_id', $_REQUEST['performing_talent']);
+				$query->bindParam(':talent_id', $get_id);
 				$query->bindParam(':place', $_REQUEST['place']);
 				$query->bindParam(':description', $_REQUEST['description']);
 				$query->bindParam(':image_url', $location);
 				$query->bindParam(':admin_id', $user_id);
 				
 				$query->execute();
-				echo"<h2>Talent added</h2>";
+				echo"<h2>Event added</h2>";
 			}catch(Exception $ex){
 				echo $ex;
 			}
@@ -53,7 +53,7 @@
 			$delete_event_query=$db->prepare("DELETE FROM Events WHERE name=:deleted");
 			$delete_event_query->bindParam(':deleted', $_POST['delete_talent']);
 			$delete_event_query->execute();
-			echo"<h2>Talent deleted</h2>";
+			echo"<h2>Event deleted</h2>";
 	}
 ?>
 
@@ -107,11 +107,10 @@
 						<label class="label" for="performing_talent">Performing talent</label> <br>
 						<select type="text" name="performing_talent" class="input_text" required>
 							<?php
-								for($m=0;$m<=$count_talent[0];$m++){
-									$qq_talent=$db->query("SELECT id FROM Talent WHERE id=".$m);
+								for($m=0;$m<=5;$m++){
+									$qq_talent=$db->query("SELECT first_name, talent FROM Talent WHERE id=".$m);
 									$talent=$qq_talent->fetch();
-									echo "<option>".$talent['id']."</option>";
-									
+									echo "<option value=$m>".$talent['first_name']."-".$talent['talent']."</option>";
 								}
 							?>		
 						</select>

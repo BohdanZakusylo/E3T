@@ -74,3 +74,15 @@ button{
 	justify-content: center;
 	align-items: center;
 }
+@media screen and (max-width: 396px){
+	.main{
+		display: flex;
+		flex-direction: column;
+	}
+	.input_text{
+		width: 214px;
+	}
+	button{
+		
+	}
+}
