@@ -155,6 +155,85 @@ if(isset($_POST['description'])) {
         <input type="submit" value="Update description"></input>
     </form>
 
+    <?php 
+
+
+        if(isset($_POST['price'])) {
+            $price = filter_input(INPUT_POST, "price", FILTER_VALIDATE_INT);
+            
+            $talent_id = $_SESSION["id"];
+            $query = "UPDATE Talent SET price_per_hour = ? WHERE id = ?";
+            $stmt = $dbHandler->prepare($query);
+            $stmt->bindparam(1, $price, PDO::PARAM_INT);
+            $stmt->bindparam(2, $talent_id, PDO::PARAM_INT);
+            
+            $final = $stmt->execute();
+
+            if ($final) {
+                echo "Price updated successfully";
+            }
+
+
+        }
+    ?>
+    <h2>Price/hour</h2>
+            <form action="" method="POST">
+            <input type="number" name="price" id="price"  value="<?= $value['price_per_hour']; ?>" min="0" max="1000">
+            <input type="submit" value="Update price"></input>
+            </form>
+    <?php 
+
+
+        if(isset($_POST['fromdate'])) {
+            $fromdate = filter_input(INPUT_POST, "fromdate", FILTER_SANITIZE_SPECIAL_CHARS);
+            
+            $talent_id = $_SESSION["id"];
+            $query = "UPDATE Talent SET from_date_absent = ? WHERE id = ?";
+            $stmt = $dbHandler->prepare($query);
+            $stmt->bindparam(1, $fromdate, PDO::PARAM_STR);
+            $stmt->bindparam(2, $talent_id, PDO::PARAM_INT);
+            
+            $final = $stmt->execute();
+
+            if ($final) {
+                echo "Vacation start updated successfully";
+            }
+
+
+        }
+    ?>
+    <h2>Vacation start (format: 2002-06-07)</h2>
+            <form action="" method="POST">
+            <input type="text" name="fromdate" id="fromdate"  value="<?= $value['from_date_absent']; ?>">
+            <input type="submit" value="Update date"></input>
+            </form>
+    <?php 
+
+
+        if(isset($_POST['todate'])) {
+            $todate = filter_input(INPUT_POST, "todate", FILTER_SANITIZE_SPECIAL_CHARS);
+            
+            $talent_id = $_SESSION["id"];
+            $query = "UPDATE Talent SET to_date_absent = ? WHERE id = ?";
+            $stmt = $dbHandler->prepare($query);
+            $stmt->bindparam(1, $todate, PDO::PARAM_STR);
+            $stmt->bindparam(2, $talent_id, PDO::PARAM_INT);
+            
+            $final = $stmt->execute();
+
+            if ($final) {
+                echo "Vacation end updated successfully";
+            }
+
+
+        }
+    ?>
+    <h2>Vacation end (format: 2002-06-07)</h2>
+            <form action="" method="POST">
+            <input type="text" name="todate" id="todate"  value="<?= $value['to_date_absent']; ?>">
+            <input type="submit" value="Update date"></input>
+            </form>
+
 
 
     <div class="upload">
