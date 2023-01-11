@@ -1,6 +1,6 @@
 <?php
 	
-	$db= new PDO("mysql:host=mysql;dbname=E3T;charset=UTF8", "root", "qwerty");
+	require "db_connection/connection.php";
 	
 	if(isset($_GET["add"])){
 		if($_SERVER['REQUEST_METHOD']=='POST'){
@@ -63,7 +63,7 @@
 		<div class="main">
 			<div class="add_events">
 				<h2>Add new events</h2>
-				<form action="manage_events.php?add=true" method="POST" enctype="multipart/form-data">
+				<form action="manage-events.php?add=true" method="POST" enctype="multipart/form-data">
 					<div class="spacing">
 						<label class="label" for="name_event">Name of Event</label> <br>
 						<input type="text" name="name_event" class="input_text" required>
@@ -120,7 +120,7 @@
 			<div class="delete_events">
 				<div class="spacing">
 					<h2>Delete event</h2>
-					<form action="manage_events.php?delete=1" method="POST" class="form_margin">
+					<form action="manage-events.php?delete=1" method="POST" class="form_margin">
 						<label for="delete_talent" class="label">Name of event</label> <br>
 						<select name="delete_talent" class="input_text" required>
 						<option></option>

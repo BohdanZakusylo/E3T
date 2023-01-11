@@ -1,20 +1,14 @@
 <?php
 session_start();
 
-//include "db_connection/connection.php";
+include "db_connection/connection.php";
 
-try {
-    $dbHandler = new PDO("mysql:host=localhost;dbname=e3t;charset=utf8;", "root", "emperor");
-}
-catch (Exception $e){
-    echo $e->getMessage();
-}
 if($_SERVER["REQUEST_METHOD"]=="POST" AND $_GET["login"]==="admin"){
     $email = filter_input(INPUT_POST,"email",FILTER_VALIDATE_EMAIL); #Get the email and password from the form
     $pass = filter_input(INPUT_POST,"password",FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     try{
-        $stmt = $db -> prepare("SELECT user_id, pass_hash FROM user WHERE email = :email"); #Tries to find email in DB
+        $stmt = $db -> prepare("SELECT user_id, pass_hash FROM User WHERE email = :email"); #Tries to find email in DB
         $stmt -> bindParam("email",$email,PDO::PARAM_STR);
         $stmt -> execute();
         $queryResult = $stmt -> fetchAll();
