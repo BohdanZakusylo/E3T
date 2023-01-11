@@ -22,7 +22,7 @@ if (isset($_SESSION['aLogin'])) {
         header("location: requests.php");
     }
     if (isset($_POST['add_event'])) {
-        header("location: manage_events.php");
+        header("location: manage-events.php");
     }
 }
 
