@@ -1,6 +1,6 @@
 <?php
 	
-	$db= new PDO("mysql:host=mysql;dbname=E3T;charset=UTF8", "root", "qwerty");
+	require "db_connection/connection.php";
 	
 	if(isset($_GET["add"])){
 		if($_SERVER['REQUEST_METHOD']=='POST'){
