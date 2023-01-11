@@ -50,18 +50,30 @@ require "db_connection/connection.php";
                 $s_id = $output["id"];
                 $picture = $output["profilepic_url"];
                 $url = "../media-files/$s_id/profile_pic/$picture";
-                generate_portfolio($url, $output["first_name"], $output["last_name"], $output["talent"] ,$output["description"], $output["price_per_hour"], "not available");
+                if (is_null($output["from_date_absent"]) AND is_null($output["to_date_absent"])) {
+                    $aviable = "available";
+                    generate_portfolio($url, $output["first_name"], $output["last_name"], $output["talent"], $output["description"], $output["price_per_hour"], $aviable, $output["id"]);
+                }
+                else{
+                    $aviable = "Not available\nFrom".$output["from_date_absent"]. "To".$output["to_date_absent"];
+                    generate_portfolio($url, $output["first_name"], $output["last_name"], $output["talent"], $output["description"], $output["price_per_hour"], $aviable, $output["id"]);
+                }
             }
         }
         else{
             $singers = $db->prepare('SELECT * FROM Talent WHERE talent = "Singers"');
             $singers->execute();
             while($singer = $singers->fetch()){
-                if ($singer["from_date_absent"] == NULL AND $singer["to_date_absent"] == NULL) {
-                    $s_id = $singer["id"];
-                    $picture = $singer["profilepic_url"];
-                    $url = "../media-files/$s_id/profile_pic/$picture";
-                    generate_portfolio($url, $singer["first_name"], $singer["last_name"], "Singers", $singer["description"], $singer["price_per_hour"], "not available");
+                $s_id = $singer["id"];
+                $picture = $singer["profilepic_url"];
+                $url = "../media-files/$s_id/profile_pic/$picture";
+                if (is_null($singer["from_date_absent"]) AND is_null($singer["to_date_absent"])) {
+                    $aviable = "available";
+                    generate_portfolio($url, $singer["first_name"], $singer["last_name"], $singer["talent"], $singer["description"], $singer["price_per_hour"], $aviable, $singer["id"]);
+                }
+                else{
+                    $aviable = "Not available<br>From " . $singer["from_date_absent"]. "To ". $singer["to_date_absent"];
+                    generate_portfolio($url, $singer["first_name"], $singer["last_name"], $singer["talent"], $singer["description"], $singer["price_per_hour"], $aviable, $singer["id"]);
                 }
             }
 

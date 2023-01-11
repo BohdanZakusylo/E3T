@@ -56,7 +56,7 @@ catch(Exception $ex){
     <h3>
         <?php
         $Admin_ID = $_SESSION['user_id'];//Shows the name of the current admin.
-        $query = "SELECT * FROM user where user_id = ?";
+        $query = "SELECT * FROM User where user_id = ?";
         $stmt = $dbHandler->prepare($query);
         $stmt -> bindparam(1, $Admin_ID, PDO::PARAM_INT);
         $stmt->execute();
