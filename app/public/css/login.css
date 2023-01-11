@@ -58,6 +58,12 @@ input[type=submit]{
     font-style: italic;
     font-size: 1.25em;
 }
+
+.error {
+    color: red;
+}   
+
+
 @media screen and (max-width: 393px){
     form{
         width: 90%;
