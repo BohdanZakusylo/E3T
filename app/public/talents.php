@@ -28,14 +28,14 @@ require "db_connection/connection.php";
 		<form method="GET" action="talents.php">
 			<label for="talents" class="label">Talent Categories<br></label>
 			<select name="talent" id="talents">
-				<option name="talent"><a href="talents.php?talent=singers">Singers</a></option>
-				<option name="talent"><a href="talents.php?talent=dancers">Dancers</a></option>
-				<option name="talent"><a href="talents.php?talent=magicians">Magicians</a></option>
-				<option name="talent"><a href="talents.php?talent=comedians">Comedians</a></option>
-				<option name="talent"><a href="talents.php?talent=djs">DJs</a></option>
-				<option name="talent"><a href="talents.php?talent=jugglers">Jugglers</a></option>
-				<option name="talent"><a href="talents.php?talent=actors">Actors</a></option>
-				<option name="talent"><a href="talents.php?talent=others">Others</a></option>
+				<option name="talent"><a href="talents.php?talent=singers">Singer</a></option>
+				<option name="talent"><a href="talents.php?talent=dancer">Dancer</a></option>
+				<option name="talent"><a href="talents.php?talent=magician">Magician</a></option>
+				<option name="talent"><a href="talents.php?talent=comedian">Comedian</a></option>
+				<option name="talent"><a href="talents.php?talent=djs">DJ</a></option>
+				<option name="talent"><a href="talents.php?talent=juggler">Juggler</a></option>
+				<option name="talent"><a href="talents.php?talent=actors">Actor</a></option>
+				<option name="talent"><a href="talents.php?talent=others">Other</a></option>
 			</select>
 			<input type="submit" value="Submit">
 		</form>
