@@ -110,7 +110,9 @@
 								for($m=0;$m<=5;$m++){
 									$qq_talent=$db->query("SELECT first_name, talent FROM Talent WHERE id=".$m);
 									$talent=$qq_talent->fetch();
-									echo "<option value=$m>".$talent['first_name']."-".$talent['talent']."</option>";
+									if($talent){
+										echo "<option value=$m>".$talent['first_name']."-".$talent['talent']."</option>";
+									}
 								}
 							?>		
 						</select>
