@@ -2,6 +2,9 @@
 	
 	require "db_connection/connection.php";
 	
+	session_start();
+	$user_id=$_SESSION['user_id'];
+	
 	if(isset($_GET["add"])){
 		if($_SERVER['REQUEST_METHOD']=='POST'){
 		$target_dir="event_images/";
@@ -10,18 +13,21 @@
 		$location=$target_dir.$_FILES["photo"]["full_path"];
 		}
 		
+		
 		if($_GET['add']=="true"){
 				
 			try{
-				$query=$db->prepare("INSERT INTO Events VALUES(NULL, :event_name, :start_date, :end_date, :time, NULL, NULL, :place, :description, :image_url)");
+				$query=$db->prepare("INSERT INTO Events VALUES(NULL, :event_name, :start_date, :end_date, :time, :talent_id, :admin_id, :place, :description, :image_url)");
 				
 				$query->bindParam(':event_name', $_REQUEST['name_event']);
 				$query->bindParam(':start_date', $_REQUEST['start_date']);
 				$query->bindParam(':end_date', $_REQUEST['end_date']);
 				$query->bindParam(':time', $_REQUEST['time']);
+				$query->bindParam(':talent_id', $_REQUEST['performing_talent']);
 				$query->bindParam(':place', $_REQUEST['place']);
 				$query->bindParam(':description', $_REQUEST['description']);
 				$query->bindParam(':image_url', $location);
+				$query->bindParam(':admin_id', $user_id);
 				
 				$query->execute();
 				echo"<h2>Talent added</h2>";
@@ -38,6 +44,9 @@
 	
 	$count_talent=$db->query("SELECT COUNT(talent) FROM Talent");
 	$nr_talent=$count_talent->fetch();
+		
+	$count_query=$db->query("SELECT count(id) FROM Talent");
+	$count_talent=$count_query->fetch();
 	
 	if(isset($_GET["delete"])){
 		if($_GET['delete']=="1")
@@ -97,14 +106,14 @@
 					<div class="spacing">
 						<label class="label" for="performing_talent">Performing talent</label> <br>
 						<select type="text" name="performing_talent" class="input_text" required>
-							<option>Singers</option>
-							<option>Dancers</option> 
-							<option>Magicians</option>
-							<option>Comedians</option>
-							<option>DJs</option>
-							<option>Jugglers</option>
-							<option>Actors</option>
-							<option>Others</option>
+							<?php
+								for($m=0;$m<=$count_talent[0];$m++){
+									$qq_talent=$db->query("SELECT id FROM Talent WHERE id=".$m);
+									$talent=$qq_talent->fetch();
+									echo "<option>".$talent['id']."</option>";
+									
+								}
+							?>		
 						</select>
 					</div>
 					
