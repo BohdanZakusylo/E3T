@@ -1,4 +1,6 @@
 <?php
+
+session_start();
     if(!isset($_SESSION["aLogin"])){ #Redirects to log in if not logged in
         header("Location: admin-login.php");
     }
@@ -17,15 +19,14 @@
             $insert->bindParam(":email", $output["email"]);
             $insert->bindParam(":first_name", $output["first_name"]);
             $insert->bindParam(":last_name", $output["last_name"]);
-            $insert->bindParam(":pass_hash",$pass_hash,PDO::PARAM_STR);
+            $insert->bindParam(":pass_hash",$pass_hash, PDO::PARAM_STR);
             $insert->bindParam(":talent", $output["talent"]);
             $insert->execute();
             $delete = $db->prepare("DELETE FROM Requests WHERE request_id = :id");
             $delete->bindParam(":id", $_GET["id"]);
             $delete->execute();
         }
-        echo "This talent has been accepted. Thank you!";
-        echo "<a href='requests.php'>Go back</a>";
+        header("Location: confirmation.php");
     }
     
 ?>

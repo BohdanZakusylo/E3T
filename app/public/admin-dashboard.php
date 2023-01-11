@@ -35,7 +35,7 @@ include "components/header.php";
 //    echo "<p class='error'>The following error occurred: $ex</p>";
 //}
 //
-
+require "db_connection/connection.php";
 ?>
 
 <!DOCTYPE html>
@@ -279,7 +279,7 @@ include "components/header.php";
                         <?php
                         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             if ($_POST["submit"] == "Remove") {
-                                $query5 = "SELECT first_name FROM talent WHERE email = :email_delete";
+                                $query5 = "SELECT first_name FROM Talent WHERE email = :email_delete";
                                 $stmt_5 = $db->prepare($query5);
                                 $stmt_5->bindParam("email_delete", $email_delete);
                                 $stmt_5->execute();
@@ -306,7 +306,7 @@ include "components/header.php";
                 <?php
                         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             if ($_POST["submit"] == "Remove") {
-                                $query6 = "SELECT last_name FROM talent WHERE email = :email_delete";
+                                $query6 = "SELECT last_name FROM Talent WHERE email = :email_delete";
                                 $stmt_6 = $db->prepare($query6);
                                 $stmt_6->bindParam("email_delete", $email_delete);
                                 $stmt_6->execute();
@@ -348,7 +348,7 @@ include "components/header.php";
                 <?php
                 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                     if ($_POST["submit"] == "Remove"){
-                        $query_2 = "SELECT `id` FROM talent where `email` = :email_delete";
+                        $query_2 = "SELECT `id` FROM Talent where `email` = :email_delete";
                         $stmt_2 = $db->prepare($query_2);
                         $stmt_2->bindParam("email_delete", $email_delete);
                         $stmt_2->execute();
@@ -356,7 +356,7 @@ include "components/header.php";
                         foreach ($result as $results){
                             if ($err_count === 0){
                                 try {
-                                    $query_3 = "DELETE FROM talent where email = :email_delete";
+                                    $query_3 = "DELETE FROM Talent where email = :email_delete";
                                     $stmt_3 = $db->prepare($query_3);
                                     $stmt_3->bindParam("email_delete", $email_delete);
                                     $stmt_3->execute();

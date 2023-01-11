@@ -12,7 +12,7 @@ function generate_portfolio($url, $first_name, $last_name,$talent, $description,
             </div>
             <h4>Price: '.$price.' &euro;</h4>
             <h4>Available: '.$available.'</h4>
-            <a href="../display-profile.php?id='.$id.'"><button>View More</button></a>
+            <a href="display-profile.php?id='.$id.'"><button>View More</button></a>
         </div>';
     }
 ?>
