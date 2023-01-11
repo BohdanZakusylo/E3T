@@ -38,8 +38,6 @@ require "db_connection/connection.php";
                         $fullNameErr = "Your full name must contain at least 2 words";
                     } elseif(str_word_count($description) < 5){
                         $descriptionErr = "Your description needs to contain at least 5 words";
-                    } elseif(strlen($talent) < 3){
-                        $talentErr = "Your talent name needs to contain at least 3 characters";
                     }else {
                             echo "<div class='message1'>";
                             echo "<h2>Thank you for contacting us!</h2><br>";

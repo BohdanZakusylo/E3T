@@ -1,5 +1,5 @@
 # Project Database Application Management - E3T
-Team IT1A / Period 2
+Team IT1G / Period 2
 
 ## Project Description
 This project was commissioned by EvenTTalentT, a new event- and talent-management agency, in cooperation with the Municipality of Emmen, to realize an information system that helps in the promotion of new events and the recruitment of new talents.  
@@ -124,7 +124,7 @@ components
 
 ```
 
-## Build with
+## Built with
 
 ### Programming languages
 * PHP
