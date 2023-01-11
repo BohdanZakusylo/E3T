@@ -36,7 +36,7 @@ if (!empty($_GET["id"])){
                 $value = $stmt->fetch();
 
                 if($value) {
-                    echo "<b>Talent: </b> ".$value['talent']."<br>";
+                    echo "<b>Performing Talent: </b> ".$value['talent']."<br>";
                 } else {
                     echo "Couldn't fetch from the DB";
                 }
