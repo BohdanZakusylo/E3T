@@ -17,7 +17,7 @@ include "components/header.php";
     <h3>Thank you</h3>
 
     <div class="buttonpad">
-            <button class="button" type="submit" name="logout"><a href="contact-us.php"> < Go back</a></button>
+            <button class="button" type="submit" name="logout"><a href="admin-dashboard.php"> < Go back</a></button>
     </div>
 </div>
 

@@ -26,8 +26,7 @@ session_start();
             $delete->bindParam(":id", $_GET["id"]);
             $delete->execute();
         }
-        echo "This talent has been accepted. Thank you!";
-        echo "<a href='requests.php'>Go back</a>";
+        header("Location: confirmation.php");
     }
     
 ?>
