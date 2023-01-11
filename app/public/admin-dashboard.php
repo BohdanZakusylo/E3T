@@ -237,7 +237,7 @@ require "db_connection/connection.php";
                     if ($err_count === 0){
                         $pass_hash = password_hash($password, PASSWORD_BCRYPT);
                         $def_rating = 1;
-                        $profile_url ="http://localhost/img/default.jpeg";
+                        $profile_url ="default.jpeg";
                         try {//Registers new talent if no error
                             $query = "INSERT INTO Talent (`first_name`,`last_name`, `talent`, `email`, `password`, `rating` ,`description`, `price_per_hour`, `profilepic_url`) VALUES (:first_name,:last_name, :talent, :email, :pass_hash, :def_rating , :description, :price,:profile_url)";
                             $stmt_1 = $db->prepare($query);
