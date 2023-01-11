@@ -8,7 +8,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST" AND $_GET["login"]==="admin"){
     $pass = filter_input(INPUT_POST,"password",FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     try{
-        $stmt = $db -> prepare("SELECT user_id, pass_hash FROM User WHERE email = :email"); #Tries to find email in DB
+        $stmt = $db -> prepare("SELECT user_id, pass_hash FROM user WHERE email = :email"); #Tries to find email in DB
         $stmt -> bindParam("email",$email,PDO::PARAM_STR);
         $stmt -> execute();
         $queryResult = $stmt -> fetchAll();
@@ -22,7 +22,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST" AND $_GET["login"]==="admin"){
 
         if((password_verify($pass, $passHash))){ # Verifies user password against retrieved hash
             $_SESSION["aLogin"] = true;
-            $_SESSION['id'] = $queryResult[0][0];
+            $_SESSION['user_id'] = $queryResult[0][0];
             header("Location: admin-dashboard.php");
         }
         else{
