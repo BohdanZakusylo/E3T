@@ -144,7 +144,7 @@ require "db_connection/connection.php";
                         }
                         else{
                             try {
-                                $query_1 = "SELECT id FROM talent WHERE email = :email"; //Checks if the email exists in the database
+                                $query_1 = "SELECT id FROM Talent WHERE email = :email"; //Checks if the email exists in the database
                                 $stmt_1 = $db->prepare($query_1);
                                 $stmt_1->bindParam(":email", $email);
                                 $stmt_1->execute();
@@ -234,22 +234,27 @@ require "db_connection/connection.php";
 
                 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                     if ($_POST["submit"] == "Register talent"){ // Registration of new talents
-                    $pass_hash = password_hash($password, PASSWORD_BCRYPT);
                     if ($err_count === 0){
+                        $pass_hash = password_hash($password, PASSWORD_BCRYPT);
+                        $def_rating = 1;
+                        $profile_url ="http://localhost/img/default.jpeg";
                         try {//Registers new talent if no error
-                            $query = "INSERT INTO talent (`first_name`,`last_name`, `talent`, `email`, `password`,`description`, `price_per_hour`) VALUES (:first_name,:last_name, :talent, :email, :pass_hash, :description, :price)";
+                            $query = "INSERT INTO Talent (`first_name`,`last_name`, `talent`, `email`, `password`, `rating` ,`description`, `price_per_hour`, `profilepic_url`) VALUES (:first_name,:last_name, :talent, :email, :pass_hash, :def_rating , :description, :price,:profile_url)";
                             $stmt_1 = $db->prepare($query);
                             $stmt_1->bindParam("first_name", $first_name);
                             $stmt_1->bindParam("last_name", $last_name);
                             $stmt_1->bindParam("talent", $talent_radio);
                             $stmt_1->bindParam("email", $email);
                             $stmt_1->bindParam("pass_hash", $pass_hash);
+                            $stmt_1->bindParam("def_rating", $def_rating);
                             $stmt_1->bindParam("description", $description);
                             $stmt_1->bindParam("price", $price);
+                            $stmt_1->bindParam("profile_url", $profile_url);
                             $stmt_1->execute();
                             echo "<p class='success'><i>Talent registered successfully <span class='check'>&#10004;</span></i></p>";
                         }
                         catch (Exception $exc){
+                            echo "Talent registration failed".$exc->getMessage();
                         }
                     }
                     else {
@@ -259,6 +264,7 @@ require "db_connection/connection.php";
         }
                 ?>
             </span>
+
             <input type="submit" name="submit" value="Register talent">
         </form>
 
