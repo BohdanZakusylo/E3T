@@ -55,7 +55,7 @@ require "db_connection/connection.php";
                     generate_portfolio($url, $output["first_name"], $output["last_name"], $output["talent"], $output["description"], $output["price_per_hour"], $aviable, $output["id"]);
                 }
                 else{
-                    $aviable = "Not available\nFrom".$output["from_date_absent"]. "To".$output["to_date_absent"];
+                    $aviable = "Not available<br>From".$output["from_date_absent"]. "To".$output["to_date_absent"];
                     generate_portfolio($url, $output["first_name"], $output["last_name"], $output["talent"], $output["description"], $output["price_per_hour"], $aviable, $output["id"]);
                 }
             }

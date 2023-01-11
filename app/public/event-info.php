@@ -26,6 +26,22 @@ if (!empty($_GET["id"])){
             echo "<b>Time: </b> ".$output['time']."<br>";
             echo "<b>Event take place in: </b> ".$output['place']."<br>";
             echo "<b>Description: </b> ".$output['event_description']."<br>";
+
+             if (!empty($output['talent_id'])) {
+                $id = $output['talent_id'];
+                $query = "SELECT * FROM Talent WHERE id = ?";
+                $stmt=$db->prepare($query);
+                $stmt->bindparam(1, $id, PDO::PARAM_INT);
+                $stmt->execute();
+                $value = $stmt->fetch();
+
+                if($value) {
+                    echo "<b>Performing Talent: </b> ".$value['first_name']. " " .$value['last_name']."<br>";
+                } else {
+                    echo "Couldn't fetch from the DB";
+                }
+            }
+
             echo "<br>";
             echo "<a href='events.php'><button>Go Back</button></a>";
             echo "</div>";
