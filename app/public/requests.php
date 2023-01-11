@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 
     if(!isset($_SESSION["aLogin"])){ #Redirects to log in if not logged in
         header("Location: admin-login.php");

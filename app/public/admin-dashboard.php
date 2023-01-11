@@ -1,6 +1,6 @@
 <?php
 session_start();
-global $dbHandler;
+global $db;
 global $err_count;
 global $email_delete;
 $cssFile = "admin-dashboard";
@@ -10,29 +10,31 @@ if(!isset($_SESSION["aLogin"])){ #Redirects to log in if not logged in
     header("Location: admin-login.php");
 }
 
-if (isset($_POST['log_out'])){
-    session_destroy();
-    header("location: admin-login.php");
-}
-if (isset($_POST['change_password'])){
-    header("location: admin_change_password.php");
-}
-if (isset($_POST['talent_request'])){
-    header("location: requests.php");
-}
-if (isset($_POST['add_event'])){
-    header("location: manage_events.php");
+if (isset($_SESSION['aLogin'])) {
+    if (isset($_POST['log_out'])) {
+        session_destroy();
+        header("location: admin-login.php");
+    }
+    if (isset($_POST['change_password'])) {
+        header("location: admin_change_password.php");
+    }
+    if (isset($_POST['talent_request'])) {
+        header("location: requests.php");
+    }
+    if (isset($_POST['add_event'])) {
+        header("location: manage_events.php");
+    }
 }
 
 include "components/header.php";
 
-try{
-    $dbHandler = new PDO("mysql:host=mysql;dbname=E3T;charset=utf8","root","qwerty"); #Initialize DB connection
-}
-catch(Exception $ex){
-    echo "<p class='error'>The following error occurred: $ex</p>";
-}
-
+//try{
+//    $dbHandler = new PDO("mysql:host=mysql;dbname=E3T;charset=utf8","root","qwerty"); #Initialize DB connection
+//}
+//catch(Exception $ex){
+//    echo "<p class='error'>The following error occurred: $ex</p>";
+//}
+//
 
 ?>
 
@@ -57,7 +59,7 @@ catch(Exception $ex){
         <?php
         $Admin_ID = $_SESSION['user_id'];//Shows the name of the current admin.
         $query = "SELECT * FROM User where user_id = ?";
-        $stmt = $dbHandler->prepare($query);
+        $stmt = $db->prepare($query);
         $stmt -> bindparam(1, $Admin_ID, PDO::PARAM_INT);
         $stmt->execute();
 
@@ -143,7 +145,7 @@ catch(Exception $ex){
                         else{
                             try {
                                 $query_1 = "SELECT id FROM talent WHERE email = :email"; //Checks if the email exists in the database
-                                $stmt_1 = $dbHandler->prepare($query_1);
+                                $stmt_1 = $db->prepare($query_1);
                                 $stmt_1->bindParam(":email", $email);
                                 $stmt_1->execute();
                                 if($result = $stmt_1 -> fetchColumn()){
@@ -236,7 +238,7 @@ catch(Exception $ex){
                     if ($err_count === 0){
                         try {//Registers new talent if no error
                             $query = "INSERT INTO talent (`first_name`,`last_name`, `talent`, `email`, `password`,`description`, `price_per_hour`) VALUES (:first_name,:last_name, :talent, :email, :pass_hash, :description, :price)";
-                            $stmt_1 = $dbHandler->prepare($query);
+                            $stmt_1 = $db->prepare($query);
                             $stmt_1->bindParam("first_name", $first_name);
                             $stmt_1->bindParam("last_name", $last_name);
                             $stmt_1->bindParam("talent", $talent_radio);
@@ -278,7 +280,7 @@ catch(Exception $ex){
                         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             if ($_POST["submit"] == "Remove") {
                                 $query5 = "SELECT first_name FROM talent WHERE email = :email_delete";
-                                $stmt_5 = $dbHandler->prepare($query5);
+                                $stmt_5 = $db->prepare($query5);
                                 $stmt_5->bindParam("email_delete", $email_delete);
                                 $stmt_5->execute();
                                 $first_name_remove = $stmt_5->fetchAll(PDO::FETCH_ASSOC);
@@ -305,7 +307,7 @@ catch(Exception $ex){
                         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             if ($_POST["submit"] == "Remove") {
                                 $query6 = "SELECT last_name FROM talent WHERE email = :email_delete";
-                                $stmt_6 = $dbHandler->prepare($query6);
+                                $stmt_6 = $db->prepare($query6);
                                 $stmt_6->bindParam("email_delete", $email_delete);
                                 $stmt_6->execute();
                                 $last_name_remove = $stmt_6->fetchAll(PDO::FETCH_ASSOC);
@@ -347,7 +349,7 @@ catch(Exception $ex){
                 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                     if ($_POST["submit"] == "Remove"){
                         $query_2 = "SELECT `id` FROM talent where `email` = :email_delete";
-                        $stmt_2 = $dbHandler->prepare($query_2);
+                        $stmt_2 = $db->prepare($query_2);
                         $stmt_2->bindParam("email_delete", $email_delete);
                         $stmt_2->execute();
                         $result = $stmt_2->fetchAll(PDO::FETCH_ASSOC);
@@ -355,7 +357,7 @@ catch(Exception $ex){
                             if ($err_count === 0){
                                 try {
                                     $query_3 = "DELETE FROM talent where email = :email_delete";
-                                    $stmt_3 = $dbHandler->prepare($query_3);
+                                    $stmt_3 = $db->prepare($query_3);
                                     $stmt_3->bindParam("email_delete", $email_delete);
                                     $stmt_3->execute();
                                     echo "<p class='success'><i>Talent deleted <span class='check'>&#10004;</span></i></p>";
@@ -427,7 +429,7 @@ catch(Exception $ex){
                         }
                         else{
                             try{ #If the email is already registered, returns an error
-                                $stmt = $dbHandler -> prepare("SELECT user_id from User WHERE email=:email");
+                                $stmt = $db -> prepare("SELECT user_id from User WHERE email=:email");
                                 $stmt -> bindParam("email",$email);
                                 $stmt -> execute();
 
@@ -470,7 +472,7 @@ catch(Exception $ex){
 
                     if($err_count === 0){
                         try{
-                            $stmt = $dbHandler ->
+                            $stmt = $db ->
                             prepare("INSERT INTO `User` (`user_id`, `first_name`, `last_name`, `email`, `pass_hash`) VALUES (NULL, :firstName, :lastName, :email, :passHash)");
                             $stmt -> bindParam("firstName",$firstName);
                             $stmt -> bindParam("lastName",$lastName);

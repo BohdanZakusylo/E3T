@@ -33,7 +33,7 @@ $Admin_id = $_SESSION['user_id'];
 
                         require_once("db_connection/connection.php");
                         $query = "SELECT * from user WHERE user_id = ?";
-                        $stmt = $dbHandler->prepare($query);
+                        $stmt = $db->prepare($query);
                         $stmt->bindparam(1, $Admin_id, PDO::PARAM_INT);
                         $stmt->execute();
 
@@ -54,7 +54,7 @@ $Admin_id = $_SESSION['user_id'];
 
 
                                                         $query = "UPDATE user SET pass_hash = ? WHERE user_id=?";
-                                                        $stmt = $dbHandler->prepare($query);
+                                                        $stmt = $db->prepare($query);
                                                         $stmt->bindparam(1, $pass_hash);
                                                         $stmt->bindparam(2, $Admin_id, PDO::PARAM_INT);
                                                         $update = $stmt->execute();
