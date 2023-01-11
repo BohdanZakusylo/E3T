@@ -6,6 +6,7 @@ if(isset($_SESSION['upload'])) {
     header("Location: ../edit-profile.php");
 }
 
+require "../db_connection/connection.php";
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     $name = $_FILES['file']['name'];

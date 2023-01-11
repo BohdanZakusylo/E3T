@@ -22,7 +22,11 @@ form{
     font-weight: bolder;
     margin-right: 63%;
 }
-input[type=email],input[type=password]{
+#login_p{
+	margin-bottom: 20px;
+	margin-top: 10px;
+}
+input{
     width: 80%;
 }
 label{
@@ -66,6 +70,9 @@ input[type=submit]{
 
 @media screen and (max-width: 393px){
     form{
+		display:flex;
+		flex-direction: column;
+		justify-content: center;
         width: 90%;
         height: 34%;
         margin-bottom: 100%;
@@ -77,19 +84,25 @@ input[type=submit]{
     .login{
         font-size: 20px;
         padding-left: 1%;
+		margin-top: 10px;
     }
+	.email{
+		font-size: 15px;
+		padding-right: 2%;
+	}
     input[type=submit]{
         font-size: 10px;
     }
     .power{
         display: flex;
         justify-content: center;
-        padding-bottom: 100%;
-        margin-top: -100%;
     }
     .powered{
         font-family: "Roboto Light", sans-serif;
         font-style: italic;
         font-size: 1.25em;
     }
+	input[type=submit]{
+		height: auto;
+	}
 }
