@@ -39,7 +39,7 @@
     $count_talent = $count_query->fetch();
     if (isset($_GET["delete"])) {
         if ($_GET['delete'] == "1")
-            $delete_event_query = $db->prepare("DELETE FROM Events WHERE name=:deleted");
+            $delete_event_query = $db->prepare("DELETE FROM Events WHERE event_id=:deleted");
         $delete_event_query->bindParam(':deleted', $_POST['delete_talent']);
         $delete_event_query->execute();
         echo "<h2>Event deleted</h2>";
@@ -127,8 +127,8 @@
                         for ($i = 0; $i <= $id[0]; $i++) {
                             $delete = $db->query("SELECT name FROM Events WHERE event_id=" . $i);
                             $event_delete = $delete->fetch();
-                            if ($event_delete) {
-                                echo "<option>" . $event_delete['name'] . "</option>";
+                            if ($event_delete){
+                                echo "<option value=$i>" . $event_delete['name'] . "</option>";
                             }
                         }
                     ?>
