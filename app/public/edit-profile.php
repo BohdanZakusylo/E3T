@@ -39,7 +39,7 @@ if (isset($_SESSION['upload'])) {
     $talent_id = $_SESSION["id"];
 
     $query = "SELECT * FROM Talent WHERE id = ?";
-    $stmt = $db ->prepare($query);
+    $stmt = $dbHandler ->prepare($query);
     $stmt -> bindparam(1, $talent_id, PDO::PARAM_INT);
     $stmt -> execute();
 
@@ -73,7 +73,7 @@ if (isset($_SESSION['upload'])) {
             $first_name = filter_input(INPUT_POST, "first_name", FILTER_SANITIZE_SPECIAL_CHARS);
 
             $query = "UPDATE Talent SET first_name = ? WHERE id = ?";
-            $stmt = $db->prepare($query);
+            $stmt = $dbHandler->prepare($query);
             $stmt->bindparam(1, $first_name, PDO::PARAM_STR);
             $stmt->bindparam(2, $talent_id, PDO::PARAM_INT);
             $final = $stmt->execute();
@@ -105,7 +105,7 @@ if(isset($_POST['last_name'])) {
     $last_name = filter_input(INPUT_POST, "last_name", FILTER_SANITIZE_SPECIAL_CHARS);
 
     $query = "UPDATE Talent SET last_name = ? WHERE id = ?";
-    $stmt = $db->prepare($query);
+    $stmt = $dbHandler->prepare($query);
     $stmt->bindparam(1, $last_name, PDO::PARAM_STR);
     $stmt->bindparam(2, $talent_id, PDO::PARAM_INT);
     $final = $stmt->execute();
@@ -137,7 +137,7 @@ if(isset($_POST['description'])) {
     $description = filter_input(INPUT_POST, "description", FILTER_SANITIZE_SPECIAL_CHARS);
 
     $query = "UPDATE Talent SET description = ? WHERE id = ?";
-    $stmt = $db->prepare($query);
+    $stmt = $dbHandler->prepare($query);
     $stmt->bindparam(1, $description, PDO::PARAM_STR);
     $stmt->bindparam(2, $talent_id, PDO::PARAM_INT);
     $final = $stmt->execute();
