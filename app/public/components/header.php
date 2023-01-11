@@ -22,7 +22,3 @@
         <li><div id='login'><a href='login.php' id='a-color'>Login</a></div></li>
     </ul>
 </header>
-
-<!--When you will add the HTML part, please change your <head></head> part to that which was stated above!!!!!!-->
-
-<!--Contains the header part-->

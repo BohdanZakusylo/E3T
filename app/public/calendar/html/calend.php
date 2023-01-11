@@ -1,27 +1,5 @@
  <body>
  <style>
-<!--     --><?php
-//            try {
-//        $db = new PDO("mysql:host=mysql;dbname=E3T;charset=utf8","root", "qwerty");
-//    }
-//    catch (Exception $ex){
-//        echo "$ex";
-//    }
-//        $color_array = ["#C23B22", "purple", "green"];
-//        $count = count($color_array) - 1;
-//        $i = rand(0, $count);
-//        $rand_background = $color_array[$i];
-//
-//        $ids = $db->prepare("SELECT event_id FROM Events");
-//        $ids->execute();
-//        while ($id = $ids->fetch()){
-//            echo ".calendar tbody tr td.mask-start,
-//                  .calendar tbody tr td.mask,
-//                  .calendar tbody tr td.mask-end {
-//                  background: ".$rand_background.">;
-//                }";
-//        }
-?>
 .calendar tbody tr td.mask-start,
 .calendar tbody tr td.mask,
 .calendar tbody tr td.mask-end {
@@ -125,12 +103,7 @@
 
             </div>
 
-<!--            <div class="copyright">-->
-<!--                -->
 <!--                <p>&copy; Copyright Benjamin Hall :: <a href="https://github.com/benhall14/php-calendar">https://github.com/benhall14/php-calendar</a></p>-->
-<!--            -->
-<!--            </div>-->
-
         </div>
 
     </body>

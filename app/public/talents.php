@@ -1,8 +1,4 @@
 <?php
-//if (empty($_GET["talent"])){
-//    header("Location: talents.php?talent=Singers");
-//    var_dump($_GET["talent"]);
-//}
 $cssFile = "talents";
 $pageTitle = "talents";
 include ("components/header.php");
@@ -11,7 +7,6 @@ require "db_connection/connection.php";
 ?>
 
 <main>
-
 <section>
 <div>
 	<div class="container">
@@ -61,7 +56,7 @@ require "db_connection/connection.php";
             }
         }
         else{
-            $singers = $db->prepare('SELECT * FROM Talent WHERE talent = "Singers"');
+            $singers = $db->prepare('SELECT * FROM Talent WHERE talent = "Singer"');
             $singers->execute();
             while($singer = $singers->fetch()){
                 $s_id = $singer["id"];
@@ -81,11 +76,8 @@ require "db_connection/connection.php";
         echo "</div>";
         ?>
 
-
     </sub-section>
 </main>
-
-
 
 <?php
 include "components/footer.php";
