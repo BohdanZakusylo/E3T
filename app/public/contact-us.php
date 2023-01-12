@@ -1,6 +1,20 @@
 <?php
 session_start();
-$cssFile = "contact-us";
+
+
+    require __DIR__."/PHPMailer-master/src/PHPMailer.php";
+    require __DIR__."/PHPMailer-master/src/Exception.php";
+    require __DIR__."/PHPMailer-master/src/SMTP.php";
+
+
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+    use PHPMailer\PHPMailer\SMTP;
+
+
+
+
+    $cssFile = "contact-us";
 $pageTitle = "contact-us";
 include ("components/header.php");
 require "db_connection/connection.php";
@@ -74,21 +88,64 @@ require "db_connection/connection.php";
                     $event = filter_input(INPUT_POST, "name_of_event");
                     $eventDescription = filter_input(INPUT_POST, "event_description");
 
+                        if (!empty($fullName2) && !empty($emailAddress2) && !empty($event) && !empty($eventDescription)){
+                            $mail = new PHPMailer();
+                            $mail->isSMTP();
+                            $mail->Host = 'smtp.gmail.com';
+                            $mail->Port = 587;
+                            $mail->SMTPAuth = true;
+                            $mail->Username = "e3tproject@gmail.com";
+                            $mail->Password = "kzwlwysxxrstdkue";
+                            $mail->Subject = "Event Request";
+                            $mail->CharSet = PHPMailer::CHARSET_UTF8;
+                            $mail->setFrom("e3tproject@gmail.com", "E3T");
+                            $mail->isHTML();
+                            $query = "SELECT first_name,last_name,email FROM User";
+                            $stmt = $db->prepare($query);
+                            $stmt->execute();
+                            $mails = $stmt->fetchAll();
+                            foreach ($mails as $received) {
+                                $mail->Body =
+                                    "<p><h2>Event Requested by Client</h2></p> " ."<p>Good day ".
+                                    $received['first_name']." ". $received['last_name'] . ",</p>" .
+                                    "<p>A client submitted an event request and the details are listed below, <b>Attend to the request as soon as possible;</b></p>" .
+                                    "<p>Full name: <b>$fullName2</b><br>" .
+                                    "Email address: <b>$emailAddress2</b><br>" .
+                                    "Name of event: <b>$event</b><br>" .
+                                    "Event description: <b>$eventDescription</b></p>" .
+                                    "<p class='error_email'><i>Do not reply to this email as it was generated automatically, and you will not receive a reply if you do</i></p>";
+                            }
+
+                            foreach ($mails as $received){
+                                try {
+                                    $mail->addAddress($received['email'], $received['first_name']." ".$received['last_name']);
+                                }catch (Exception $e){
+                                }
+                            }
+                            try {
+                                $mail->send();
+                            }catch (Exception $e){
+                                $mail->getSMTPInstance()->reset();
+                            }
+                            $mail->clearAddresses();
+                            $mail->clearAttachments();
+
+                        }
 
 
                     if(empty($fullName2)){
                         $fullName2Err = "Please provide all necessary information";
-                    } elseif(empty($emailAddress2)) { 
+                    } elseif(!PHPMailer::validateAddress($emailAddress2) || empty($emailAddress2)) {
                         $emailAddress2Err = "Please provide all necessary information";
                     } elseif(empty($event)) {
                         $eventErr = "Please provide all necessary information";
                     } elseif(empty($eventDescription)) {
                         $eventDescriptionErr = "Please provide all necessary information";
-                    } elseif(str_word_count($fullName2) < 2) {
+                    } elseif(str_word_count($fullName2) < 1) {
                         $fullName2Err = "Your full name must contain at least 2 words";
-                    } elseif(str_word_count($eventDescription) < 5){
+                    } elseif(str_word_count($eventDescription) < 1){
                         $eventDescriptionErr = "Your event description needs to contain at least 5 words";
-                    } elseif(strlen($event) < 3){
+                    } elseif(strlen($event) < 1){
                         $eventErr = "Your event name needs to contain at least 3 characters";
                     }else {
                             echo "<div class='message2'>";
@@ -127,7 +184,7 @@ require "db_connection/connection.php";
         </p>
     </form>
     
-    <form id="client_form" method="POST" action="request-events-process.php" enctype="multipart/form-data">
+    <form id="client_form" method="POST" action="" enctype="multipart/form-data">
         <div class="vertical_line">
             <h1 class="for_client">For clients</h1>
             <label class="label_2" for="full_name_2">Full name:<span class="error">* <?php echo $fullName2Err;?></label><br>

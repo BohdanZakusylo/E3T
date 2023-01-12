@@ -125,7 +125,9 @@ textarea{
 
 
 /* form */
-
+.error_email{
+	color: red;
+}
 
 .message1 {
 	grid-column: 5/9;

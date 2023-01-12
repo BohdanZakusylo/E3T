@@ -1,45 +1,74 @@
 <?php
-session_start();
+    session_start();
 
-global $db;
-global $err_count;
-global $email_delete;
-$cssFile = "admin-dashboard";
-$pageTitle = "admin-dashboard";
 
-if(!isset($_SESSION["aLogin"])){ #Redirects to log in if not logged in
+    require __DIR__."/PHPMailer-master/src/PHPMailer.php";
+    require __DIR__."/PHPMailer-master/src/Exception.php";
+    require __DIR__."/PHPMailer-master/src/SMTP.php";
 
-    header("Location: admin-login.php");
-}
 
-if (isset($_SESSION['aLogin'])) {
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+    use PHPMailer\PHPMailer\SMTP;
 
-    if (isset($_POST['log_out'])) {
 
-        session_destroy();
-        header("location: admin-login.php");
-    }
-
-    if (isset($_POST['change_password'])) {
-
-        header("location: admin_change_password.php");
-    }
-
-    if (isset($_POST['talent_request'])) {
-
-        header("location: requests.php");
-    }
-
-    if (isset($_POST['add_event'])) {
-        header("location: manage-events.php");
-
-    }
-}
-
-include "components/header.php";
-require "db_connection/connection.php";
 ?>
 
+<?php
+
+    global $db;
+    global $err_count;
+    global $email_delete;
+    $cssFile = "admin-dashboard";
+    $pageTitle = "admin-dashboard";
+
+    if(!isset($_SESSION["aLogin"])){ #Redirects to log in if not logged in
+
+        header("Location: admin-login.php");
+    }
+//    try {
+//        $db = new PDO("mysql:host=localhost;dbname=e3t;", "root", "emperor");
+//    }
+//    catch (PDOException $e){
+//        echo $e->getMessage();
+//    }
+    if (isset($_SESSION['aLogin'])) {
+
+        if (isset($_POST['log_out'])) {
+
+            session_destroy();
+            header("location: admin-login.php");
+        }
+
+        if (isset($_POST['change_password'])) {
+
+            header("location: admin_change_password.php");
+        }
+
+        if (isset($_POST['talent_request'])) {
+
+            header("location: requests.php");
+        }
+
+        if (isset($_POST['add_event'])) {
+            header("location: manage-events.php");
+
+        }
+    }
+
+    include "components/header.php";
+    require "db_connection/connection.php";
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+</head>
+<body>
 <div class="header">
     <h2>Admin Dashboard</h2>
 </div>
@@ -50,14 +79,14 @@ require "db_connection/connection.php";
     </div>
     <h3>
         <?php
-        $Admin_ID = $_SESSION['user_id'];//Shows the name of the current admin.
-        $query = "SELECT * FROM User where user_id = ?";
-        $stmt = $db->prepare($query);
-        $stmt -> bindparam(1, $Admin_ID, PDO::PARAM_INT);
-        $stmt->execute();
+            $Admin_ID = $_SESSION['user_id'];//Shows the name of the current admin.
+            $query = "SELECT * FROM User where user_id = ?";
+            $stmt = $db->prepare($query);
+            $stmt -> bindparam(1, $Admin_ID, PDO::PARAM_INT);
+            $stmt->execute();
 
-        $res = $stmt -> fetch(PDO::FETCH_ASSOC);
-        echo $res['first_name'] . " " . $res['last_name'];
+            $res = $stmt -> fetch(PDO::FETCH_ASSOC);
+            echo $res['first_name'] . " " . $res['last_name'];
         ?>
     </h3>
 </div>
@@ -66,13 +95,13 @@ require "db_connection/connection.php";
     <div class="new_talents">
         <h2>Register new talents</h2>
         <?php
-                if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+            if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-                    if ($_POST["submit"] == "Register talent"){ // Registration of new talents
-                        
-                        $err_count = 0;
-                    }
+                if ($_POST["submit"] == "Register talent"){ // Registration of new talents
+
+                    $err_count = 0;
                 }
+            }
         ?>
         <form class="form_register" method="POST" action="admin-dashboard.php">
             <label for="name">First Name</label>
@@ -81,9 +110,9 @@ require "db_connection/connection.php";
                     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         if ($_POST["submit"] == "Register talent") { // Registration of new talents
-                            
+
                             if (!$first_name = filter_input(INPUT_POST, "first_name", FILTER_SANITIZE_SPECIAL_CHARS)) {//Input verification
-                                
+
                                 echo "<i class='error'>Enter a First Name!</i>";
                                 $err_count++;
                             }
@@ -99,9 +128,9 @@ require "db_connection/connection.php";
                     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         if ($_POST["submit"] == "Register talent") { // Registration of new talents
-                            
+
                             if (!$last_name = filter_input(INPUT_POST, "last_name", FILTER_SANITIZE_SPECIAL_CHARS)) {//Input verification
-                                
+
                                 echo "<i class='error'>Enter a last Name!</i>";
                                 $err_count++;
                             }
@@ -117,9 +146,9 @@ require "db_connection/connection.php";
                     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         if ($_POST["submit"] == "Register talent") { // Registration of new talents
-                            
-                            if (empty($talent_radio = filter_input(INPUT_POST, "talent", FILTER_SANITIZE_SPECIAL_CHARS))){//Input verification
-                                
+
+                            if (empty($talent_button = filter_input(INPUT_POST, "talent", FILTER_SANITIZE_SPECIAL_CHARS))){//Input verification
+
                                 echo "<i class='error'>Choose a talent!</i>";
                                 $err_count++;
                             }
@@ -143,9 +172,9 @@ require "db_connection/connection.php";
                     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         if ($_POST["submit"] == "Register talent") { // Registration of new talents
-                            
+
                             if(!$email = filter_input(INPUT_POST,"email",FILTER_VALIDATE_EMAIL)){//Input verification
-                                
+
                                 echo "<i class='error'>Enter a valid email!</i>";
                                 $err_count++;
                             }
@@ -163,7 +192,7 @@ require "db_connection/connection.php";
                                         $err_count++;
                                     }
                                 }
-                                catch (Exception $e){
+                                catch (PDOException $e){
                                 }
                             }
                         }
@@ -178,45 +207,19 @@ require "db_connection/connection.php";
                     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         if ($_POST["submit"] == "Register talent") { // Registration of new talents
-                            
+
                             $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);//Input verification
-                                
-                                if (strlen($password) >= 7) {
 
-                                    if (ctype_lower($password)) {
-
-                                        echo "<i class='error'>Password cannot be all lower case</i>";
-                                        $err_count++;
-
-                                    } 
-                                    elseif (ctype_upper($password)) {
-
-                                        echo "<i class='error'>Password cannot be all upper case</i>";
-                                        $err_count++;
-
-                                    } 
-                                    elseif (ctype_digit($password)) {
-                                        
-                                        echo "<i class='error'>Password cannot be all numbers</i>";
-                                        $err_count++;
-
-                                    } 
-                                    elseif (!preg_match("/[A-Za-z0-9\s_-]/", $password)) {
-
-                                        echo "<i class='error'>Password cannot contain special characters</i>";
-                                        $err_count++;
-
-                                    }
-                                }
-                                else {
-                                    echo "<i class='error'>The password must be at least 7 characters long!</i>";
-                                    $err_count++;
-                                }
                         }
                     }
                 ?>
             </span><span class="error">*</span><br>
-            <input class="input_text" type="password" name="password" id="password"><br>
+            <input class="input_text" type="password" name="password" id="password" value="<?php
+                $combination = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                $shuffle = str_shuffle($combination);
+                $rand_pass = substr($shuffle, 0, 8);
+                echo $rand_pass;
+            ?>" disabled><br>
 
             <label for="price">Price per hour (&euro;)</label>
             <span>
@@ -253,7 +256,7 @@ require "db_connection/connection.php";
                         if ($_POST["submit"] == "Register talent") { // Registration of new talents
 
                             if (!$description = filter_input(INPUT_POST, "description", FILTER_SANITIZE_SPECIAL_CHARS)){//Input verification
-                                
+
                                 echo "<i class='error'>Enter a Description!</i>";
                                 $err_count++;
                             }
@@ -270,36 +273,69 @@ require "db_connection/connection.php";
 
                         if ($_POST["submit"] == "Register talent"){ // Registration of new talents
 
-                        if ($err_count === 0){
+                            if ($err_count === 0){
 
-                            $pass_hash = password_hash($password, PASSWORD_BCRYPT);
-                            $def_rating = 1;
-                            $profile_url ="default.jpeg";
+                                $pass_hash = password_hash($rand_pass, PASSWORD_BCRYPT);
+                                $def_rating = 1;
+                                $profile_url ="default.jpeg";
 
-                            try {//Registers new talent if no error
+                                try {//Registers new talent if no error
 
-                                $query = "INSERT INTO Talent (`first_name`,`last_name`, `talent`, `email`, `password`, `rating` ,`description`, `price_per_hour`, `profilepic_url`) VALUES (:first_name,:last_name, :talent, :email, :pass_hash, :def_rating , :description, :price,:profile_url)";
-                                $stmt_1 = $db->prepare($query);
+                                    $query = "INSERT INTO Talent (`first_name`,`last_name`, `talent`, `email`, `password`, `rating` ,`description`, `price_per_hour`, `profilepic_url`) VALUES (:first_name,:last_name, :talent, :email, :pass_hash, :def_rating , :description, :price,:profile_url)";
+                                    $stmt_1 = $db->prepare($query);
 
-                                $stmt_1->bindParam("first_name", $first_name);
-                                $stmt_1->bindParam("last_name", $last_name);
-                                $stmt_1->bindParam("talent", $talent_radio);
-                                $stmt_1->bindParam("email", $email);
-                                $stmt_1->bindParam("pass_hash", $pass_hash);
-                                $stmt_1->bindParam("def_rating", $def_rating);
-                                $stmt_1->bindParam("description", $description);
-                                $stmt_1->bindParam("price", $price);
-                                $stmt_1->bindParam("profile_url", $profile_url);
+                                    $stmt_1->bindParam("first_name", $first_name);
+                                    $stmt_1->bindParam("last_name", $last_name);
+                                    $stmt_1->bindParam("talent", $talent_button);
+                                    $stmt_1->bindParam("email", $email);
+                                    $stmt_1->bindParam("pass_hash", $pass_hash);
+                                    $stmt_1->bindParam("def_rating", $def_rating);
+                                    $stmt_1->bindParam("description", $description);
+                                    $stmt_1->bindParam("price", $price);
+                                    $stmt_1->bindParam("profile_url", $profile_url);
 
-                                $stmt_1->execute();
-                                echo "<p class='success'><i>Talent registered successfully <span class='check'>&#10004;</span></i></p>";
+                                    if ($stmt_1->execute()) {
+
+                                        try {
+                                            $mail = new PHPMailer();
+                                            $mail->isSMTP();
+                                            $mail->Host = 'smtp.gmail.com';
+                                            $mail->Port = 587;
+                                            $mail->SMTPAuth = true;
+                                            $mail->Username = "e3tproject@gmail.com";
+                                            $mail->Password = "kzwlwysxxrstdkue";
+                                            $mail->Subject = "Your request to become one of our talents at E3T has been approved";
+                                            $mail->CharSet = PHPMailer::CHARSET_UTF8;
+                                            $mail->setFrom("e3tproject@gmail.com", "E3T");
+                                            $mail->Body =
+                                                "<p>Welcome to E3t " . $first_name . " " . $last_name . "</p>" .
+                                                "<p><h2>You Request to become one of our talents at E3T has been approved. Below you will find your details as well as your randomly generated password</h2></p>" .
+                                                "<p>
+                                    First name: <b>$first_name;</b><br>
+                                    Last name: <b>$last_name;</b><br>
+                                    Talent: <b>$talent_button;</b><br>
+                                    Email address: <b>$email;</b><br>
+                                    Password (Change this password as soon as possible): <b>$rand_pass;</b><br>
+                                    Description: <b>$description</b><br>
+                                     </p>
+                                     <p><a href='login.php'>Click this link to login</a></p>";
+                                            $mail->isHTML();
+                                            $mail->addAddress("$email", "$first_name.$last_name");
+                                            $mail->send();
+                                            $mail->smtpClose();
+                                        } catch (Exception $e) {
+                                            echo $e->getMessage();
+                                        }
+                                    }
+
+                                    echo "<p class='success'><i>Talent registered successfully <span class='check'>&#10004;</span></i></p>";
+                                }
+                                catch (PDOException $exc){
+
+                                    echo "Talent registration failed".$exc->getMessage();
+                                }
                             }
-                            catch (Exception $exc){
-
-                                echo "Talent registration failed".$exc->getMessage();
-                            }
-                        }
-                        else {
+                            else {
                                 echo "<p class='error'><i>Talent could not be registered</i></p>";
                             }
                         }
@@ -321,8 +357,8 @@ require "db_connection/connection.php";
 
                     $err_count = 0;
 
-                    }
                 }
+            }
         ?>
         <form class="form_delete" method="POST" action="admin-dashboard.php">
             <label for="first_name_delete">First Name</label>
@@ -346,7 +382,7 @@ require "db_connection/connection.php";
                                     }
                                     foreach ($first_name_remove as $first_name_removed) {
 
-                                        if ($first_name_delete != $first_name_removed) {
+                                        if ($first_name_removed != $first_name_delete) {
 
                                             echo "<i class='error'>Talent First name not found</i>";
                                             $err_count++;
@@ -362,32 +398,32 @@ require "db_connection/connection.php";
             <label for="last_name_delete">Last Name</label>
             <span>
                 <?php
-                        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-                            if ($_POST["submit"] == "Remove") {
+                        if ($_POST["submit"] == "Remove") {
 
-                                $query6 = "SELECT last_name FROM Talent WHERE email = :email_delete";
-                                $stmt_6 = $db->prepare($query6);
-                                $stmt_6->bindParam("email_delete", $email_delete);
+                            $query6 = "SELECT last_name FROM Talent WHERE email = :email_delete";
+                            $stmt_6 = $db->prepare($query6);
+                            $stmt_6->bindParam("email_delete", $email_delete);
 
-                                $stmt_6->execute();
-                                $last_name_remove = $stmt_6->fetchAll(PDO::FETCH_ASSOC);
+                            $stmt_6->execute();
+                            $last_name_remove = $stmt_6->fetchAll(PDO::FETCH_ASSOC);
 
-                                if (!$last_name_delete = filter_input(INPUT_POST, "last_name_delete", FILTER_SANITIZE_SPECIAL_CHARS)) {//Input verification
+                            if (!$last_name_delete = filter_input(INPUT_POST, "last_name_delete", FILTER_SANITIZE_SPECIAL_CHARS)) {//Input verification
 
-                                    echo "<i class='error'>Enter the last name of talent to delete</i>";
+                                echo "<i class='error'>Enter the last name of talent to delete</i>";
+                                $err_count++;
+                            }
+                            foreach ($last_name_remove as $last_name_removed) {
+
+                                if ($last_name_delete != $last_name_removed) {
+
+                                    echo "<i class='error'>Talent last name not found</i>";
                                     $err_count++;
-                                }
-                                foreach ($last_name_remove as $last_name_removed) {
-
-                                    if ($last_name_delete != $last_name_removed) {
-
-                                        echo "<i class='error'>Talent last name not found</i>";
-                                        $err_count++;
-                                    }
                                 }
                             }
                         }
+                    }
                 ?>
             </span><span class="error">*</span>
             <br>
@@ -435,10 +471,36 @@ require "db_connection/connection.php";
                                         $stmt_3 = $db->prepare($query_3);
                                         $stmt_3->bindParam("email_delete", $email_delete);
 
-                                        $stmt_3->execute();
+                                        if ($stmt_3->execute()){
+                                            try {
+                                                $mail = new PHPMailer();
+                                                $mail->isSMTP();
+                                                $mail->Host = 'smtp.gmail.com';
+                                                $mail->Port = 587;
+                                                $mail->SMTPAuth = true;
+                                                $mail->Username = "e3tproject@gmail.com";
+                                                $mail->Password = "kzwlwysxxrstdkue";
+                                                $mail->Subject = "Your E3t account has been terminated";
+                                                $mail->CharSet = PHPMailer::CHARSET_UTF8;
+                                                $mail->setFrom("e3tproject@gmail.com", "E3T");
+                                                $mail->Body =
+                                                    "<p>Goodbye " . $first_name_delete . " " . $last_name_delete . "</p>" .
+                                                    "<p><h2>Your E3T account has been terminated</h2></p>" .
+                                                    "<p>
+                                                    We are sorry to inform you that your account with us at E3T has been terminated.
+                                                    </p>
+                                                    <p><a href='index.php'>Click this link to visit our page</a></p>";
+                                                $mail->isHTML();
+                                                $mail->addAddress("$email_delete", "$first_name_delete.$last_name_delete");
+                                                $mail->send();
+                                                $mail->smtpClose();
+                                            } catch (Exception $e) {
+                                                echo $e->getMessage();
+                                            }
+                                        }
                                         echo "<p class='success'><i>Talent deleted <span class='check'>&#10004;</span></i></p>";
                                     }
-                                    catch (Exception $exc){
+                                    catch (PDOException $exc){
                                         echo "<p class='error'><i>Could not delete talent account</i></p>";
                                     }
                                 }
@@ -528,7 +590,7 @@ require "db_connection/connection.php";
                                         $err_count++;
                                     }
                                 }
-                                catch(Exception $ex){
+                                catch(PDOException $ex){
                                     echo "<i class='error'>The following error occured: $ex</i>";
                                     $err_count++;
                                 }
@@ -548,28 +610,28 @@ require "db_connection/connection.php";
 
                             $pass = filter_input(INPUT_POST,"password",FILTER_SANITIZE_SPECIAL_CHARS);//Input verification
 
-                            if(strlen($pass)<8){
-
-                                echo "<i class='error'>The password must be at least 8 characters long!</i>";
-                                $err_count++;
                             }
                         }
-                    }
                 ?>
             </span><span class="error">*</span><br>
-            <input class="input_text" type="password" name="password" id="email_register"><br>
+            <input class="input_text" type="password" name="password" id="password_register" value="<?php
+                $combination_1 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                $shuffle_1 = str_shuffle($combination_1);
+                $rand_pass_1 = substr($shuffle, 0, 8);
+                echo $rand_pass_1;
+            ?>" disabled><br>
             <span>
             <?php
                 if($_SERVER["REQUEST_METHOD"]=="POST"){
 
                     if($_POST["submit"]=="Register admin"){
 
-                        $passHash = password_hash($pass,PASSWORD_BCRYPT);
+                        $passHash = password_hash($rand_pass_1,PASSWORD_BCRYPT);
 
                         if($err_count === 0){
 
                             try{
-                                
+
                                 $stmt = $db ->
                                 prepare("INSERT INTO `User` (`user_id`, `first_name`, `last_name`, `email`, `pass_hash`) VALUES (NULL, :firstName, :lastName, :email, :passHash)");
 
@@ -577,11 +639,40 @@ require "db_connection/connection.php";
                                 $stmt -> bindParam("lastName",$lastName);
                                 $stmt -> bindParam("email",$email);
                                 $stmt -> bindParam("passHash",$passHash);
-                                
-                                $stmt -> execute();
+
+                                if ($stmt -> execute()){
+                                    try {
+                                        $mail = new PHPMailer();
+                                        $mail->isSMTP();
+                                        $mail->Host = 'smtp.gmail.com';
+                                        $mail->Port = 587;
+                                        $mail->SMTPAuth = true;
+                                        $mail->Username = "e3tproject@gmail.com";
+                                        $mail->Password = "kzwlwysxxrstdkue";
+                                        $mail->Subject = "You have been chosen to become an admin at E3T";
+                                        $mail->CharSet = PHPMailer::CHARSET_UTF8;
+                                        $mail->setFrom("e3tproject@gmail.com", "E3T");
+                                        $mail->Body =
+                                            "<p>Welcome to E3t Admin " . $firstName . " " . $lastName . "</p>" .
+                                            "<p><h2>You have been chosen to become an admin at E3T. Below you will find your details as well as your randomly generated password</h2></p>" .
+                                            "<p>
+                                    First name: <b>$firstName;</b><br>
+                                    Last name: <b>$lastName;</b><br>
+                                    Email address: <b>$email;</b><br>
+                                    Password (Change this password as soon as possible): <b>$rand_pass_1;</b><br>
+                                     </p>
+                                     <p><a href='admin-login.php'>Click this link to login</a></p>";
+                                        $mail->isHTML();
+                                        $mail->addAddress("$email", "$firstName.$lastName");
+                                        $mail->send();
+                                        $mail->smtpClose();
+                                    } catch (Exception $e) {
+                                        echo $e->getMessage();
+                                    }
+                                }
                                 echo "<p class='success'><i>Admin registered successfully <span class='check'>&#10004;</span></i><p>";
                             }
-                            catch(Exception $ex){
+                            catch(PDOException $ex){
                                 echo "<p class='error'><i>The following error occured: $ex</i></p>";
                             }
                         }
@@ -606,7 +697,9 @@ require "db_connection/connection.php";
         <input class="logout" type="submit" name="log_out" value="LOG OUT">
     </form>
 </div>
+</body>
+</html>
 
 <?php
-include "components/footer.php";
+    include "components/footer.php";
 ?>
