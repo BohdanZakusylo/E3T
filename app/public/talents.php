@@ -11,7 +11,7 @@ require "db_connection/connection.php";
 <div>
 	<div class="container">
 	<h3>Want a talent for your events?</h3>
-	<p>E3T got you covered with the very best talents in emmen and surrounding</p>
+	<p>E3T got you covered with the very best talents in Emmen and surroundings</p>
 	<div>
 	</div>
 
