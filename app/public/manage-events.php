@@ -1,9 +1,9 @@
 <?php
+    session_start();
     include "components/header.php";
     $cssFile = "manage-events";
     $pageTitle = "manage-events";
     require "db_connection/connection.php";
-    session_start();
     $user_id = $_SESSION['user_id'];
     if (isset($_GET["add"])) {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
