@@ -2,9 +2,11 @@
 session_start();
 
 
-    if(!isset($_SESSION["aLogin"])){ #Redirects to log in if not logged in
+    if(!isset($_SESSION["aLogin"])){
+        #Redirects to log in if not logged in
         header("Location: admin-login.php");
     }
+
     $cssFile = "requests";
     $pageTitle = "Requests";
     include "components/header.php";
@@ -12,16 +14,20 @@ session_start();
 ?>
 
 <?php
-if (!empty($_GET)){
+    if (!empty($_GET)){
+
     $id = $_GET["id"];
     $delete = $db->prepare("DELETE FROM Requests WHERE request_id = :id");
     $delete->bindParam(":id", $id);
     $delete->execute();
-}
-else {
+    }
+    else {
+
     $outputs = $db->prepare("SELECT request_id, first_name, last_name, talent, email, description FROM Requests");
     $outputs->execute();
+
     while ($output = $outputs->fetch()) {
+        
         $first_name = $output["first_name"];
         $last_name = $output["last_name"];
         $talent = $output["talent"];

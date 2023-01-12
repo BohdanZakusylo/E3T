@@ -15,15 +15,16 @@ if (isset($_SESSION['upload'])) {
 ?>
 
     <?php
-		$talent_id = $_SESSION["id"];
-		$query = "SELECT * FROM Talent WHERE id = ?";
-		$stmt = $db ->prepare($query);
-		$stmt -> bindparam(1, $talent_id, PDO::PARAM_INT);
-		$stmt -> execute();
-		$value = $stmt -> fetch(PDO::FETCH_ASSOC);
-		// I created a variable $finalstore here to specify directory of profile picture and to make the code below more readable
-		$profilestore = "media-files/". $talent_id . "/profile_pic";
-		$finalstore = $profilestore . "/" . $value['profilepic_url'];
+    $talent_id = $_SESSION["id"];
+    $query = "SELECT * FROM Talent WHERE id = ?";
+    $stmt = $db ->prepare($query);
+    $stmt -> bindparam(1, $talent_id, PDO::PARAM_INT);
+    $stmt -> execute();
+    $value = $stmt -> fetch(PDO::FETCH_ASSOC);
+    // I created a variable $finalstore here to specify directory of profile picture and to make the code below more readable
+    $profilestore = "media-files/". $talent_id . "/profile_pic";
+    $finalstore = $profilestore . "/" . $value['profilepic_url'];
+    $default = "img/". $value['profilepic_url'];
     ?>
     <main>
         <section>
@@ -33,7 +34,8 @@ if (isset($_SESSION['upload'])) {
         </section>
         <sub-section>
             <div class="profile">
-                <div style="background-image: url('<?php echo $finalstore ?>');"></div>
+                <div style="background-image: url('<?php echo $finalstore ?>'), url('<?php echo $default ?>');">
+                </div>
             </div>
             <div class="main">
                 <?php

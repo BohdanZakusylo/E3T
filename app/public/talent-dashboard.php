@@ -2,14 +2,16 @@
 session_start();
 $cssFile = "talent-dashboard";
 $pageTitle = "talent-dashboard";
-if(!isset($_SESSION["tLogin"])){ #Redirects to login if not logged in
+if(!isset($_SESSION["tLogin"])){ 
+    #Redirects to login if not logged in
     header("Location: login.php");
 }
 
     if (isset($_POST['logout'])) {
+
     session_destroy();
     header("Location: login.php");
-}
+    }
 
 include "components/header.php";
 
@@ -34,6 +36,7 @@ $talent_id = $_SESSION['id'];
 
     $profilestore = "media-files/". $talent_id . "/profile_pic";
     $finalstore = $profilestore . "/" . $value['profilepic_url'];
+    $default = "img/". $value['profilepic_url'];
         
 ?>
 
@@ -43,29 +46,29 @@ $talent_id = $_SESSION['id'];
 
 
 <section>
+
 <div>
-   <h2 class="dashboard">Dashboard</h2>
+<h2 class="dashboard">Dashboard</h2>
 </div>
+
 </section>
 
 <sub-section>
   <!-- the div below is for the profile picture  -->
-    <div class="profile">
-        <div class="profile-align">
-            <div class="profile_pic">
-        <div style="background-image: url('<?= $finalstore ?>');">
+<div class="profile">
+    <div class="profile-align">
+        <div class="profile_pic">
+            <div style="background-image: url('<?= $finalstore ?>'), url('<?= $default ?>');">
+            </div>
         </div>
-</div>
     <!-- this div below is for the Edit button  -->
-        <div>
+            <div>
             <button class="button"><a href="edit-profile.php">Edit Profile</a></button>
-        </div>
-</div>
+            </div>
+    </div>
  <!-- and this is for the first name and last name of the talent  -->
         <div class="profile_name">   
-        <h3>
-        <?= $value['first_name']. " " . $value['last_name']; ?>
-        </h3>
+        <h3> <?= $value['first_name']. " " . $value['last_name']; ?> </h3>
         </div>
 </div>
 
@@ -78,17 +81,19 @@ $talent_id = $_SESSION['id'];
 
 <!-- here is the media Gallery section  -->
 <div>
-    <h2><center>Media Gallery</center><h2>
+<h2><center>Media Gallery</center><h2>
 </div>
-    <div class="media-container">
-     <?php 
+
+    
+<div class="media-container">
+    <?php 
     //  the lines of code below is to fetch information directly from the folder containing the media 
-        $path = "media-files/". $talent_id . "/";
-        $extensions = array('jpg', 'jpeg', 'gif', 'png');
-        $images = glob($path."*.{".implode(',',$extensions)."}",GLOB_BRACE);
+    $path = "media-files/". $talent_id . "/";
+    $extensions = array('jpg', 'jpeg', 'gif', 'png');
+    $images = glob($path."*.{".implode(',',$extensions)."}",GLOB_BRACE);
       
         
-        foreach($images as $image) {
+     foreach($images as $image) {
            
 				echo '<div class="media">
                 <a href="#">
@@ -101,11 +106,13 @@ $talent_id = $_SESSION['id'];
             $extensions = array('mp4', 'mkv', '3gp', 'webm');
             $videos = glob($path."*.{".implode(',',$extensions)."}",GLOB_BRACE);
 
-        foreach($videos as $video) {
-            echo '<div class="video">
-                <video controls src="'.$video.'" height="200px">
-            </div>';
-        }
+                foreach($videos as $video) {
+
+                    echo '<div class="video">
+                        <video controls src="'.$video.'" height="200px">
+                    </div>';
+
+                }
 
 
             ?> 
@@ -115,29 +122,30 @@ $talent_id = $_SESSION['id'];
 
 <div class="form-container">
 
-<h2><center>Uploads<center></h2>
-<form method="POST" action="media-files/media.php" enctype="multipart/form-data" id="form">
-    <div >
-    <label for="gallery"><p>Media Gallery:</p></label>
-    <input type="file" name="gallery" id="form-img"><br>
-     
-    <button type="submit" name="submit" class="form-button" >Upload</button>
-    </div>
-</form>
+    <h2><center>Uploads<center></h2>
+
+    <form method="POST" action="media-files/media.php" enctype="multipart/form-data" id="form">
+        <div>
+            <label for="gallery"><p>Media Gallery:</p></label>
+            <input type="file" name="gallery" id="form-img"><br>
+            
+            <button type="submit" name="submit" class="form-button" >Upload</button>
+        </div> 
+    </form>
 
 </div>
 
-    </sub-section>
+</sub-section>
 
-    <div class="change">
+<div class="change">
     <form method="POST" action="" class="logout">
     <div>
-            <button class="button" type="submit" name="logout">Logout</a></button>
+    <button class="button" type="submit" name="logout">Logout</a></button>
     </div>
-        </form>
+    </form>
     
     <div>
-            <button class="button" type="submit" name="changepw"><a href="change-password.php">Change Password</a></button>
+    <button class="button" type="submit" name="changepw"><a href="change-password.php">Change Password</a></button>
     </div>
 </main>
 </body>
