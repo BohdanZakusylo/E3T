@@ -99,8 +99,8 @@
                 <label class="label" for="performing_talent">Performing talent</label> <br>
                 <select type="text" name="performing_talent" class="input_text" id="performing_talent" required>
                     <?php
-                        for ($m = 0; $m <= 5; $m++) {
-                            $qq_talent = $db->query("SELECT first_name, talent FROM Talent WHERE id=" . $m);
+                        for ($m=0;$m<=$nr_talent[0];$m++) {
+                            $qq_talent = $db->query("SELECT first_name,talent FROM Talent WHERE id=".$m);
                             $talent = $qq_talent->fetch();
                             if ($talent) {
                                 echo "<option value=$m>" . $talent['first_name'] . "-" . $talent['talent'] . "</option>";
