@@ -15,6 +15,7 @@ E3T is an organization focused on event management, and they have expressed a mo
 * **Ioan Mich** - Team Member
 
 ## Running
+# Recommented browser: Google Chrome
 ### Software
 * **XAMPP**
     * go into the XAMPP directory and add a folder for the files
