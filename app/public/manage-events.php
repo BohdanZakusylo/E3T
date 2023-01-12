@@ -1,9 +1,6 @@
 <?php
-    include "components/header.php";
-    $cssFile = "manage-events";
-    $pageTitle = "manage-events";
-    require "db_connection/connection.php";
     session_start();
+    require "db_connection/connection.php";
     $user_id = $_SESSION['user_id'];
     if (isset($_GET["add"])) {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -48,6 +45,17 @@
         echo "<h2>Event deleted</h2>";
     }
 ?>
+<!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="css/manage_events.css">
+        <title>Manage Events</title>
+        <head>
+<body>
 
 <section class="events_manage">
     <h1>Events Management</h1>
@@ -91,8 +99,8 @@
                 <label class="label" for="performing_talent">Performing talent</label> <br>
                 <select type="text" name="performing_talent" class="input_text" id="performing_talent" required>
                     <?php
-                        for ($m = 0; $m <= 5; $m++) {
-                            $qq_talent = $db->query("SELECT first_name, talent FROM Talent WHERE id=" . $m);
+                        for ($m=0;$m<=$nr_talent[0];$m++) {
+                            $qq_talent = $db->query("SELECT first_name,talent FROM Talent WHERE id=".$m);
                             $talent = $qq_talent->fetch();
                             if ($talent) {
                                 echo "<option value=$m>" . $talent['first_name'] . "-" . $talent['talent'] . "</option>";
