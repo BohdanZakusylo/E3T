@@ -12,8 +12,10 @@
         echo "$ex";
     }
 
-    var_dump($value["image_url"]);
+
 ?>
+<link rel="stylesheet" href="css/swiper-bundle.min.css">
+<link rel="stylesheet" href="css/style.css">
 <main>
     <div id="top-background">
         <div class="textBanner">
@@ -33,28 +35,27 @@
     </div>
     <div class="slide-container swiper">
         <div class="slide-content">
-            <div class="card-wrapper swiper-wrapper">
+            <div class="swiper-wrapper">
+            <!-- <img src='  '> -->
                 <?php
                     if ($result) {
                         foreach ($result as $value) {
-                        echo '<div class="card swiper-slide">
-                                <div class="media">
-                                    <div style="background-image: url('. $value["image_url"] .');"></div>
+                        echo '<div class="swiper-slide">
+                                <div class="image-content" style="background-image: url('.$value["image_url"].'); background-size:cover; width: 100%">
+                              
                                 </div>
                                   <div class="event-content">
                                     <h2 class="name">' . $value["name"] . '</h2>
                                     <p class="description">' . $value["event_description"] . '</p>
                                     <a href="events.php"><button class="button">View Event</button></a>
                                   </div>
-                               </div>';
-
-                               
+                               </div>';       
                         }
+
                     } else {
                         echo "<p class='error'>couldn't load events</p>";
                     }
 
-                    var_dump($value["image_url"]);
                 ?>
             </div>
         </div>

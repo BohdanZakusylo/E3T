@@ -26,15 +26,17 @@
 }
 
 
-.image-content{
+/* .image-content{
   padding: 10px 0;
   height: 200px;
-  background-color: #2E307A;
   border-radius: 20px;
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2)
-}
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}  */
 
-.image-content, .event-content{
+ .image-content, .event-content{
   display: flex;
   flex-direction: column;
   align-items: center;
