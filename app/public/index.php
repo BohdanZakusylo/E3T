@@ -11,6 +11,8 @@
     } catch (PDOException $ex) {
         echo "$ex";
     }
+
+    var_dump($value["image_url"]);
 ?>
 <main>
     <div id="top-background">
@@ -35,26 +37,31 @@
                 <?php
                     if ($result) {
                         foreach ($result as $value) {
-                            echo '<div class="card swiper-slide">
-                                  <div class="image-content">
-                                      <img src=' . $value["image_url"] . '>
-                                  </div>
+                        echo '<div class="card swiper-slide">
+                                <div class="media">
+                                    <div style="background-image: url('. $value["image_url"] .');"></div>
+                                </div>
                                   <div class="event-content">
                                     <h2 class="name">' . $value["name"] . '</h2>
                                     <p class="description">' . $value["event_description"] . '</p>
                                     <button class="button">View Event</button>
                                   </div>
                                </div>';
+
+                               
                         }
                     } else {
                         echo "<p class='error'>couldn't load events</p>";
                     }
+
+                    var_dump($value["image_url"]);
                 ?>
             </div>
         </div>
         <div class="swiper-button-next swiper-navBtn"></div>
         <div class="swiper-button-prev swiper-navBtn"></div>
     </div>
+    
 </section>
 <script src="js/swiper-bundle.min.js"></script>
 <script src="js/script.js"></script>

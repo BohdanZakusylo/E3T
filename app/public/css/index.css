@@ -68,12 +68,21 @@ br{
     margin-top: 100px;
 }
 
+
+ .media {
+    width: 320px;
+    height: 198px;
+    margin: 10px;
+ }
+
 .error {
     color: red;
     text-align: center;
     margin: 0 auto;
     font-size: 20px;
 }
+
+
 
 @media screen and (max-width:812px){
 	h1{
