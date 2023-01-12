@@ -33,6 +33,7 @@ if (isset($_SESSION['upload'])) {
     // I created a variable $finalstore here to specify directory of profile picture and to make the code below more readable
     $profilestore = "media-files/". $talent_id . "/profile_pic";
     $finalstore = $profilestore . "/" . $value['profilepic_url'];
+    $default = "img/". $value['profilepic_url'];
     ?>
     <main>
         <section>
@@ -43,7 +44,7 @@ if (isset($_SESSION['upload'])) {
         <sub-section>
 
             <div class="profile">
-                <div style="background-image: url('<?php echo $finalstore ?>');">
+                <div style="background-image: url('<?php echo $finalstore ?>'), url('<?php echo $default ?>');">
                 </div>
             </div>
             <div class="main">
