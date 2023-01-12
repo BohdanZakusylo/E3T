@@ -12,7 +12,6 @@
         echo "$ex";
     }
 
-    var_dump($value["image_url"]);
 ?>
 <main>
     <div id="top-background">
