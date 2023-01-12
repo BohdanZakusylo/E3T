@@ -1,7 +1,10 @@
 <?php
     session_start();
     require "db_connection/connection.php";
-    $user_id = $_SESSION['user_id'];
+	if(!isset($_SESSION['user_id'])){
+		header("Location: admin-login.php");
+	}
+	$user_id = $_SESSION['user_id'];
     if (isset($_GET["add"])) {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $target_dir = "event_images/";
@@ -33,10 +36,8 @@
     $id = $count_id->fetch();
     $delete = $db->query("SELECT name FROM Events");
     $event_delete = $delete->fetch();
-    $count_talent = $db->query("SELECT COUNT(talent) FROM Talent");
+    $count_talent = $db->query("SELECT max(id) FROM Talent");
     $nr_talent = $count_talent->fetch();
-    $count_query = $db->query("SELECT count(id) FROM Talent");
-    $count_talent = $count_query->fetch();
     if (isset($_GET["delete"])) {
         if ($_GET['delete'] == "1")
             $delete_event_query = $db->prepare("DELETE FROM Events WHERE event_id=:deleted");
