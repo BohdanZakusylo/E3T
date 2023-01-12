@@ -12,12 +12,9 @@
     include "./components/header.php";
 ?>
 <?php
-require('calendar/src/phpCalendar/Calendar.php');
-
-use benhall14\phpCalendar\Calendar;
-
-$calendar = new Calendar();
-
+	require('calendar/src/phpCalendar/Calendar.php');
+	use benhall14\phpCalendar\Calendar;
+	$calendar = new Calendar();
 //calendar code for us
     $outputs = $db->prepare("SELECT * FROM Events");
     $outputs->execute();
