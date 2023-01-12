@@ -1,10 +1,7 @@
 <?php
-    try {
-        $db = new PDO("mysql:host=mysql;dbname=E3T;charset=utf8","root", "qwerty");
-    }
-    catch (Exception $ex){
-        echo "$ex";
-    }
+
+require "db_connection/connection.php";
+
 ?>
 <?php
     $cssFile = "events";
@@ -37,9 +34,7 @@
             $calendar->addEvent(date($output["start_date"]), date($output["end_date"]), $link_to_event, true);
         }
     }
-    #TODO also I can make the redirect to another page by adding in $calendar .= <a></a>
-    //adding the events
-    //$calendar->addEvent(date('Y-12-14'), date('Y-12-15'), 'My Birthday', true);
+
     include "calendar/html/calend.php";
 ?>
 <?php

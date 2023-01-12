@@ -5,13 +5,8 @@
 ?>
 
 <?php
-	try {
-		$db = new PDO("mysql:host=mysql;dbname=E3T;charset=utf8","root", "qwerty");
-	}
-	catch (Exception $ex){
-		echo "$ex";
-	}
 
+	require "db_connection/connection.php";
 	if (!empty($_GET["id"])){
 		try {
 			$outputs = $db->prepare("SELECT * FROM Events WHERE event_id = :id");

@@ -1,9 +1,3 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 main {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -99,4 +93,10 @@ br{
 		width: 127px; 
 
 	}
+}
+
+#link-to-event{
+    text-decoration: none;
+    text-underline: none;
+    color: white;
 }

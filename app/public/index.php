@@ -44,7 +44,7 @@
                                   <div class="event-content">
                                     <h2 class="name">' . $value["name"] . '</h2>
                                     <p class="description">' . $value["event_description"] . '</p>
-                                    <button class="button">View Event</button>
+                                    <a href="events.php"><button class="button">View Event</button></a>
                                   </div>
                                </div>';
 

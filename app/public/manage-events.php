@@ -1,7 +1,10 @@
 <?php
-    require "db_connection/connection.php";
     session_start();
-    $user_id = $_SESSION['user_id'];
+    require "db_connection/connection.php";
+	if(!isset($_SESSION['user_id'])){
+		header("Location: admin-login.php");
+	}
+	$user_id = $_SESSION['user_id'];
     if (isset($_GET["add"])) {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $target_dir = "event_images/";
@@ -33,10 +36,8 @@
     $id = $count_id->fetch();
     $delete = $db->query("SELECT name FROM Events");
     $event_delete = $delete->fetch();
-    $count_talent = $db->query("SELECT COUNT(talent) FROM Talent");
+    $count_talent = $db->query("SELECT max(id) FROM Talent");
     $nr_talent = $count_talent->fetch();
-    $count_query = $db->query("SELECT count(id) FROM Talent");
-    $count_talent = $count_query->fetch();
     if (isset($_GET["delete"])) {
         if ($_GET['delete'] == "1")
             $delete_event_query = $db->prepare("DELETE FROM Events WHERE event_id=:deleted");
@@ -45,15 +46,18 @@
         echo "<h2>Event deleted</h2>";
     }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Manage Events</title>
-    <link rel="stylesheet" href="css/manage_events.css">
-</head>
-
+<!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="css/manage_events.css">
+        <title>Manage Events</title>
+        <head>
 <body>
+
 <section class="events_manage">
     <h1>Events Management</h1>
 </section>
@@ -96,8 +100,8 @@
                 <label class="label" for="performing_talent">Performing talent</label> <br>
                 <select type="text" name="performing_talent" class="input_text" id="performing_talent" required>
                     <?php
-                        for ($m = 0; $m <= 5; $m++) {
-                            $qq_talent = $db->query("SELECT first_name, talent FROM Talent WHERE id=" . $m);
+                        for ($m=0;$m<=$nr_talent[0];$m++) {
+                            $qq_talent = $db->query("SELECT first_name,talent FROM Talent WHERE id=".$m);
                             $talent = $qq_talent->fetch();
                             if ($talent) {
                                 echo "<option value=$m>" . $talent['first_name'] . "-" . $talent['talent'] . "</option>";
@@ -145,5 +149,6 @@
     <a href="index.php" class="back">Go back</a>
 </div>
 
-</body>
-</html>
+<?php
+include "components/footer.php";
+?>
