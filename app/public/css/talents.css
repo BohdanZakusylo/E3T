@@ -6,10 +6,6 @@
 	font-family: Roboto, sans-serif;
 }
 
-body{
-	display:flex;
-}
-
 main {
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
@@ -33,6 +29,7 @@ section p {
 }
 
 .container {
+	grid-column: 1/13;
 	margin-top: 70px ;
 	text-align: center;
 }
