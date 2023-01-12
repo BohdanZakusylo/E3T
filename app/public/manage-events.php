@@ -1,4 +1,7 @@
 <?php
+    include "components/header.php";
+    $cssFile = "manage-events";
+    $pageTitle = "manage-events";
     require "db_connection/connection.php";
     session_start();
     $user_id = $_SESSION['user_id'];
@@ -46,14 +49,6 @@
     }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Manage Events</title>
-    <link rel="stylesheet" href="css/manage_events.css">
-</head>
-
-<body>
 <section class="events_manage">
     <h1>Events Management</h1>
 </section>
@@ -145,5 +140,6 @@
     <a href="index.php" class="back">Go back</a>
 </div>
 
-</body>
-</html>
+<?php
+include "components/footer.php";
+?>

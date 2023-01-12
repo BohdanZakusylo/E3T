@@ -40,15 +40,6 @@ include "components/header.php";
 require "db_connection/connection.php";
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-</head>
-<body>
 <div class="header">
     <h2>Admin Dashboard</h2>
 </div>
@@ -615,8 +606,6 @@ require "db_connection/connection.php";
         <input class="logout" type="submit" name="log_out" value="LOG OUT">
     </form>
 </div>
-</body>
-</html>
 
 <?php
 include "components/footer.php";

@@ -91,3 +91,9 @@ br{
 
 	}
 }
+
+#link-to-event{
+    text-decoration: none;
+    text-underline: none;
+    color: white;
+}
