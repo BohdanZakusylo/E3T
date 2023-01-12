@@ -6,13 +6,15 @@ session_start();
     }
 
     include "db_connection/connection.php";
-    if (!empty($_GET)){
+        if (!empty($_GET)){
 
         $pass_hash = password_hash("root",PASSWORD_BCRYPT);
         $outputs = $db->prepare("SELECT  first_name, last_name, talent, email, description FROM Requests WHERE request_id = :request_id");
         $outputs->bindParam(":request_id", $_GET["id"]);
         $outputs->execute();
+
         while($output = $outputs->fetch()) {
+            
             $insert = $db->prepare("INSERT INTO Talent(description, email, first_name, last_name, password, price_per_hour, profilepic_url, rating, talent) 
             VALUES(:description, :email, :first_name, :last_name, :pass_hash, 50, '', 1, :talent)");
             $insert->bindParam(":description", $output["description"]);
@@ -26,6 +28,7 @@ session_start();
             $delete->bindParam(":id", $_GET["id"]);
             $delete->execute();
         }
+
         header("Location: confirmation.php");
     }
     
