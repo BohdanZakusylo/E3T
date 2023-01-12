@@ -1,12 +1,15 @@
 <?php
 session_start();
+if (!isset($_SESSION['tLogin'])) {
+    header("Location: login.php");
+}
+
 $cssFile = "edit-profile";
 $pageTitle = "edit-profile.php";
 include ("components/header.php");
 require "db_connection/connection.php";
-if (!isset($_SESSION['tLogin'])) {
-    header("Location: login.php");
-}
+
+
 if (isset($_SESSION['upload'])) {
     echo "Successfully Uploaded";
     unset($_SESSION['upload']);
