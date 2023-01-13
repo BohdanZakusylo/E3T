@@ -8,7 +8,11 @@ session_start();
     include "db_connection/connection.php";
         if (!empty($_GET)){
 
-        $pass_hash = password_hash("root",PASSWORD_BCRYPT);
+        $combination = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        $shuffle = str_shuffle($combination);
+        $rand_pass = substr($shuffle, 0, 8);
+
+        $pass_hash = password_hash($rand_pass,PASSWORD_BCRYPT);
         $outputs = $db->prepare("SELECT  first_name, last_name, talent, email, description FROM Requests WHERE request_id = :request_id");
         $outputs->bindParam(":request_id", $_GET["id"]);
         $outputs->execute();
