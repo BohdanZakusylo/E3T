@@ -202,6 +202,10 @@ use PHPMailer\PHPMailer\SMTP;
                 ?>
             </span><span class="error">*</span><br>
             <input class="input_text" type="password" name="password" id="password" value="<?php
+                $combination = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                $shuffle = str_shuffle($combination);
+                $rand_pass = substr($shuffle, 0, 8);
+                echo $rand_pass;
             ?>" disabled><br>
 
             <label for="price">Price per hour (&euro;)</label>
@@ -276,17 +280,7 @@ use PHPMailer\PHPMailer\SMTP;
                                     $stmt_1->bindParam("description", $description);
                                     $stmt_1->bindParam("price", $price);
                                     $stmt_1->bindParam("profile_url", $profile_url);
-                                    if ($db->affected_rows) {
-                                        try{
-                                            $passwords = $db->prepare("SELECT password FROM Talent WHERE email = :email");
-                                            $passwords->bindParam(":email", $email);
-                                            $passwords->execute();
-                                            $password = $passwords->fetch();
-                                            echo ("$password");
-                                        }
-                                        catch(Exception $ex){
-                                            echo "$ex";
-                                        }
+                                    if ($stmt_1->execute()){
 
                                         try {
                                             $mail = new PHPMailer();
@@ -607,6 +601,10 @@ use PHPMailer\PHPMailer\SMTP;
                 ?>
             </span><span class="error">*</span><br>
             <input class="input_text" type="password" name="password" id="password_register" value="<?php
+                $combination_1 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                $shuffle_1 = str_shuffle($combination_1);
+                $rand_pass_1 = substr($shuffle_1, 0, 8);
+                echo $rand_pass_1;
             ?>" disabled><br>
             <span>
             <?php
