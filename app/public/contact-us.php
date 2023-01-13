@@ -27,32 +27,29 @@ require "db_connection/connection.php";
             wants to join E3T? Kindly reach out to us using the contact forms below.
         </p>
     </div>
-    <?php 
+    <?php
      $fullNameErr = $emailAddressErr = $talentErr = $descriptionErr = "";
     ?>
     <?php
+        global $err_count;
                 if($_SERVER["REQUEST_METHOD"] == "POST"){
-                    $fullNameErr = $emailAddressErr = $talentErr = $descriptionErr = "";
+                    $err_count = 0;
                     if(isset($_POST["submit"])){
-                    $fullName = filter_input(INPUT_POST, "full_name");
-                    $emailAddress = filter_input(INPUT_POST, "email_address", FILTER_VALIDATE_EMAIL);
-                    $talent = filter_input(INPUT_POST, "talent");
-                    $description = filter_input(INPUT_POST, "description");
+                    $_SESSION['fullName'] = $fullName = filter_input(INPUT_POST, "full_name");
+                    $_SESSION['emailAddress'] = $emailAddress = filter_input(INPUT_POST, "email_address", FILTER_VALIDATE_EMAIL);
+                    $_SESSION['talent'] = $talent = filter_input(INPUT_POST, "talent");
+                    $_SESSION['description'] = $description = filter_input(INPUT_POST, "description");
 
+                        $full = explode(" ", $fullName);
+                        $first_name = $full[0];
+                        $last_name = $full[1];
+//                    }
+//                    else{
+//                        echo "error";
+//                        $err_count++;
+//                    }
 
-                    if(empty($fullName)){
-                        $fullNameErr = "Please provide all necessary information";
-                    } elseif(empty($emailAddress)) { 
-                        $emailAddressErr = "Please provide all necessary information";
-                    } elseif(empty($talent)) {
-                        $talentErr = "Please provide all necessary information";
-                    } elseif(empty($description)) {
-                        $descriptionErr = "Please provide all necessary information";
-                    } elseif(str_word_count($fullName) < 2) {
-                        $fullNameErr = "Your full name must contain at least 2 words";
-                    } elseif(str_word_count($description) < 5){
-                        $descriptionErr = "Your description needs to contain at least 5 words";
-                    }else {
+                    if ($err_count === 0) {
                             echo "<div class='message1'>";
                             echo "<h2>Thank you for contacting us!</h2><br>";
                             echo "<b>Full Name:</b> ".$fullName."<br>";
@@ -61,9 +58,7 @@ require "db_connection/connection.php";
                             echo "<b>Description:</b> ".$description."<br>";
                             echo "We will contact you as soon as possible via your E-mail Address.";
                             echo "</div>";
-                            $full = explode(" ", $fullName);
-                            $first_name = $full[0];
-                            $last_name = $full[1];
+
                             $input = $db->prepare("INSERT INTO Requests (first_name, last_name, email, talent, description) VALUES (:first_name, :last_name, :email, :talent, :description)");
                             $input->bindParam(':first_name', $first_name);
                             $input->bindParam(':last_name', $last_name);
@@ -162,11 +157,47 @@ require "db_connection/connection.php";
     ?>
     <form id="talent_form" method="POST" action="contact-us.php" enctype="multipart/form-data">
         <h1 class="for_talent">For talents</h1>
-        <label class="label_1" for="full_name">Full name:<span class="error">* <?php echo $fullNameErr;?></label><br>
+        <label class="label_1" for="full_name">Full name:<span class="error">* <?php if (isset($_POST['full_name'])){
+                    if(empty($fullName)){
+                        echo  "Please provide all necessary information";
+                        $err_count++;
+                    }
+                    elseif(str_word_count($fullName) < 2) {
+                        echo "Your full name must contain at least 2 words";
+                        $err_count++;
+                    }
+                }
+            ?></span></label><br>
         <input type="text" name="full_name" id="full_name" placeholder="Enter your full name here"><br>
-        <label class="label_1" for="email_address">Email Address:<span class="error">* <?php echo $emailAddressErr;?></label><br>
+        <label class="label_1" for="email_address">Email Address:<span class="error">* <?php if (isset($_POST['email_address'])){
+                    if(empty($emailAddress)) {
+                        echo "Please provide all necessary information";
+                        $err_count++;
+                    }
+                    else{
+                        try {
+                            $query_1 = "SELECT id FROM Talent WHERE email = :email"; //Checks if the email exists in the database
+                            $stmt_1 = $db->prepare($query_1);
+                            $stmt_1->bindParam("email", $emailAddress);
+                            $stmt_1->execute();
+                            if ($result = $stmt_1->fetchColumn()) {
+                                echo "Email is already in use";
+                                $err_count++;
+                            }
+                        }
+                        catch (PDOException $e){
+                        }
+                    }
+                }
+                ?></span></label><br>
         <input type="email" name="email_address" id="email_address" placeholder="Enter your email address here"><br>
-        <label class="label_1" for="talent">Talent<span class="error">* <?php echo $talentErr;?></label><br>
+        <label class="label_1" for="talent">Talent<span class="error">* <?php if (isset($_POST['talent'])){
+                    if(empty($talent)) {
+                        echo "Please provide all necessary information";
+                        $err_count++;
+                    }
+                }
+        ?></span></label><br>
         <select id="talent" name="talent">
             <option value="default" selected disabled>Choose your talent</option>
             <option value="Singer">Singer</option>
@@ -177,7 +208,18 @@ require "db_connection/connection.php";
             <option value="Comedian">Comedian</option>
             <option value="Juggler">Juggler</option>
         </select>
-        <label class="label_1" for="description">Give a description of what you do<span class="error">* <?php echo $descriptionErr;?></label><br>
+        <label class="label_1" for="description">Give a description of what you do<span class="error">* <?php  if
+                (isset($_POST['description'])){
+                if(empty($description)) {
+                    echo "Please provide all necessary information";
+                    $err_count++;
+                }
+                elseif(str_word_count($description) < 2) {
+                    echo "Your description must contain at least 2 words";
+                    $err_count++;
+                }
+            }
+            ?></label><br>
         <textarea name="description" id="description" placeholder="Description..."></textarea><br>
         <p>
             <input type="submit" name="submit" value="Submit">

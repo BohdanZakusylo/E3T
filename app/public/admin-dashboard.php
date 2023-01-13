@@ -37,21 +37,21 @@
         if (isset($_POST['log_out'])) {
 
             session_destroy();
-            header("location: admin-login.php");
+            header("Location: admin-login.php");
         }
 
         if (isset($_POST['change_password'])) {
 
-            header("location: admin_change_password.php");
+            header("Location: admin_change_password.php");
         }
 
         if (isset($_POST['talent_request'])) {
 
-            header("location: requests.php");
+            header("Location: requests.php");
         }
 
         if (isset($_POST['add_event'])) {
-            header("location: manage-events.php");
+            header("Location: manage-events.php");
 
         }
     }

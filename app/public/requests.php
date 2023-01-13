@@ -1,6 +1,20 @@
 <?php
 session_start();
 
+    require __DIR__."/PHPMailer-master/src/PHPMailer.php";
+    require __DIR__."/PHPMailer-master/src/Exception.php";
+    require __DIR__."/PHPMailer-master/src/SMTP.php";
+
+
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+    use PHPMailer\PHPMailer\SMTP;
+
+    $fullName = $_SESSION['fullName'];
+    $emailAddress = $_SESSION['emailAddress'];
+    $talent = $_SESSION['talent'];
+    $description = $_SESSION['description'];
+
 
     if(!isset($_SESSION["aLogin"])){
         #Redirects to log in if not logged in
@@ -14,8 +28,7 @@ session_start();
 ?>
 
 <?php
-    if (!empty($_GET)){
-
+    if (!empty($_GET["id"])){
     $id = $_GET["id"];
     $delete = $db->prepare("DELETE FROM Requests WHERE request_id = :id");
     $delete->bindParam(":id", $id);
