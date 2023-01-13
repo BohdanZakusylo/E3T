@@ -39,7 +39,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
                     mkdir("/".$talent_id);
                         
-                    if(!is_dir("/"$talent_id."/profile_pic")) {
+                    if(!is_dir("/".$talent_id."/profile_pic")) {
 
                         mkdir("/".$talent_id."/profile_pic");
                         $finalstore = "/".$talent_id."/profile_pic"."/".$name;
