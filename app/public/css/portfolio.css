@@ -36,14 +36,23 @@ h6{
 
 h2{
     color: #2e307a;
-	font-size: 24px;
-	margin-bottom:5px;
+	font-size: 1.8em;
+	margin-bottom:13px;
 }
 
 h4{
     margin-top: 5px;
     font-weight: normal;
     font-family: Montserrat;
+}
+h5{
+	margin-top: 5px;
+    font-weight: normal;
+    font-family: Montserrat;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
 }
 
 . main-contaier button{
