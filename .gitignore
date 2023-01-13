@@ -1,8 +1,0 @@
-app/.DS_Store
-app/public/.DS_Store
-.DS_Store
-custom.php.ini
-docker-compose.yaml
-nginx.conf
-nginx.dockerfile
-app/public/db_connection/connection.php
