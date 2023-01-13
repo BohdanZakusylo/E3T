@@ -32,7 +32,7 @@ require "db_connection/connection.php";
 				<option name="talent"><a href="talents.php?talent=actors">Actor</a></option>
 				<option name="talent"><a href="talents.php?talent=others">Other</a></option>
 			</select>
-			<input type="submit" value="Submit">
+			<input class="submit_button" type="submit" value="Submit">
 		</form>
 
         <?php

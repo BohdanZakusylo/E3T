@@ -2,23 +2,6 @@
     session_start();
 
 
-    require __DIR__."/PHPMailer-master/src/PHPMailer.php";
-    require __DIR__."/PHPMailer-master/src/Exception.php";
-    require __DIR__."/PHPMailer-master/src/SMTP.php";
-
-
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
-    use PHPMailer\PHPMailer\SMTP;
-
-
-?>
-
-<?php
-
-    global $db;
-    global $err_count;
-    global $email_delete;
     $cssFile = "admin-dashboard";
     $pageTitle = "admin-dashboard";
 
@@ -26,12 +9,6 @@
 
         header("Location: admin-login.php");
     }
-//    try {
-//        $db = new PDO("mysql:host=localhost;dbname=e3t;", "root", "emperor");
-//    }
-//    catch (PDOException $e){
-//        echo $e->getMessage();
-//    }
     if (isset($_SESSION['aLogin'])) {
 
         if (isset($_POST['log_out'])) {
@@ -60,15 +37,25 @@
     require "db_connection/connection.php";
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-</head>
-<body>
+<?php
+
+global $db;
+global $err_count;
+global $email_delete;
+
+require __DIR__."/PHPMailer-master/src/PHPMailer.php";
+require __DIR__."/PHPMailer-master/src/Exception.php";
+require __DIR__."/PHPMailer-master/src/SMTP.php";
+
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
+
+?>
+
+
 <div class="header">
     <h2>Admin Dashboard</h2>
 </div>
@@ -215,10 +202,6 @@
                 ?>
             </span><span class="error">*</span><br>
             <input class="input_text" type="password" name="password" id="password" value="<?php
-                $combination = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-                $shuffle = str_shuffle($combination);
-                $rand_pass = substr($shuffle, 0, 8);
-                echo $rand_pass;
             ?>" disabled><br>
 
             <label for="price">Price per hour (&euro;)</label>
@@ -293,8 +276,17 @@
                                     $stmt_1->bindParam("description", $description);
                                     $stmt_1->bindParam("price", $price);
                                     $stmt_1->bindParam("profile_url", $profile_url);
-
-                                    if ($stmt_1->execute()) {
+                                    if ($db->affected_rows) {
+                                        try{
+                                            $passwords = $db->prepare("SELECT password FROM Talent WHERE email = :email");
+                                            $passwords->bindParam(":email", $email);
+                                            $passwords->execute();
+                                            $password = $passwords->fetch();
+                                            echo ("$password");
+                                        }
+                                        catch(Exception $ex){
+                                            echo "$ex";
+                                        }
 
                                         try {
                                             $mail = new PHPMailer();
@@ -309,13 +301,13 @@
                                             $mail->setFrom("e3tproject@gmail.com", "E3T");
                                             $mail->Body =
                                                 "<p>Welcome to E3t " . $first_name . " " . $last_name . "</p>" .
-                                                "<p><h2>You Request to become one of our talents at E3T has been approved. Below you will find your details as well as your randomly generated password</h2></p>" .
+                                                "<p><h2>You Request to become one of our talents at E3T has been approved. Below you will find your details as well as your password</h2></p>" .
                                                 "<p>
                                     First name: <b>$first_name;</b><br>
                                     Last name: <b>$last_name;</b><br>
                                     Talent: <b>$talent_button;</b><br>
                                     Email address: <b>$email;</b><br>
-                                    Password (Change this password as soon as possible): <b>$rand_pass;</b><br>
+                                    Password (Change this password as soon as possible): <b>root;</b><br>
                                     Description: <b>$description</b><br>
                                      </p>
                                      <p><a href='login.php'>Click this link to login</a></p>";
@@ -615,10 +607,6 @@
                 ?>
             </span><span class="error">*</span><br>
             <input class="input_text" type="password" name="password" id="password_register" value="<?php
-                $combination_1 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-                $shuffle_1 = str_shuffle($combination_1);
-                $rand_pass_1 = substr($shuffle, 0, 8);
-                echo $rand_pass_1;
             ?>" disabled><br>
             <span>
             <?php
@@ -697,8 +685,6 @@
         <input class="logout" type="submit" name="log_out" value="LOG OUT">
     </form>
 </div>
-</body>
-</html>
 
 <?php
     include "components/footer.php";

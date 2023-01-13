@@ -44,7 +44,3 @@ include "components/header.php";
         </p>
     </div>
 </main>
-
-<?php
-include "components/footer.php";
-?>
