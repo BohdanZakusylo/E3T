@@ -68,14 +68,14 @@ input[type=submit]{
 }   
 
 
-@media screen and (max-width: 393px){
+@media screen and (max-width: 812px){
     form{
 		display:flex;
 		flex-direction: column;
 		justify-content: center;
         width: 90%;
         height: 34%;
-        margin-bottom: 100%;
+        margin-bottom: 40%;
     }
     label{
         font-size: 15px;
