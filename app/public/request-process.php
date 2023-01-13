@@ -26,7 +26,6 @@ session_start();
         $rand_pass_2 = substr($shuffle, 0, 8);
         $pass_hash = password_hash($rand_pass_2,PASSWORD_BCRYPT);
 
-        $pass_hash = password_hash($rand_pass,PASSWORD_BCRYPT);
         $outputs = $db->prepare("SELECT  first_name, last_name, talent, email, description FROM Requests WHERE request_id = :request_id");
         $outputs->bindParam(":request_id", $_GET["id"]);
         $outputs->execute();
