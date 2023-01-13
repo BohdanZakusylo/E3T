@@ -29,7 +29,6 @@ require "db_connection/connection.php";
 				<option name="talent"><a href="talents.php?talent=comedian">Comedian</a></option>
 				<option name="talent"><a href="talents.php?talent=djs">DJ</a></option>
 				<option name="talent"><a href="talents.php?talent=juggler">Juggler</a></option>
-				<option name="talent"><a href="talents.php?talent=actors">Actor</a></option>
 				<option name="talent"><a href="talents.php?talent=others">Other</a></option>
 			</select>
 			<input class="submit_button" type="submit" value="Submit">
