@@ -21,7 +21,7 @@
         <div class="textBanner">
             <h1>Organise successful events<br> and discover talents with E3T</h1>
             <div id="subTitle">
-                <p>Discover talents and organise events in Emmen and<br> surroundings</p>
+                <h1>Discover talents and organise events in Emmen and<br> surroundings</h1>
             </div>
             <div id="button">
                 <a href="talents.php"><b>Discover Talents</b></a>
