@@ -41,7 +41,7 @@ sub-section {
 }
 
 h2 {
-	font-size: 35px;
+	font-size: 25px;
 	margin-top: 5px;
 }
 
@@ -81,7 +81,7 @@ form {
     border-radius: 5%;
     display: flex;
     flex-direction: column;
-    width: 24vw;
+    width: 25vw;
     height: 499px;
     justify-content: center;
     align-items: center;
@@ -91,7 +91,7 @@ form {
 .main_container img{
     border-radius: 5%;
     width: 13vw;
-    height: 55vh;
+    height: 25.5vh;
     margin: 1vw;
 	margin-bottom: 0;
 	margin-top:5px;
@@ -141,6 +141,9 @@ h4{
 	border: 0px;
 	background-color: white;
 	color: black;
+}
+#view_button:hover{
+	color: #2e307a;
 }
 
 

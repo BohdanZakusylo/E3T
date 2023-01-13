@@ -8,7 +8,7 @@ function generate_portfolio($url, $first_name, $last_name,$talent, $description,
             <h2>'.$first_name.' '.$last_name.'</h2>
             <div id="description"> 
                 <h4>Talent: '.$talent.'</h4>   
-                <h4>'.$description.'</h4>
+                <h5>'.$description.'</h5>
             </div>
             <h4>Price: '.$price.' &euro;</h4>
             <h4>Available: '.$available.'</h4>
