@@ -86,18 +86,24 @@
                 <div class="col-xs-12 col-sm-6 col-md-4">
                     
                     <?php echo $calendar->draw(date('Y-10-1'), '#2A2B68'); ?>
+					
+					<hr />
                 
                 </div>
                 
                 <div class="col-xs-12 col-sm-6 col-md-4">
                 
                     <?php echo $calendar->draw(date('Y-11-1'), '#2A2B68'); ?>
+					
+					<hr />
                 
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-md-4">
                     
                     <?php echo $calendar->draw(date('Y-12-1'), '#2A2B68'); ?>
+					
+					<hr />
 
                 </div>
 
