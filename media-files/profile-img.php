@@ -18,7 +18,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     $type = $_FILES['file']['type'];
     $size = $_FILES['file']['size'];
 
-    
+
         if ($error == 0) {
             $accepted_type = ["image/png", "image/jpeg", "image/jpg", "image/gif"];
             $file_info = finfo_open(FILEINFO_MIME_TYPE);
@@ -38,12 +38,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 if (!is_dir($talent_id)) {
 
                     mkdir($talent_id);
-                        
-                    if(!is_dir($talent_id."/profile_pic")) {
 
-                        mkdir($talent_id."/profile_pic");
-                        $finalstore = $talent_id."/profile_pic"."/".$name;
-                        move_uploaded_file($tmp_name, $talent_id."/profile_pic"."/".$name);
+                    if(!is_dir($talent_id. "/profile_pic")) {
+
+                        mkdir($talent_id. "/profile_pic");
+                        $finalstore = $talent_id. "/profile_pic" . "/" . $name;
+                        move_uploaded_file($tmp_name, $talent_id. "/profile_pic" . "/" . $name);
 
                         $_SESSION['upload'] = "Uploaded successfully";
                         header("Location: ../edit-profile.php");
@@ -51,9 +51,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                     }
                     else {
 
-                        $file = glob($talent_id.'/profile_pic/*');
+                        $file = glob($talent_id . '/profile_pic/*');
                         unlink($file[0]);  //this will delete the previous profile picture from the directory
-                        move_uploaded_file($tmp_name,"/".$talent_id."/profile_pic"."/".$name);
+                        move_uploaded_file($tmp_name, $talent_id. "/profile_pic" . "/" . $name);
 
                         $_SESSION['upload'] = "Uploaded successfully";
                         header("Location: ../edit-profile.php");
@@ -61,23 +61,23 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
                     } 
-                    elseif(is_dir(.$talent_id)) {
+                    elseif(is_dir($talent_id)) {
 
-                      if(!is_dir($talent_id."/profile_pic")) {
+                      if(!is_dir($talent_id. "/profile_pic")) {
 
-                        mkdir($talent_id."/profile_pic");
-                        $finalstore = $talent_id."/profile_pic"."/".$name;
-                        move_uploaded_file($tmp_name, $talent_id."/profile_pic"."/".$name);
+                        mkdir($talent_id. "/profile_pic");
+                        $finalstore = $talent_id. "/profile_pic" . "/" . $name;
+                        move_uploaded_file($tmp_name, $talent_id. "/profile_pic" . "/" . $name);
 
                         $_SESSION['upload'] = "Uploaded successfully";
                         header("Location: ../edit-profile.php");
-                    
+
                     } 
                     else {
 
-                        $file = glob($talent_id.'/profile_pic/*');
+                        $file = glob($talent_id . '/profile_pic/*');
                         unlink($file[0]);  //this will delete the previous profile picture from the directory
-                        move_uploaded_file($tmp_name, $talent_id."/profile_pic"."/".$name);
+                        move_uploaded_file($tmp_name, $talent_id. "/profile_pic" . "/" . $name);
 
                         $_SESSION['upload'] = "Uploaded successfully";
                         header("Location: ../edit-profile.php");

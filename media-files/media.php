@@ -27,7 +27,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
                             move_uploaded_file($tmp_name, $talent_id. "/" . $name);
                             header("Location: ../talent-dashboard.php");
-                            
+
                     } 
                     else {
 
