@@ -91,7 +91,7 @@ form {
 .main_container img{
     border-radius: 5%;
     width: 13vw;
-    height: 25.5vh;
+    height: 23.5vh;
     margin: 1vw;
 	margin-bottom: 0;
 	margin-top:5px;
@@ -148,7 +148,7 @@ h4{
 
 
 
-  @media screen and (max-width: 396px) {
+  @media only screen and (max-width: 812px) {
 	section{
 		height: 137px;
 		display: flex;
@@ -173,7 +173,8 @@ h4{
 		font-style: italic;
 	}
 	#mainbody h2{
-		font-size: 15px;
+		font-size: 1.5em;
+		margin-bottom: -5px;
 	}
 	#talents{
 		width: 100px;
@@ -181,6 +182,14 @@ h4{
 	}
 	.label{
 		display:none;
+	}
+	.main_container{
+		width: 38vw;
+	}
+	.main_container img{
+		
+		width: 25vw;
+		height: 19.5vh;
 	}
 	
   }
