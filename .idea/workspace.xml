@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="416cc277-dabe-4d4e-89b3-a4cd2536265d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/contact-us.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/contact-us.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/request-process.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/request-process.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

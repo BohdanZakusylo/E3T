@@ -67,7 +67,7 @@
                         <p>Description: $description</p>
                     </div>    
                     <div id='li'>
-                        <a href='decline_talent.php?id=$requset_id'><button>Decline</button></a>
+                        <a href='decline-talent.php?id=$requset_id'><button>Decline</button></a>
                         <a href='request-process.php?id=$requset_id'><button>Accept</button></a>
                     </div>
                 </div>
