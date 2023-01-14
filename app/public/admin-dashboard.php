@@ -251,7 +251,9 @@ use PHPMailer\PHPMailer\SMTP;
                     }
                 ?>
             </span><span class="error">*</span><br>
-            <input class="input_text" type="text" name="description" id="description" value="<?php if ($err_count > 0){ if (isset($_POST['description'])){echo $_POST['description'];}} ?>"><br>
+            <textarea name="description" id="description"><?php if ($err_count >
+                    0){ if (isset($_POST['description'])){echo $_POST['description'];}} ?></textarea>
+<!--            <input class="input_texts" type="text" name="description" id="description" value=""><br>-->
 
             <span>
                 <?php
