@@ -1,9 +1,9 @@
 <?php
     session_start();
 
-    require __DIR__ . "/PHPMailer-master/src/PHPMailer.php";
-    require __DIR__ . "/PHPMailer-master/src/Exception.php";
-    require __DIR__ . "/PHPMailer-master/src/SMTP.php";
+    require __DIR__."/PHPMailer-master/src/PHPMailer.php";
+    require __DIR__."/PHPMailer-master/src/Exception.php";
+    require __DIR__."/PHPMailer-master/src/SMTP.php";
 
 
     use PHPMailer\PHPMailer\PHPMailer;
@@ -22,7 +22,7 @@
     if (!empty($_GET)) {
 
         $outputs = $db->prepare("SELECT  first_name, last_name, talent, email, description FROM Requests WHERE request_id = :request_id");
-        $outputs->bindParam(":request_id", $_GET["id"]);
+        $outputs->bindParam("request_id", $_GET["id"]);
         $outputs->execute();
         while ($output = $outputs->fetch()) {
 
@@ -37,11 +37,11 @@
                     $mail->Host = 'smtp.gmail.com';
                     $mail->Port = 587;
                     $mail->SMTPAuth = true;
-                    $mail->Username = "e3tproject@gmail.com";
-                    $mail->Password = "kzwlwysxxrstdkue";
+                    $mail->Username = "e3tprojects@gmail.com";
+                    $mail->Password = "hctuleroeahsocxw";
                     $mail->Subject = "Your request to become one of our talents at E3T was declined";
                     $mail->CharSet = PHPMailer::CHARSET_UTF8;
-                    $mail->setFrom("e3tproject@gmail.com", "E3T");
+                    $mail->setFrom("e3tprojects@gmail.com", "E3T");
                     $mail->Body =
                         $firstName . " " . $lastName . ", </p>" .
                         "<p><h2>We are sorry to inform you that your request to become one of our talent at E3T was declined</h2></p>";
@@ -51,6 +51,7 @@
                     $mail->smtpClose();
                 } catch
                 (Exception $e) {
+                    echo $e->getMessage();
                 }
             }
         }

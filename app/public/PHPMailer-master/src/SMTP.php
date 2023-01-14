@@ -1008,7 +1008,7 @@ class SMTP
             //Cut off error code from each response line
             $detail = preg_replace(
                 "/{$code}[ -]" .
-                ($code_ex ? str_replace('.', '\\.', $code_ex) . ' SMTP.php' : '') . '/m',
+                ($code_ex ? str_replace('.', '\\.', $code_ex) . ' ' : '') . '/m',
                 '',
                 $this->last_reply
             );
