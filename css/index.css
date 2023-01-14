@@ -70,13 +70,11 @@ br{
     font-size: 20px;
 }
 
-.image-content {
+.image-content img {
     width: 100%;
-    background-repeat: no-repeat;
+    height: 100%;
     object-fit: cover;
 }
-
-
 
 @media screen and (max-width:812px){
 	h1{
@@ -95,8 +93,3 @@ br{
 	}
 }
 
-#link-to-event{
-    text-decoration: none;
-    text-underline: none;
-    color: white;
-}

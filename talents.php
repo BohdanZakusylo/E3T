@@ -43,7 +43,7 @@ require "db_connection/connection.php";
             while($output = $outputs->fetch()){
                 $s_id = $output["id"];
                 $picture = $output["profilepic_url"];
-                $url = "/media-files/$s_id/profile_pic/$picture";
+                $url = "../media-files/$s_id/profile_pic/$picture";
                 if (is_null($output["from_date_absent"]) AND is_null($output["to_date_absent"])) {
                     $aviable = "available";
                     generate_portfolio($url, $output["first_name"], $output["last_name"], $output["talent"], $output["description"], $output["price_per_hour"], $aviable, $output["id"]);
@@ -60,7 +60,7 @@ require "db_connection/connection.php";
             while($singer = $singers->fetch()){
                 $s_id = $singer["id"];
                 $picture = $singer["profilepic_url"];
-                $url = "/media-files/$s_id/profile_pic/$picture";
+                $url = "../media-files/$s_id/profile_pic/$picture";
                 if (is_null($singer["from_date_absent"]) AND is_null($singer["to_date_absent"])) {
                     $aviable = "available";
                     generate_portfolio($url, $singer["first_name"], $singer["last_name"], $singer["talent"], $singer["description"], $singer["price_per_hour"], $aviable, $singer["id"]);

@@ -103,6 +103,13 @@ textarea{
 	color: #2E307A;
 	border-color: #2E307A;
 }
+#description{
+	width: 100%;
+	height: 284px;
+	resize: none;
+	color: #2e307a;
+	border: 2px solid #2e307a;
+}
 .label_1{
 	color: #2E307A;
 	font-size: 22px;
@@ -118,7 +125,7 @@ textarea{
 }
 .vertical_line{
 	border-left: 7px solid #2E307A;
-	height: 700px;
+	height: 850px;
 	margin-left: -3%;
 	margin-top: 2%;
 }
