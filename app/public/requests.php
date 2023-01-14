@@ -1,5 +1,10 @@
 <?php
-session_start();
+    session_start();
+
+    if(!isset($_SESSION["aLogin"])){
+        #Redirects to log in if not logged in
+        header("Location: admin-login.php");
+    }
 
     require __DIR__."/PHPMailer-master/src/PHPMailer.php";
     require __DIR__."/PHPMailer-master/src/Exception.php";
@@ -15,11 +20,6 @@ session_start();
     $talent = $_SESSION['talent'];
     $description = $_SESSION['description'];
 
-
-    if(!isset($_SESSION["aLogin"])){
-        #Redirects to log in if not logged in
-        header("Location: admin-login.php");
-    }
 
     $cssFile = "requests";
     $pageTitle = "Requests";
