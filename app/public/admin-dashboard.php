@@ -303,7 +303,7 @@ use PHPMailer\PHPMailer\SMTP;
                                     Last name: <b>$last_name;</b><br>
                                     Talent: <b>$talent_button;</b><br>
                                     Email address: <b>$email;</b><br>
-                                    Password (Change this password as soon as possible): <b>root;</b><br>
+                                    Password (Change this password as soon as possible): <b>$rand_pass;</b><br>
                                     Description: <b>$description</b><br>
                                      </p>
                                      <p><a href='login.php'>Click this link to login</a></p>";

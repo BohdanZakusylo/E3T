@@ -26,8 +26,8 @@ if (isset($_SESSION['upload'])) {
     $value = $stmt -> fetch(PDO::FETCH_ASSOC);
     // I created a variable $finalstore here to specify directory of profile picture and to make the code below more readable
     $profilestore = "media-files/". $talent_id . "/profile_pic";
-    $finalstore = $profilestore . "/" . $value['profilepic_url'];
-    $default = "img/". $value['profilepic_url'];
+    $finalstore = "/".$profilestore . "/" . $value['profilepic_url'];
+    $default = "/img/". $value['profilepic_url'];
     ?>
     <main>
         <section>
