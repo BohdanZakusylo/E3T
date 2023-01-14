@@ -10,7 +10,8 @@
     use PHPMailer\PHPMailer\Exception;
     use PHPMailer\PHPMailer\SMTP;
 
-    $fullName = $_SESSION['fullName'];
+    $firstName = $_SESSION['firstName'];
+    $lastName = $_SESSION['lastName'];
     $emailAddress = $_SESSION['emailAddress'];
     $talent = $_SESSION['talent'];
     $description = $_SESSION['description'];
