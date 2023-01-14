@@ -99,11 +99,11 @@
                     $mail->Host = 'smtp.gmail.com';
                     $mail->Port = 587;
                     $mail->SMTPAuth = true;
-                    $mail->Username = "e3tprojects@gmail.com";
-                    $mail->Password = "hctuleroeahsocxw";
+                    $mail->Username = "geraldtestingcode@gmail.com";
+                    $mail->Password = "ipfenqnvngdlymex";
                     $mail->Subject = "Event Request";
                     $mail->CharSet = PHPMailer::CHARSET_UTF8;
-                    $mail->setFrom("e3tprojects@gmail.com", "E3T");
+                    $mail->setFrom("geraldtestingcode@gmail.com", "E3T");
                     $mail->isHTML();
                     $query = "SELECT first_name,last_name,email FROM User";
                     $stmt = $db->prepare($query);

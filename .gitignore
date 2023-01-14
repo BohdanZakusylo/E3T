@@ -6,3 +6,4 @@ docker-compose.yaml
 nginx.conf
 nginx.dockerfile
 app/public/db_connection/connection.php
+app/public/db_connection/*

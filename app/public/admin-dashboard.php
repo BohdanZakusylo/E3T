@@ -290,11 +290,11 @@
                                             $mail->Host = 'smtp.gmail.com';
                                             $mail->Port = 587;
                                             $mail->SMTPAuth = true;
-                                            $mail->Username = "e3tprojects@gmail.com";
-                                            $mail->Password = "hctuleroeahsocxw";
+                                            $mail->Username = "geraldtestingcode@gmail.com";
+                                            $mail->Password = "ipfenqnvngdlymex";
                                             $mail->Subject = "Your request to become one of our talents at E3T has been approved";
                                             $mail->CharSet = PHPMailer::CHARSET_UTF8;
-                                            $mail->setFrom("e3tprojects@gmail.com", "E3T");
+                                            $mail->setFrom("geraldtestingcode@gmail.com", "E3T");
                                             $mail->Body =
                                                 "<p>Welcome to E3t " . $first_name . " " . $last_name . "</p>" .
                                                 "<p><h2>You Request to become one of our talents at E3T has been approved. Below you will find your details as well as your password</h2></p>" .
@@ -466,11 +466,11 @@
                                                 $mail->Host = 'smtp.gmail.com';
                                                 $mail->Port = 587;
                                                 $mail->SMTPAuth = true;
-                                                $mail->Username = "e3tprojects@gmail.com";
-                                                $mail->Password = "hctuleroeahsocxw";
+                                                $mail->Username = "geraldtestingcode@gmail.com";
+                                                $mail->Password = "ipfenqnvngdlymex";
                                                 $mail->Subject = "Your E3t account has been terminated";
                                                 $mail->CharSet = PHPMailer::CHARSET_UTF8;
-                                                $mail->setFrom("e3tprojects@gmail.com", "E3T");
+                                                $mail->setFrom("geraldtestingcode@gmail.com", "E3T");
                                                 $mail->Body =
                                                     "<p>Goodbye " . $first_name_delete . " " . $last_name_delete . "</p>" .
                                                     "<p><h2>Your E3T account has been terminated</h2></p>" .
@@ -635,11 +635,11 @@
                                         $mail->Host = 'smtp.gmail.com';
                                         $mail->Port = 587;
                                         $mail->SMTPAuth = true;
-                                        $mail->Username = "e3tprojects@gmail.com";
-                                        $mail->Password = "hctuleroeahsocxw";
+                                        $mail->Username = "geraldtestingcode@gmail.com";
+                                        $mail->Password = "ipfenqnvngdlymex";
                                         $mail->Subject = "You have been chosen to become an admin at E3T";
                                         $mail->CharSet = PHPMailer::CHARSET_UTF8;
-                                        $mail->setFrom("e3tprojects@gmail.com", "E3T");
+                                        $mail->setFrom("geraldtestingcode@gmail.com", "E3T");
                                         $mail->Body =
                                             "<p>Welcome to E3t Admin " . $firstName . " " . $lastName . "</p>" .
                                             "<p><h2>You have been chosen to become an admin at E3T. Below you will find your details as well as your randomly generated password</h2></p>" .

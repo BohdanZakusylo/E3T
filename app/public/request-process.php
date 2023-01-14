@@ -48,11 +48,11 @@
                     $mail->Host = 'smtp.gmail.com';
                     $mail->Port = 587;
                     $mail->SMTPAuth = true;
-                    $mail->Username = "e3tprojects@gmail.com";
-                    $mail->Password = "hctuleroeahsocxw";
+                    $mail->Username = "geraldtestingcode@gmail.com";
+                    $mail->Password = "ipfenqnvngdlymex";
                     $mail->Subject = "Your request to become one of our talents at E3T has been approved";
                     $mail->CharSet = PHPMailer::CHARSET_UTF8;
-                    $mail->setFrom("e3tprojects@gmail.com", "E3T");
+                    $mail->setFrom("geraldtestingcode@gmail.com", "E3T");
                     $mail->Body =
                         "<p>Welcome to E3t " . $firstName ." ". $lastName . "</p>" .
                         "<p><h2>You Request to become one of our talents at E3T has been approved. Below you will find your details as well as your randomly generated password</h2></p>" .
