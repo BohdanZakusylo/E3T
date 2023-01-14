@@ -175,7 +175,7 @@
                 }
                 ?></span></label><br>
         <input type="text" name="first_name" id="full_name" placeholder="Enter your first name here"><br>
-        <label class="label_1" for="last_name">Full name:<span class="error">* <?php if (isset($_POST['last_name'])){
+        <label class="label_1" for="last_name">Last name:<span class="error">* <?php if (isset($_POST['last_name'])){
                     if(empty($lastName)){
                         echo  "Please provide all necessary information";
                         $err_count++;
