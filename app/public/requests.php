@@ -28,6 +28,7 @@ session_start();
 ?>
 
 <?php
+    global $id;
     if (!empty($_GET["id"])){
     $id = $_GET["id"];
     $delete = $db->prepare("DELETE FROM Requests WHERE request_id = :id");
@@ -66,7 +67,7 @@ session_start();
                         <p>Description: $description</p>
                     </div>    
                     <div id='li'>
-                        <a href='requests.php?id=$requset_id'><button>Decline</button></a>
+                        <a href='decline_talent.php?id=$requset_id'><button>Decline</button></a>
                         <a href='request-process.php?id=$requset_id'><button>Accept</button></a>
                     </div>
                 </div>

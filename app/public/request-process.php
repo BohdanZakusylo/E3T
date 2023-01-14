@@ -10,7 +10,8 @@ session_start();
     use PHPMailer\PHPMailer\Exception;
     use PHPMailer\PHPMailer\SMTP;
 
-    $fullName = $_SESSION['fullName'];
+    $firstName = $_SESSION['firstName'];
+    $lastName = $_SESSION['lastName'];
     $emailAddress = $_SESSION['emailAddress'];
     $talent = $_SESSION['talent'];
     $description = $_SESSION['description'];
@@ -53,10 +54,11 @@ session_start();
                     $mail->CharSet = PHPMailer::CHARSET_UTF8;
                     $mail->setFrom("e3tproject@gmail.com", "E3T");
                     $mail->Body =
-                        "<p>Welcome to E3t " . $fullName . "</p>" .
+                        "<p>Welcome to E3t " . $firstName ." ". $lastName . "</p>" .
                         "<p><h2>You Request to become one of our talents at E3T has been approved. Below you will find your details as well as your randomly generated password</h2></p>" .
                         "<p>
-                                    Full name: <b>$fullName</b><br>
+                                    First name: <b>$firstName</b><br>
+                                    Last name: <b>$lastName</b><br>
                                     Talent: <b>$talent;</b><br>
                                     Email address: <b>$emailAddress;</b><br>
                                     Password (Change this password as soon as possible): <b>$rand_pass_2;</b><br>
@@ -64,7 +66,7 @@ session_start();
                                      </p>
                                      <p><a href='login.php'>Click this link to login</a></p>";
                     $mail->isHTML();
-                    $mail->addAddress("$emailAddress", "$fullName");
+                    $mail->addAddress("$emailAddress", $firstName ." ". $lastName);
                     $mail->send();
                     $mail->smtpClose();
                 }

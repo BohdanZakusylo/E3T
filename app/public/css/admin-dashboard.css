@@ -36,11 +36,18 @@ input{
     background-color: #d9d9d9;
     
 }
-
 .input_text{
     width: 444px;
     height: 34px;
     margin: 15px 15px 15px 0;
+}
+#description{
+    width: 444px;
+    height: 100px;
+    margin: 15px 15px 15px 0;
+    resize: none;
+    background-color: #d9d9d9;
+    border: 0;
 }
 
 .header{

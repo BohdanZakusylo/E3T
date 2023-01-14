@@ -35,40 +35,50 @@ require "db_connection/connection.php";
                 if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $err_count = 0;
                     if(isset($_POST["submit"])){
-                    $_SESSION['fullName'] = $fullName = filter_input(INPUT_POST, "full_name");
+                    $_SESSION['firstName'] = $firstName = filter_input(INPUT_POST, "first_name", FILTER_SANITIZE_SPECIAL_CHARS);
+                    $_SESSION['lastName'] = $lastName = filter_input(INPUT_POST, "last_name", FILTER_SANITIZE_SPECIAL_CHARS);
                     $_SESSION['emailAddress'] = $emailAddress = filter_input(INPUT_POST, "email_address", FILTER_VALIDATE_EMAIL);
                     $_SESSION['talent'] = $talent = filter_input(INPUT_POST, "talent");
-                    $_SESSION['description'] = $description = filter_input(INPUT_POST, "description");
-
-                        $full = explode(" ", $fullName);
-                        $first_name = $full[0];
-                        $last_name = $full[1];
-//                    }
-//                    else{
-//                        echo "error";
-//                        $err_count++;
-//                    }
+                    $_SESSION['description'] = $description = filter_input(INPUT_POST, "description", FILTER_SANITIZE_SPECIAL_CHARS);
+                    }
+                    if(empty($firstName) || empty($lastName) || empty($emailAddress) || empty($talent) || empty($description)){
+                        echo  "<b hidden='hidden'>Please provide all necessary information</b>";
+                        $err_count++;
+                    }
+                    else{
+                        try {
+                            $query_1 = "SELECT id FROM Talent WHERE email = :email"; //Checks if the email exists in the database
+                            $stmt_1 = $db->prepare($query_1);
+                            $stmt_1->bindParam("email", $emailAddress);
+                            $stmt_1->execute();
+                            if ($result = $stmt_1->fetchColumn()) {
+                                echo "<p hidden='hidden'>Email is already in use</p>";
+                                $err_count++;
+                            }
+                        }
+                        catch (PDOException $e){
+                        }
+                    }
 
                     if ($err_count === 0) {
                             echo "<div class='message1'>";
                             echo "<h2>Thank you for contacting us!</h2><br>";
-                            echo "<b>Full Name:</b> ".$fullName."<br>";
+                            echo "<b>First Name:</b> ".$firstName."<br>";
+                            echo "<b>Last Name:</b> ".$lastName."<br>";
                             echo "<b>E-mail:</b> ".$emailAddress."<br>";
                             echo "<b>Talent:</b> ".$talent."<br>";
                             echo "<b>Description:</b> ".$description."<br>";
                             echo "We will contact you as soon as possible via your E-mail Address.";
                             echo "</div>";
 
-                            $input = $db->prepare("INSERT INTO Requests (first_name, last_name, email, talent, description) VALUES (:first_name, :last_name, :email, :talent, :description)");
-                            $input->bindParam(':first_name', $first_name);
-                            $input->bindParam(':last_name', $last_name);
+                            $input = $db->prepare("INSERT INTO Requests (first_name, last_name, email, talent, description) VALUES (:firstName, :lastName, :email, :talent, :description)");
+                            $input->bindParam(':firstName', $firstName);
+                            $input->bindParam(':lastName', $lastName);
                             $input->bindParam(':email', $emailAddress);
                             $input->bindParam(':talent', $talent);
                             $input->bindParam(':description', $description);
                             $input->execute();
-
                     }
-                }
             }
     ?>
     <?php 
@@ -157,18 +167,22 @@ require "db_connection/connection.php";
     ?>
     <form id="talent_form" method="POST" action="contact-us.php" enctype="multipart/form-data">
         <h1 class="for_talent">For talents</h1>
-        <label class="label_1" for="full_name">Full name:<span class="error">* <?php if (isset($_POST['full_name'])){
-                    if(empty($fullName)){
+        <label class="label_1" for="first_name">First name:<span class="error">* <?php if (isset($_POST['first_name'])){
+            if (empty($firstName)){
+                echo "Please provide all necessary information";
+                $err_count++;
+            }
+                }
+            ?></span></label><br>
+        <input type="text" name="first_name" id="full_name" placeholder="Enter your first name here"><br>
+        <label class="label_1" for="last_name">Full name:<span class="error">* <?php if (isset($_POST['last_name'])){
+                    if(empty($lastName)){
                         echo  "Please provide all necessary information";
-                        $err_count++;
-                    }
-                    elseif(str_word_count($fullName) < 2) {
-                        echo "Your full name must contain at least 2 words";
                         $err_count++;
                     }
                 }
             ?></span></label><br>
-        <input type="text" name="full_name" id="full_name" placeholder="Enter your full name here"><br>
+        <input type="text" name="last_name" id="full_name" placeholder="Enter your last name here"><br>
         <label class="label_1" for="email_address">Email Address:<span class="error">* <?php if (isset($_POST['email_address'])){
                     if(empty($emailAddress)) {
                         echo "Please provide all necessary information";
@@ -214,13 +228,13 @@ require "db_connection/connection.php";
                     echo "Please provide all necessary information";
                     $err_count++;
                 }
-                elseif(str_word_count($description) < 2) {
-                    echo "Your description must contain at least 2 words";
+                elseif(str_word_count($description) < 1) {
+                    echo "Your description must contain at least 1 words";
                     $err_count++;
                 }
             }
             ?></label><br>
-        <textarea name="description" id="description" placeholder="Description..."></textarea><br>
+        <textarea name="description" id="description" placeholder="Description..."></textarea>
         <p>
             <input type="submit" name="submit" value="Submit">
         </p>
