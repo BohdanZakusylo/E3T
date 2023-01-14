@@ -8,7 +8,7 @@ if(!isset($_SESSION['aLogin'])) {
     header("Location: login.php");
 }
 
-include ("components/header.php");
+include("components/header.php");
 
 $Admin_id = $_SESSION['user_id'];
 

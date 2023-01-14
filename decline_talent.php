@@ -1,9 +1,9 @@
 <?php
     session_start();
 
-    require __DIR__."/PHPMailer-master/src/PHPMailer.php";
-    require __DIR__."/PHPMailer-master/src/Exception.php";
-    require __DIR__."/PHPMailer-master/src/SMTP.php";
+    require __DIR__ . "/PHPMailer-master/src/PHPMailer.php";
+    require __DIR__ . "/PHPMailer-master/src/Exception.php";
+    require __DIR__ . "/PHPMailer-master/src/SMTP.php";
 
 
     use PHPMailer\PHPMailer\PHPMailer;

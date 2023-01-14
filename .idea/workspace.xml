@@ -2,10 +2,135 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="416cc277-dabe-4d4e-89b3-a4cd2536265d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/contact-us.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/contact-us.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/request-process.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/request-process.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PHP.dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/COMMITMENT" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/COMMITMENT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/VERSION" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/VERSION" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/get_oauth_token.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/get_oauth_token.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-af.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-af.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-ar.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-ar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-az.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-az.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-ba.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-ba.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-be.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-be.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-bg.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-bg.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-ca.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-ca.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-cs.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-cs.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-da.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-da.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-de.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-de.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-el.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-el.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-eo.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-eo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-es.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-es.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-et.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-et.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-fa.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-fa.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-fi.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-fi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-fo.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-fo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-fr.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-fr.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-gl.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-gl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-he.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-he.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-hi.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-hi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-hr.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-hr.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-hu.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-hu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-hy.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-hy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-id.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-id.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-it.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-it.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-ja.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-ja.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-ka.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-ka.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-ko.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-ko.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-lt.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-lt.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-lv.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-lv.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-mg.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-mg.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-mn.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-mn.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-ms.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-ms.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-nb.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-nb.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-nl.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-nl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-pl.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-pl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-pt.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-pt.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-pt_br.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-pt_br.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-ro.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-ro.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-ru.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-ru.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-sk.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-sk.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-sl.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-sl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-sr.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-sr.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-sr_latn.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-sr_latn.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-sv.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-sv.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-tl.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-tl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-tr.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-tr.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-uk.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-uk.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-vi.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-vi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-zh.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-zh.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/language/phpmailer.lang-zh_cn.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/language/phpmailer.lang-zh_cn.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/src/Exception.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/src/Exception.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/src/OAuth.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/src/OAuth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/src/OAuthTokenProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/src/OAuthTokenProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/src/PHPMailer.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/src/PHPMailer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/src/POP3.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/src/POP3.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/src/SMTP.php" beforeDir="false" afterPath="$PROJECT_DIR$/PHPMailer-master/src/SMTP.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/admin-dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin-dashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/admin-login.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin-login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/admin_change_password.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin_change_password.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/calendar/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/calendar/.idea/calendar.iml" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/.idea/calendar.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/calendar/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/calendar/html/calend.php" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/html/calend.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/calendar/html/css/calendar.css" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/html/css/calendar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/calendar/html/css/calendar.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/html/css/calendar.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/calendar/html/css/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/html/css/stylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/calendar/src/phpCalendar/Calendar.php" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/src/phpCalendar/Calendar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/change-password.php" beforeDir="false" afterPath="$PROJECT_DIR$/change-password.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/components/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/components/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/components/portfolio.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/portfolio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/confirmation.php" beforeDir="false" afterPath="$PROJECT_DIR$/confirmation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/contact-us.php" beforeDir="false" afterPath="$PROJECT_DIR$/contact-us.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/css/admin-dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/admin-dashboard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/css/admin-login.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/admin-login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/css/change-password.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/change-password.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/css/confirmation.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/confirmation.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/css/contact-us.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/contact-us.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/css/display-profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/display-profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/css/edit-profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/edit-profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/css/event-info.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/event-info.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/css/events.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/events.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/css/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/css/manage_events.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/manage_events.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/css/portfolio.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/portfolio.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/css/requests.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/requests.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/css/swiper-bundle.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/swiper-bundle.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/css/talent-dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/talent-dashboard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/css/talents.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/talents.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/db_connection/connection.php" beforeDir="false" afterPath="$PROJECT_DIR$/db_connection/connection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/decline_talent.php" beforeDir="false" afterPath="$PROJECT_DIR$/decline_talent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/display-profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/display-profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/edit-profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/edit-profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/event-info.php" beforeDir="false" afterPath="$PROJECT_DIR$/event-info.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/event_images/download.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/event_images/download.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/event_images/iteration2.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/event_images/iteration2.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/events.php" beforeDir="false" afterPath="$PROJECT_DIR$/events.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/img/banner.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/banner.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/img/default.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/img/default.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/img/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/img/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/img/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/img/menu_button.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/menu_button.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/js/swiper-bundle.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/swiper-bundle.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/manage-events.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage-events.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/media-files/media.php" beforeDir="false" afterPath="$PROJECT_DIR$/media-files/media.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/media-files/profile-img.php" beforeDir="false" afterPath="$PROJECT_DIR$/media-files/profile-img.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/process-login.php" beforeDir="false" afterPath="$PROJECT_DIR$/process-login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/request-process.php" beforeDir="false" afterPath="$PROJECT_DIR$/request-process.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/requests.php" beforeDir="false" afterPath="$PROJECT_DIR$/requests.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/talent-dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/talent-dashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/talents.php" beforeDir="false" afterPath="$PROJECT_DIR$/talents.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,11 +143,46 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2KJvRXeHZbPJn6fEKObjuSvMPiN" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="416cc277-dabe-4d4e-89b3-a4cd2536265d" name="Changes" comment="" />
+      <created>1673705494485</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1673705494485</updated>
+      <workItem from="1673705496982" duration="96000" />
+      <workItem from="1673705601156" duration="323000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

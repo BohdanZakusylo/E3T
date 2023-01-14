@@ -10,7 +10,7 @@
 
 <body>
 		<?php 
-			require_once ("db_connection/connection.php");
+			require_once("db_connection/connection.php");
 
 			$query = "SELECT * FROM Talent WHERE id = ?";
 			$stmt = $db ->prepare($query);
