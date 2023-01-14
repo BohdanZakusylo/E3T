@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="416cc277-dabe-4d4e-89b3-a4cd2536265d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/PHPMailer-master/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/src/PHPMailer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/PHPMailer-master/src/PHPMailer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/PHPMailer-master/src/SMTP.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/PHPMailer-master/src/SMTP.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/admin-change-password.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/admin-change-password.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/admin-dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/admin-dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/change-password.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/change-password.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/components/portfolio.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/components/portfolio.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/contact-us.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/contact-us.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/db_connection/connection.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/db_connection/connection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/decline-talent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/decline-talent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/display-profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/display-profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/edit-profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/edit-profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/requests.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/requests.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/public/request-process.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/request-process.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +32,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/bohdanzakusylo/Desktop/E3T/app/public",
+    "last_opened_file_path": "/Users/bohdanzakusylo/Desktop/E3T",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "web-ide.project.structure",
     "vue.rearranger.settings.migration": "true"
@@ -51,6 +40,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/app/public" />
     </key>
   </component>

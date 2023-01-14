@@ -82,7 +82,7 @@
         $delete->execute();
     }
 
-//    header("Location: confirmation.php");
+    header("Location: confirmation.php");
 
 
 ?>
