@@ -44,7 +44,7 @@ try {
                     foreach ($result as $value) {
                         echo '<div class="swiper-slide">
                                 <div class="image-content">
-                                <img src='.$value["image_url"].'/>
+                                <img src='.$value["image_url"].'>
                                 </div>
                                   <div class="event-content">
                                     <h2 class="name">' . $value["name"] . '</h2>
