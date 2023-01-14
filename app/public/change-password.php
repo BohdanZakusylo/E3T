@@ -7,7 +7,7 @@ if(!isset($_SESSION['tLogin'])) {
     header("Location: login.php");
 }
 
-include ("components/header.php");
+include("components/header.php");
 
 $talent_id = $_SESSION['id'];
 

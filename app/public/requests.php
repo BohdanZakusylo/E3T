@@ -1,11 +1,6 @@
 <?php
     session_start();
 
-    if(!isset($_SESSION["aLogin"])){
-        #Redirects to log in if not logged in
-        header("Location: admin-login.php");
-    }
-
     require __DIR__."/PHPMailer-master/src/PHPMailer.php";
     require __DIR__."/PHPMailer-master/src/Exception.php";
     require __DIR__."/PHPMailer-master/src/SMTP.php";
@@ -21,6 +16,11 @@
     $description = $_SESSION['description'];
 
 
+    if(!isset($_SESSION["aLogin"])){
+        #Redirects to log in if not logged in
+        header("Location: admin-login.php");
+    }
+
     $cssFile = "requests";
     $pageTitle = "Requests";
     include "components/header.php";
@@ -30,25 +30,25 @@
 <?php
     global $id;
     if (!empty($_GET["id"])){
-    $id = $_GET["id"];
-    $delete = $db->prepare("DELETE FROM Requests WHERE request_id = :id");
-    $delete->bindParam(":id", $id);
-    $delete->execute();
+        $id = $_GET["id"];
+        $delete = $db->prepare("DELETE FROM Requests WHERE request_id = :id");
+        $delete->bindParam(":id", $id);
+        $delete->execute();
     }
     else {
 
-    $outputs = $db->prepare("SELECT request_id, first_name, last_name, talent, email, description FROM Requests");
-    $outputs->execute();
+        $outputs = $db->prepare("SELECT request_id, first_name, last_name, talent, email, description FROM Requests");
+        $outputs->execute();
 
-    while ($output = $outputs->fetch()) {
-        
-        $first_name = $output["first_name"];
-        $last_name = $output["last_name"];
-        $talent = $output["talent"];
-        $email = $output["email"];
-        $description = $output["description"];
-        $requset_id = $output["request_id"];
-        echo "
+        while ($output = $outputs->fetch()) {
+
+            $first_name = $output["first_name"];
+            $last_name = $output["last_name"];
+            $talent = $output["talent"];
+            $email = $output["email"];
+            $description = $output["description"];
+            $requset_id = $output["request_id"];
+            echo "
             <div class='request'>
                 <div id='all'>
                     <div class='divs'>
@@ -67,15 +67,15 @@
                         <p>Description: $description</p>
                     </div>    
                     <div id='li'>
-                        <a href='decline_talent.php?id=$requset_id'><button>Decline</button></a>
+                        <a href='decline-talent.php?id=$requset_id'><button>Decline</button></a>
                         <a href='request-process.php?id=$requset_id'><button>Accept</button></a>
                     </div>
                 </div>
             </div> 
             <hr>   
         ";
+        }
     }
-}
 ?>
 
 <?php
