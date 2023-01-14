@@ -19,7 +19,7 @@
 
         if (isset($_POST['change_password'])) {
 
-            header("Location: admin_change_password.php");
+            header("Location: admin-change-password.php");
         }
 
         if (isset($_POST['talent_request'])) {
