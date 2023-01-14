@@ -44,7 +44,8 @@
                     if ($result) {
                         foreach ($result as $value) {
                         echo '<div class="swiper-slide">
-                                <div class="image-content" style="background-image: url('.$value["image_url"].'); background-size:cover; width: 100%">
+                                <div class="image-content">
+                                <img src='.$value["image_url"].'/>
                               
                                 </div>
                                   <div class="event-content">
