@@ -1,16 +1,16 @@
 <?php
-    $cssFile = "index";
-    $pageTitle = "E3T";
-    include "components/header.php";
-    include("db_connection/connection.php");
-    try {
-        $query = "SELECT * FROM Events";
-        $stmt = $db->prepare($query);
-        $stmt->execute();
-        $result = $stmt->fetchAll();
-    } catch (PDOException $ex) {
-        echo "$ex";
-    }
+$cssFile = "index";
+$pageTitle = "E3T";
+include "components/header.php";
+include("db_connection/connection.php");
+try {
+    $query = "SELECT * FROM Events";
+    $stmt = $db->prepare($query);
+    $stmt->execute();
+    $result = $stmt->fetchAll();
+} catch (PDOException $ex) {
+    echo "$ex";
+}
 
 
 ?>
@@ -19,9 +19,8 @@
 <main>
     <div id="top-background">
         <div class="textBanner">
-            <h1>Organise successful events
-</br>
-            and discover talents with E3T</h1>
+            <h1>Organise successful events</h1>
+                <h1>and discover talents with E3T</h1>
 
             <div id="subTitle">
                 <p>Discover talents and organise events in Emmen and<br> surroundings</p>
@@ -39,12 +38,12 @@
     <div class="slide-container swiper">
         <div class="slide-content">
             <div class="swiper-wrapper">
-            <!-- <img src='  '> -->
+                <!-- <img src='  '> -->
                 <?php
-                    if ($result) {
-                        foreach ($result as $value) {
+                if ($result) {
+                    foreach ($result as $value) {
                         echo '<div class="swiper-slide">
-                                <div class="image-content" style="background-image: url('.$value["image_url"].'); background-size:cover; width: 100%">
+                                <div class="image-content" style="background-image: url('.$value["image_url"].'); background-size:cover; height: 100%; width: 100%">
                               
                                 </div>
                                   <div class="event-content">
@@ -52,12 +51,12 @@
                                     <p class="description">' . $value["event_description"] . '</p>
                                     <a href="events.php"><button class="button">View Event</button></a>
                                   </div>
-                               </div>';       
-                        }
-
-                    } else {
-                        echo "<p class='error'>couldn't load events</p>";
+                               </div>';
                     }
+
+                } else {
+                    echo "<p class='error'>couldn't load events</p>";
+                }
 
                 ?>
             </div>
@@ -65,10 +64,10 @@
         <div class="swiper-button-next swiper-navBtn"></div>
         <div class="swiper-button-prev swiper-navBtn"></div>
     </div>
-    
+
 </section>
 <script src="js/swiper-bundle.min.js"></script>
 <script src="js/script.js"></script>
 <?php
-    include "components/footer.php";
+include "components/footer.php";
 ?>

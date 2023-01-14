@@ -61,7 +61,7 @@ session_start();
                                     Last name: <b>$lastName</b><br>
                                     Talent: <b>$talent;</b><br>
                                     Email address: <b>$emailAddress;</b><br>
-                                    Password (Change this password as soon as possible): <b>$rand_pass_2;</b><br>
+                                    Password (Change this password as soon as possible): <b>$rand_pass_2</b><br>
                                     Description: <b>$description</b><br>
                                      </p>
                                      <p><a href='login.php'>Click this link to login</a></p>";
