@@ -6,7 +6,7 @@ if (!isset($_SESSION['tLogin'])) {
 
 $cssFile = "edit-profile";
 $pageTitle = "edit-profile.php";
-include ("components/header.php");
+include("components/header.php");
 require "db_connection/connection.php";
 
 

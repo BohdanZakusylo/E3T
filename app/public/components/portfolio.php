@@ -4,7 +4,7 @@ function generate_portfolio($url, $first_name, $last_name,$talent, $description,
         <link rel="stylesheet" type="text/css" href="../css/portfolio.css">
     </head>
         <div class="main_container">
-            <img src="'.$url.'">
+            <img src="' .$url.'">
             <h2>'.$first_name.' '.$last_name.'</h2>
             <div id="description"> 
                 <h4>Talent: '.$talent.'</h4>   

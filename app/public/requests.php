@@ -6,6 +6,20 @@
         header("Location: admin-login.php");
     }
 
+    require __DIR__."/PHPMailer-master/src/PHPMailer.php";
+    require __DIR__."/PHPMailer-master/src/Exception.php";
+    require __DIR__."/PHPMailer-master/src/SMTP.php";
+
+
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+    use PHPMailer\PHPMailer\SMTP;
+
+    $fullName = $_SESSION['fullName'];
+    $emailAddress = $_SESSION['emailAddress'];
+    $talent = $_SESSION['talent'];
+    $description = $_SESSION['description'];
+
 
     $cssFile = "requests";
     $pageTitle = "Requests";
